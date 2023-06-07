@@ -15,7 +15,9 @@ class Overworld {
 
       // Object.values() converts an object into an array.
       Object.values(this.map.gameObjects).forEach(object => {
-        object.update();
+        object.update({
+          arrow: this.directionInput.direction
+        })
         object.sprite.draw(this.ctx);
       })
 
@@ -30,7 +32,11 @@ class Overworld {
   }
 
   init() {
-    this.map = new Map(maps.PalletTown);
+    this.map = new Map(maps.Demo);
+
+    this.directionInput = new DirectionInput();
+    this.directionInput.init();
+
     this.startGameLoop();
   }
 }
