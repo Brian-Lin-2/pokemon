@@ -11,6 +11,9 @@ class Overworld {
       // Clears the map.
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+      // Camera for Hero.
+      const camera = this.map.gameObjects.hero;
+
       this.map.drawLowerImage(this.ctx);
 
       // Object.values() converts an object into an array.
@@ -18,7 +21,7 @@ class Overworld {
         object.update({
           arrow: this.directionInput.direction
         })
-        object.sprite.draw(this.ctx);
+        object.sprite.draw(this.ctx, camera);
       })
 
       this.map.drawUpperImage(this.ctx);
@@ -32,7 +35,7 @@ class Overworld {
   }
 
   init() {
-    this.map = new Map(maps.PalletTown);
+    this.map = new Map(maps.Demo);
 
     this.directionInput = new DirectionInput();
     this.directionInput.init();
