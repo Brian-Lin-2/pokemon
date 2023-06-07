@@ -15,4 +15,10 @@ body {
   height: 190px;
   margin: 20px auto;
   outline: 1px solid hsl(0, 0%, 100%);
+  transform: scale(2) translateY(50%);
+}
+
+.game-container canvas {
+  /* Tells the browser to evenly multiply all the pixels */
+  image-rendering: pixelated;
 }
