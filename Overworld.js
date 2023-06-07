@@ -5,6 +5,16 @@ class Overworld {
     this.ctx = this.canvas.getContext("2d");
   }
 
+  startGameLoop() {
+    const step = () => {
+      // Fires after a new frame is loaded.
+      requestAnimationFrame(() => {
+        step();
+      })
+    }
+    step();
+  }
+
   init() {
     // Map.
     const image = new Image();
