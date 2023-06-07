@@ -14,7 +14,7 @@ class Overworld {
       // Camera for Hero.
       const camera = this.map.gameObjects.hero;
 
-      this.map.drawLowerImage(this.ctx);
+      this.map.drawLowerImage(this.ctx, camera);
 
       // Object.values() converts an object into an array.
       Object.values(this.map.gameObjects).forEach(object => {
@@ -24,7 +24,7 @@ class Overworld {
         object.sprite.draw(this.ctx, camera);
       })
 
-      this.map.drawUpperImage(this.ctx);
+      this.map.drawUpperImage(this.ctx, camera);
 
       // Fires after a new frame is loaded.
       requestAnimationFrame(() => {
