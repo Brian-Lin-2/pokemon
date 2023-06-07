@@ -29,7 +29,7 @@ class Sprite {
     this.currentAnimation = config.currentAnimation || "idle-up";
     this.currentAnimationFrame = 0;
 
-    this.animationFrameLimit = 16;
+    this.animationFrameLimit = 8;
     this.animationFrameProgress = this.animationFrameLimit;
 
     this.gameObject = config.gameObject;
@@ -37,6 +37,16 @@ class Sprite {
 
   get frame() {
     return this.animations[this.currentAnimation][this.currentAnimationFrame];
+  }
+
+  setAnimation(key) {
+    if (this.currentAnimation !== key) {
+      this.currentAnimation = key;
+
+      // Reset the cycle.
+      this.currentAnimationFrame = 0;
+      this.animationFrameProgress = this.animationFrameLimit;
+    }
   }
 
   updateAnimationProgress() {
