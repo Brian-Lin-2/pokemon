@@ -15,8 +15,10 @@ class Overworld {
 
       // Object.values() converts an object into an array.
       Object.values(this.map.gameObjects).forEach(object => {
+        object.update();
         object.sprite.draw(this.ctx);
       })
+
       this.map.drawUpperImage(this.ctx);
 
       // Fires after a new frame is loaded.

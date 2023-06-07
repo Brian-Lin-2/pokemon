@@ -24,12 +24,12 @@ let maps = {
     lowerSrc: "/images/maps/DemoLower.png",
     upperSrc: "/images/maps/DemoUpper.png",
     gameObjects: {
-      hero: new GameObject({
+      hero: new Person({
         x: 5,
         y: 6,
         src: "/images/characters/people/red.png"
       }),
-      mom: new GameObject({
+      mom: new Person({
         x: 7,
         y: 9,
         src: "images/characters/people/mom.png"
@@ -40,7 +40,7 @@ let maps = {
     lowerSrc: "/images/maps/PalletTown.png",
     upperSrc: "",
     gameObjects: {
-      hero: new GameObject({
+      hero: new Person({
         x: utils.grid(3),
         y: utils.grid(6),
         src: "/images/characters/people/red.png"
