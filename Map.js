@@ -18,7 +18,8 @@ class Map {
   }
 }
 
-window.Maps = {
+// Global variable.
+let maps = {
   Demo: {
     lowerSrc: "/images/maps/DemoLower.png",
     upperSrc: "/images/maps/DemoUpper.png",
@@ -40,8 +41,8 @@ window.Maps = {
     upperSrc: "",
     gameObjects: {
       hero: new GameObject({
-        x: 3,
-        y: 6,
+        x: utils.grid(3),
+        y: utils.grid(6),
         src: "/images/characters/people/red.png"
       })
     }

@@ -28,7 +28,7 @@ class Overworld {
   }
 
   init() {
-    this.map = new Map(window.Maps.PalletTown);
+    this.map = new Map(maps.PalletTown);
     this.startGameLoop();
   }
 }
