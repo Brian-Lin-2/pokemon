@@ -11,16 +11,20 @@ class Overworld {
       // Clears the map.
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-      // Camera for Hero.
+      // Camera for hero.
       const camera = this.map.gameObjects.hero;
+
+      // Update all objects.
+      Object.values(this.map.gameObjects).forEach(object => {
+        object.update({
+          arrow: this.directionInput.direction
+        })
+      })
 
       this.map.drawLowerImage(this.ctx, camera);
 
       // Object.values() converts an object into an array.
       Object.values(this.map.gameObjects).forEach(object => {
-        object.update({
-          arrow: this.directionInput.direction
-        })
         object.sprite.draw(this.ctx, camera);
       })
 
