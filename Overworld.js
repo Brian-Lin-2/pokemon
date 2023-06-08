@@ -39,7 +39,7 @@ class Overworld {
   }
 
   init() {
-    this.map = new Map(maps.PalletTown);
+    this.map = new Map(maps.HeroHome);
 
     this.directionInput = new DirectionInput();
     this.directionInput.init();

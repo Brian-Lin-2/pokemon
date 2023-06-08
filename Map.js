@@ -49,4 +49,52 @@ let maps = {
       })
     }
   },
+  HeroHome: {
+    lowerSrc: "/images/maps/HeroHome.png",
+    upperSrc: "",
+    gameObjects: {
+      hero: new Person({
+        isHero: true,
+        x: utils.grid(3),
+        y: utils.grid(6),
+        src: "/images/characters/people/red.png"
+      })
+    }
+  },
+  HeroBedroom: {
+    lowerSrc: "/images/maps/HeroBedroom.png",
+    upperSrc: "",
+    gameObjects: {
+      hero: new Person({
+        isHero: true,
+        x: utils.grid(3),
+        y: utils.grid(6),
+        src: "/images/characters/people/red.png"
+      })
+    }
+  },
+  RivalHome: {
+    lowerSrc: "/images/maps/RivalHome.png",
+    upperSrc: "",
+    gameObjects: {
+      hero: new Person({
+        isHero: true,
+        x: utils.grid(3),
+        y: utils.grid(6),
+        src: "/images/characters/people/red.png"
+      })
+    }
+  },
+  Lab: {
+    lowerSrc: "/images/maps/Lab.png",
+    upperSrc: "",
+    gameObjects: {
+      hero: new Person({
+        isHero: true,
+        x: utils.grid(3),
+        y: utils.grid(6),
+        src: "/images/characters/people/red.png"
+      })
+    }
+  },
 }
