@@ -59,5 +59,6 @@ class Person extends GameObject {
       this.sprite.setAnimation("walk-" + this.direction);
       return;
     }
+    this.sprite.setAnimation("idle-" + this.direction);
   }
 }
