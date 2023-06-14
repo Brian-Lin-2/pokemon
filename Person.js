@@ -16,31 +16,48 @@ class Person extends GameObject {
   }
 
   update(state) {
-    this.updatePosition();
+    if (this.movingProgressRemaining > 0) {
+      this.updatePosition();
+    } else {
+
+      // Case 1: User input and arrow is pressed.
+      if (this.isHero && state.arrow) {
+        this.startBehavior(state, {
+          type: "walk",
+          direction: state.arrow,
+        })
+      }
+
     this.updateSprite(state);
 
-    if (this.isHero && this.movingProgressRemaining === 0 && state.arrow) {
-      this.direction = state.arrow;
+    }
+  }
+
+  startBehavior(state, behavior) {
+    // Sets character direciton to a specific indicated behavior.
+    this.direction = behavior.direction;
+
+    if (behavior.type === "walk") {
+      // Stop movement if a collision is active.
+      if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
+        return;
+      }
+
+      // Walking.
       this.movingProgressRemaining = 16;
     }
   }
 
   updatePosition() {
-    if (this.movingProgressRemaining > 0) {
       const [property, change] = this.directionUpdate[this.direction];
       this[property] += change;
       this.movingProgressRemaining -= 1;
-    }
   }
 
-  updateSprite(state) {
-    if (this.isHero && this.movingProgressRemaining === 0 && !state.arrow) {
-      this.sprite.setAnimation("idle-" + this.direction);
-      return;
-    }
-
+  updateSprite() {
     if (this.movingProgressRemaining > 0) {
       this.sprite.setAnimation("walk-" + this.direction);
+      return;
     }
   }
 }

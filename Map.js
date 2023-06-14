@@ -1,6 +1,7 @@
 class Map {
   constructor(config) {
     this.gameObjects = config.gameObjects;
+    this.walls = config.walls || {};
 
     this.lowerImage = new Image();
     this.lowerImage.src = config.lowerSrc;
@@ -15,6 +16,11 @@ class Map {
 
   drawUpperImage(ctx, camera) {
     ctx.drawImage(this.upperImage, utils.grid(5) - camera.x, utils.grid(4) - camera.y);
+  }
+
+  isSpaceTaken(currentX, currentY, direction) {
+    const {x,y} = utils.nextPosition(currentX, currentY, direction);
+    return this.walls[`${x},${y}`] || false;
   }
 }
 
@@ -35,6 +41,13 @@ let maps = {
         y: utils.grid(9),
         src: "images/characters/people/mom.png"
       })
+    },
+    walls: {
+      // Dynamic key equivalent to "num, num": true
+      [utils.asGridCoord(7,6)] : true,
+      [utils.asGridCoord(8,6)] : true,
+      [utils.asGridCoord(7,7)] : true,
+      [utils.asGridCoord(8,7)] : true,
     }
   },
   PalletTown: {
