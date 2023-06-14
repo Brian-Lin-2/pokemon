@@ -22,6 +22,28 @@ class Map {
     const {x,y} = utils.nextPosition(currentX, currentY, direction);
     return this.walls[`${x},${y}`] || false;
   }
+
+  mountObjects() {
+    Object.values(this.gameObjects).forEach(o => {
+      o.mount(this);
+    })
+  }
+
+  // For game objects.
+  addWall(x, y) {
+    this.walls[`${x},${y}`] = true;
+  }
+
+  removeWall(x, y) {
+    delete this.walls[`${x},${y}`];
+  }
+
+  // If game object has movement.
+  moveWall(oldX, oldY, direction) {
+    this.removeWall(oldX, oldY);
+    const {x,y} = utils.nextPosition(oldX, oldY, direction);
+    this.addWall(x, y);
+  }
 }
 
 // Global variable.
