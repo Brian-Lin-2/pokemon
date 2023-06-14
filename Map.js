@@ -46,6 +46,16 @@ let maps = {
         x: utils.grid(3),
         y: utils.grid(6),
         src: "/images/characters/people/red.png"
+      }),
+      npc1: new Person({
+        x: utils.grid(5),
+        y: utils.grid(15),
+        src: "/images/characters/people/mom.png"
+      }),
+      npc2: new Person({
+        x: utils.grid(14),
+        y: utils.grid(17),
+        src: "/images/characters/people/red.png"
       })
     }
   },
@@ -58,6 +68,11 @@ let maps = {
         x: utils.grid(3),
         y: utils.grid(6),
         src: "/images/characters/people/red.png"
+      }),
+      mom: new Person({
+        x: utils.grid(7),
+        y: utils.grid(4),
+        src: "images/characters/people/mom.png"
       })
     }
   },
@@ -82,6 +97,11 @@ let maps = {
         x: utils.grid(3),
         y: utils.grid(6),
         src: "/images/characters/people/red.png"
+      }),
+      rivalMom: new Person({
+        x: utils.grid(5),
+        y: utils.grid(4),
+        src: "images/characters/people/red.png"
       })
     }
   },
@@ -94,6 +114,16 @@ let maps = {
         x: utils.grid(3),
         y: utils.grid(6),
         src: "/images/characters/people/red.png"
+      }),
+      rival: new Person({
+        x: utils.grid(5),
+        y: utils.grid(4),
+        src: "images/characters/people/mom.png"
+      }),
+      professor: new Person({
+        x: utils.grid(6),
+        y: utils.grid(3),
+        src: "images/characters/people/red.png"
       })
     }
   },
