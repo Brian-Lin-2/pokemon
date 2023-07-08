@@ -14,7 +14,7 @@ class Overworld {
       // Camera for hero.
       const camera = this.map.gameObjects.hero;
 
-      // Update all objects.
+      // Update all objects. Ensures that when we draw the sprites, no visual glitches occur.
       Object.values(this.map.gameObjects).forEach(object => {
         object.update({
           arrow: this.directionInput.direction,
@@ -31,7 +31,8 @@ class Overworld {
 
       this.map.drawUpperImage(this.ctx, camera);
 
-      // Fires after a new frame is loaded.
+      // Fires off step again after the new frame is loaded.
+      // Callbcak function which will prevent an infinite loop.
       requestAnimationFrame(() => {
         step();
       })
@@ -40,7 +41,7 @@ class Overworld {
   }
 
   init() {
-    this.map = new Map(maps.Demo);
+    this.map = new Map(maps.PalletTown);
     this.map.mountObjects();
 
     this.directionInput = new DirectionInput();

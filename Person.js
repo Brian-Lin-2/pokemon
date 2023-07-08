@@ -51,10 +51,14 @@ class Person extends GameObject {
 
   updatePosition() {
       const [property, change] = this.directionUpdate[this.direction];
+
+      // Either x or y gets changed.
       this[property] += change;
+      
       this.movingProgressRemaining -= 1;
   }
 
+  // Changes the direction of the sprite.
   updateSprite() {
     if (this.movingProgressRemaining > 0) {
       this.sprite.setAnimation("walk-" + this.direction);

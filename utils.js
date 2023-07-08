@@ -1,4 +1,5 @@
 const utils = {
+  // Maps numbers into nice pixel values.
   grid(n) {
     return n * 16;
   },
