@@ -56,11 +56,13 @@ let maps = {
         isHero: true,
         x: utils.grid(5),
         y: utils.grid(6),
+        direction: "down",
         src: "/images/characters/people/red.png"
       }),
       mom: new Person({
         x: utils.grid(7),
         y: utils.grid(9),
+        direction: "down",
         src: "images/characters/people/mom.png"
       })
     },
@@ -80,16 +82,19 @@ let maps = {
         isHero: true,
         x: utils.grid(6),
         y: utils.grid(8),
+        direction: "down",
         src: "/images/characters/people/red.png"
       }),
       npc1: new Person({
         x: utils.grid(5),
         y: utils.grid(15),
+        direction: "down",
         src: "/images/characters/people/kid.png"
       }),
       npc2: new Person({
         x: utils.grid(14),
         y: utils.grid(17),
+        direction: "down",
         src: "/images/characters/people/man.png"
       })
     },
@@ -296,19 +301,89 @@ let maps = {
       [utils.asGridCoord(10, 19)]: true,
     }
   },
-  HeroHome: {
-    lowerSrc: "/images/maps/HeroHome.png",
+  HeroBedroom: {
+    lowerSrc: "/images/maps/HeroBedroom.png",
     upperSrc: "",
     gameObjects: {
       hero: new Person({
         isHero: true,
         x: utils.grid(3),
         y: utils.grid(6),
+        direction: "down",
+        src: "/images/characters/people/red.png"
+      })
+    },
+    walls: {
+      // Top wall.
+      [utils.asGridCoord(0, 1)]: true,
+      [utils.asGridCoord(1, 1)]: true,
+      [utils.asGridCoord(2, 1)]: true,
+      [utils.asGridCoord(3, 1)]: true,
+      [utils.asGridCoord(4, 1)]: true,
+      [utils.asGridCoord(5, 1)]: true,
+      [utils.asGridCoord(6, 1)]: true,
+      [utils.asGridCoord(7, 1)]: true,
+      [utils.asGridCoord(8, 1)]: true,
+      [utils.asGridCoord(9, 1)]: true,
+      [utils.asGridCoord(10, 1)]: true,
+
+      // Left wall.
+      [utils.asGridCoord(-1, 2)]: true,
+      [utils.asGridCoord(-1, 3)]: true,
+      [utils.asGridCoord(-1, 4)]: true,
+      [utils.asGridCoord(-1, 5)]: true,
+      [utils.asGridCoord(-1, 6)]: true,
+      [utils.asGridCoord(-1, 7)]: true,
+      [utils.asGridCoord(-1, 8)]: true,
+
+      // Right wall.
+      [utils.asGridCoord(11, 2)]: true,
+      [utils.asGridCoord(11, 3)]: true,
+      [utils.asGridCoord(11, 4)]: true,
+      [utils.asGridCoord(11, 5)]: true,
+      [utils.asGridCoord(11, 6)]: true,
+      [utils.asGridCoord(11, 7)]: true,
+      [utils.asGridCoord(11, 8)]: true,
+
+      // Bottom wall.
+      [utils.asGridCoord(1, 9)]: true,
+      [utils.asGridCoord(2, 9)]: true,
+      [utils.asGridCoord(3, 9)]: true,
+      [utils.asGridCoord(4, 9)]: true,
+      [utils.asGridCoord(5, 9)]: true,
+      [utils.asGridCoord(6, 9)]: true,
+      [utils.asGridCoord(7, 9)]: true,
+      [utils.asGridCoord(8, 9)]: true,
+      [utils.asGridCoord(9, 9)]: true,
+      [utils.asGridCoord(10, 9)]: true,
+
+      // Stairs.
+      [utils.asGridCoord(7, 2)]: true,
+      [utils.asGridCoord(7, 3)]: true,
+      [utils.asGridCoord(8, 3)]: true,
+
+      // Console.
+      [utils.asGridCoord(5, 5)]: true,
+
+      // Bed.
+      [utils.asGridCoord(1, 6)]: true,
+    }
+  },
+  HeroHome: {
+    lowerSrc: "/images/maps/HeroHome.png",
+    upperSrc: "",
+    gameObjects: {
+      hero: new Person({
+        isHero: true,
+        x: utils.grid(9),
+        y: utils.grid(2),
+        direction:"left",
         src: "/images/characters/people/red.png"
       }),
       mom: new Person({
         x: utils.grid(7),
         y: utils.grid(4),
+        direction:"left",
         src: "images/characters/people/mom.png"
       })
     },
@@ -373,86 +448,21 @@ let maps = {
       [utils.asGridCoord(6, 5)]: true,
     }
   },
-  HeroBedroom: {
-    lowerSrc: "/images/maps/HeroBedroom.png",
-    upperSrc: "",
-    gameObjects: {
-      hero: new Person({
-        isHero: true,
-        x: utils.grid(3),
-        y: utils.grid(6),
-        src: "/images/characters/people/red.png"
-      })
-    },
-    walls: {
-      // Top wall.
-      [utils.asGridCoord(0, 1)]: true,
-      [utils.asGridCoord(1, 1)]: true,
-      [utils.asGridCoord(2, 1)]: true,
-      [utils.asGridCoord(3, 1)]: true,
-      [utils.asGridCoord(4, 1)]: true,
-      [utils.asGridCoord(5, 1)]: true,
-      [utils.asGridCoord(6, 1)]: true,
-      [utils.asGridCoord(7, 1)]: true,
-      [utils.asGridCoord(8, 1)]: true,
-      [utils.asGridCoord(9, 1)]: true,
-      [utils.asGridCoord(10, 1)]: true,
-
-      // Left wall.
-      [utils.asGridCoord(-1, 2)]: true,
-      [utils.asGridCoord(-1, 3)]: true,
-      [utils.asGridCoord(-1, 4)]: true,
-      [utils.asGridCoord(-1, 5)]: true,
-      [utils.asGridCoord(-1, 6)]: true,
-      [utils.asGridCoord(-1, 7)]: true,
-      [utils.asGridCoord(-1, 8)]: true,
-
-      // Right wall.
-      [utils.asGridCoord(11, 2)]: true,
-      [utils.asGridCoord(11, 3)]: true,
-      [utils.asGridCoord(11, 4)]: true,
-      [utils.asGridCoord(11, 5)]: true,
-      [utils.asGridCoord(11, 6)]: true,
-      [utils.asGridCoord(11, 7)]: true,
-      [utils.asGridCoord(11, 8)]: true,
-
-      // Bottom wall.
-      [utils.asGridCoord(1, 9)]: true,
-      [utils.asGridCoord(2, 9)]: true,
-      [utils.asGridCoord(3, 9)]: true,
-      [utils.asGridCoord(4, 9)]: true,
-      [utils.asGridCoord(5, 9)]: true,
-      [utils.asGridCoord(6, 9)]: true,
-      [utils.asGridCoord(7, 9)]: true,
-      [utils.asGridCoord(8, 9)]: true,
-      [utils.asGridCoord(9, 9)]: true,
-      [utils.asGridCoord(10, 9)]: true,
-
-      // Stairs.
-      [utils.asGridCoord(7, 2)]: true,
-      [utils.asGridCoord(7, 3)]: true,
-      [utils.asGridCoord(8, 3)]: true,
-
-      // Console.
-      [utils.asGridCoord(5, 5)]: true,
-
-      // Bed.
-      [utils.asGridCoord(1, 6)]: true,
-    }
-  },
   RivalHome: {
     lowerSrc: "/images/maps/RivalHome.png",
     upperSrc: "",
     gameObjects: {
       hero: new Person({
         isHero: true,
-        x: utils.grid(3),
-        y: utils.grid(6),
+        x: utils.grid(4),
+        y: utils.grid(8),
+        direction: "up",
         src: "/images/characters/people/red.png"
       }),
       rivalMom: new Person({
         x: utils.grid(5),
         y: utils.grid(4),
+        direction: "right",
         src: "images/characters/people/sister.png"
       })
     },
@@ -515,91 +525,27 @@ let maps = {
       [utils.asGridCoord(7, 5)]: true,
     }
   },
-  HeroBedroom: {
-    lowerSrc: "/images/maps/HeroBedroom.png",
-    upperSrc: "",
-    gameObjects: {
-      hero: new Person({
-        isHero: true,
-        x: utils.grid(3),
-        y: utils.grid(6),
-        src: "/images/characters/people/red.png"
-      })
-    },
-    walls: {
-      // Top wall.
-      [utils.asGridCoord(0, 1)]: true,
-      [utils.asGridCoord(1, 1)]: true,
-      [utils.asGridCoord(2, 1)]: true,
-      [utils.asGridCoord(3, 1)]: true,
-      [utils.asGridCoord(4, 1)]: true,
-      [utils.asGridCoord(5, 1)]: true,
-      [utils.asGridCoord(6, 1)]: true,
-      [utils.asGridCoord(7, 1)]: true,
-      [utils.asGridCoord(8, 1)]: true,
-      [utils.asGridCoord(9, 1)]: true,
-      [utils.asGridCoord(10, 1)]: true,
-
-      // Left wall.
-      [utils.asGridCoord(-1, 2)]: true,
-      [utils.asGridCoord(-1, 3)]: true,
-      [utils.asGridCoord(-1, 4)]: true,
-      [utils.asGridCoord(-1, 5)]: true,
-      [utils.asGridCoord(-1, 6)]: true,
-      [utils.asGridCoord(-1, 7)]: true,
-      [utils.asGridCoord(-1, 8)]: true,
-
-      // Right wall.
-      [utils.asGridCoord(11, 2)]: true,
-      [utils.asGridCoord(11, 3)]: true,
-      [utils.asGridCoord(11, 4)]: true,
-      [utils.asGridCoord(11, 5)]: true,
-      [utils.asGridCoord(11, 6)]: true,
-      [utils.asGridCoord(11, 7)]: true,
-      [utils.asGridCoord(11, 8)]: true,
-
-      // Bottom wall.
-      [utils.asGridCoord(1, 9)]: true,
-      [utils.asGridCoord(2, 9)]: true,
-      [utils.asGridCoord(3, 9)]: true,
-      [utils.asGridCoord(4, 9)]: true,
-      [utils.asGridCoord(5, 9)]: true,
-      [utils.asGridCoord(6, 9)]: true,
-      [utils.asGridCoord(7, 9)]: true,
-      [utils.asGridCoord(8, 9)]: true,
-      [utils.asGridCoord(9, 9)]: true,
-      [utils.asGridCoord(10, 9)]: true,
-
-      // Stairs.
-      [utils.asGridCoord(7, 2)]: true,
-      [utils.asGridCoord(7, 3)]: true,
-      [utils.asGridCoord(8, 3)]: true,
-
-      // Console.
-      [utils.asGridCoord(5, 5)]: true,
-
-      // Bed.
-      [utils.asGridCoord(1, 6)]: true,
-    }
-  },
   Lab: {
     lowerSrc: "/images/maps/Lab.png",
     upperSrc: "",
     gameObjects: {
       hero: new Person({
         isHero: true,
-        x: utils.grid(3),
-        y: utils.grid(6),
+        x: utils.grid(6),
+        y: utils.grid(12),
+        direction: "up",
         src: "/images/characters/people/red.png"
       }),
       rival: new Person({
         x: utils.grid(5),
         y: utils.grid(4),
+        direction: "down",
         src: "images/characters/people/blue.png"
       }),
       professor: new Person({
         x: utils.grid(6),
         y: utils.grid(3),
+        direction: "down",
         src: "images/characters/people/professor.png"
       })
     },
