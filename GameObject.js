@@ -27,7 +27,7 @@ class GameObject {
 
   update() {}
 
-  async doBehaviorEvent() {
+  async doBehaviorEvent(map) {
     if (map.isCutscenePlaying || this.behaviorLoop.length === 0) {
       return;
     }
@@ -41,8 +41,8 @@ class GameObject {
     await eventHandler.init();
 
     // Transitions into next event.
-    this.behaviorLoopIndex++;
-    if (behaviorLoopIndex === this.behaviorLoop.length) {
+    this.behaviorLoopIndex ++;
+    if (this.behaviorLoopIndex === this.behaviorLoop.length) {
       this.behaviorLoopIndex = 0;
     }
 

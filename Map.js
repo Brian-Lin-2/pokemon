@@ -67,8 +67,13 @@ let maps = {
       mom: new Person({
         x: utils.grid(7),
         y: utils.grid(9),
-        direction: "down",
-        src: "images/characters/people/mom.png"
+        src: "images/characters/people/mom.png",
+        behaviorLoop: [
+          { type: "walk", direction: "left" },
+          { type: "walk", direction: "up" },
+          { type: "walk", direction: "right" },
+          { type: "walk", direction: "down" },
+        ]
       })
     },
     walls: {

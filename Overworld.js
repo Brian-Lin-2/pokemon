@@ -41,7 +41,7 @@ class Overworld {
   }
 
   init() {
-    this.map = new Map(maps.PalletTown);
+    this.map = new Map(maps.Demo);
     this.map.mountObjects();
 
     this.directionInput = new DirectionInput();
