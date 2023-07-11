@@ -8,6 +8,8 @@ class Map {
 
     this.upperImage = new Image();
     this.upperImage.src = config.upperSrc;
+
+    this.isCutscenePlaying = false;
   }
 
   drawLowerImage(ctx, camera) {
@@ -24,8 +26,11 @@ class Map {
   }
 
   mountObjects() {
-    Object.values(this.gameObjects).forEach(o => {
-      o.mount(this);
+    Object.keys(this.gameObjects).forEach(key => {
+      let object = this.gameObjects[key];
+      object.id = key;
+
+      object.mount(this);
     })
   }
 
@@ -75,8 +80,8 @@ let maps = {
     }
   },
   PalletTown: {
-    lowerSrc: "/images/maps/PalletTown.png",
-    upperSrc: "",
+    lowerSrc: "/images/maps/PalletTownLower.png",
+    upperSrc: "/images/maps/PalletTownUpper.png",
     gameObjects: {
       hero: new Person({
         isHero: true,
@@ -94,8 +99,13 @@ let maps = {
       npc2: new Person({
         x: utils.grid(14),
         y: utils.grid(17),
-        direction: "down",
-        src: "/images/characters/people/man.png"
+        src: "/images/characters/people/man.png",
+        behaviorLoop: [
+          { type: "walk", direction: "left" },
+          { type: "walk", direction: "up" },
+          { type: "walk", direction: "right" },
+          { type: "walk", direction: "down" },
+        ]
       })
     },
     walls: {
@@ -195,11 +205,6 @@ let maps = {
       [utils.asGridCoord(23, 20)]: true,
 
       // Hero Home.
-      [utils.asGridCoord(5, 4)]: true,
-      [utils.asGridCoord(6, 4)]: true,
-      [utils.asGridCoord(7, 4)]: true,
-      [utils.asGridCoord(8, 4)]: true,
-      [utils.asGridCoord(9, 4)]: true,
       [utils.asGridCoord(5, 5)]: true,
       [utils.asGridCoord(6, 5)]: true,
       [utils.asGridCoord(7, 5)]: true,
@@ -218,11 +223,6 @@ let maps = {
       [utils.asGridCoord(4, 7)]: true,
 
       // Rival Home.
-      [utils.asGridCoord(14, 4)]: true,
-      [utils.asGridCoord(15, 4)]: true,
-      [utils.asGridCoord(16, 4)]: true,
-      [utils.asGridCoord(17, 4)]: true,
-      [utils.asGridCoord(18, 4)]: true,
       [utils.asGridCoord(14, 5)]: true,
       [utils.asGridCoord(15, 5)]: true,
       [utils.asGridCoord(16, 5)]: true,
@@ -302,8 +302,8 @@ let maps = {
     }
   },
   HeroBedroom: {
-    lowerSrc: "/images/maps/HeroBedroom.png",
-    upperSrc: "",
+    lowerSrc: "/images/maps/HeroBedroomLower.png",
+    upperSrc: "/images/maps/HeroBedroomUpper.png",
     gameObjects: {
       hero: new Person({
         isHero: true,
@@ -370,8 +370,8 @@ let maps = {
     }
   },
   HeroHome: {
-    lowerSrc: "/images/maps/HeroHome.png",
-    upperSrc: "",
+    lowerSrc: "/images/maps/HeroHomeLower.png",
+    upperSrc: "/images/maps/HeroHomeUpper.png",
     gameObjects: {
       hero: new Person({
         isHero: true,
@@ -449,8 +449,8 @@ let maps = {
     }
   },
   RivalHome: {
-    lowerSrc: "/images/maps/RivalHome.png",
-    upperSrc: "",
+    lowerSrc: "/images/maps/RivalHomeLower.png",
+    upperSrc: "/images/maps/RivalHomeUpper.png",
     gameObjects: {
       hero: new Person({
         isHero: true,
@@ -526,8 +526,8 @@ let maps = {
     }
   },
   Lab: {
-    lowerSrc: "/images/maps/Lab.png",
-    upperSrc: "",
+    lowerSrc: "/images/maps/LabLower.png",
+    upperSrc: "/images/maps/LabUpper.png",
     gameObjects: {
       hero: new Person({
         isHero: true,
