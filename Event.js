@@ -33,6 +33,7 @@ class Event {
     }, {
       type: "walk",
       direction: this.event.direction,
+      retry: true,
     })
 
     // Creates a handler to check when a person is done walking, then resolves the event.

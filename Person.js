@@ -39,6 +39,13 @@ class Person extends GameObject {
     if (behavior.type === "walk") {
       // Stop movement if a collision is active.
       if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
+        // Begins movement again for npcs.
+        if (behavior.retry) {
+          setTimeout(() => {
+            this.startBehavior(state, behavior)
+          }, 10)
+        }
+
         return;
       }
 
