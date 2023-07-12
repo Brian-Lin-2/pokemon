@@ -1,6 +1,8 @@
 .TextMessage {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   height: 36px;
   padding: 4px;
   background: var(--menu-background);
