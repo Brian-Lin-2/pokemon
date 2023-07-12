@@ -43,22 +43,33 @@ class Overworld {
     step();
   }
 
-  bindActionInput() {
+  checkActionInput() {
     // Checks for interactiivty with objects.
     new KeyPressListener("Space", () => {
       this.map.interact();
     })
   }
 
+  checkHeroPosition() {
+    document.addEventListener("PersonWalkingComplete", e => {
+      if (e.detail.whoId === "hero") {
+        // Hero's position has changed.
+        this.map.stepCutscene();
+      }
+    })
+  }
+
   init() {
-    this.map = new Map(maps.PalletTown);
+    this.map = new Map(maps.Demo);
     this.map.mountObjects();
 
     this.directionInput = new DirectionInput();
     this.directionInput.init();
 
-    this.startGameLoop();
+    // Tracks hero input and position.
+    this.checkActionInput();
+    this.checkHeroPosition();
 
-    this.bindActionInput();
+    this.startGameLoop();
   }
 }

@@ -1,6 +1,7 @@
 class Map {
   constructor(config) {
     this.gameObjects = config.gameObjects;
+    this.cutsceneSpaces = config.cutsceneSpaces || {};
     this.walls = config.walls || {};
 
     this.lowerImage = new Image();
@@ -64,6 +65,17 @@ class Map {
     }
   }
 
+  stepCutscene() {
+    const hero = this.gameObjects["hero"];
+    const match = this.cutsceneSpaces[ `${hero.x},${hero.y}`]
+
+    if (!this.isCutscenePlaying && match) {
+      this.startCutscene( match[0].events );
+    }
+  }
+
+  
+
   // For game objects.
   addWall(x, y) {
     this.walls[`${x},${y}`] = true;
@@ -116,6 +128,15 @@ let maps = {
       [utils.asGridCoord(8, 6)]: true,
       [utils.asGridCoord(7, 7)]: true,
       [utils.asGridCoord(8, 7)]: true,
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(7,4)]: [
+        {
+          events: [
+            { type: "message", text: "door" }
+          ]
+        }
+      ]
     }
   },
   PalletTown: {
