@@ -55,6 +55,13 @@ class Event {
 
     const message = new TextMessage({ text: this.event.text, onComplete: () => resolve() });
     message.init(document.querySelector(".game-container"));
+
+    resolve();
+  }
+
+  changeMap(resolve) {
+    this.map.overworld.startMap(maps[this.event.map]);
+    resolve();
   }
 
   init() {

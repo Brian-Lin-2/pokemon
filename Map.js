@@ -1,5 +1,6 @@
 class Map {
   constructor(config) {
+    this.overworld = null;
     this.gameObjects = config.gameObjects;
     this.cutsceneSpaces = config.cutsceneSpaces || {};
     this.walls = config.walls || {};
@@ -134,6 +135,13 @@ let maps = {
         {
           events: [
             { type: "message", text: "door" }
+          ]
+        }
+      ],
+      [utils.asGridCoord(5,10)]: [
+        {
+          events: [
+            { type: "changeMap", map: "HeroHome" }
           ]
         }
       ]

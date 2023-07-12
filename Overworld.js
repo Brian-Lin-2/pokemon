@@ -59,9 +59,14 @@ class Overworld {
     })
   }
 
-  init() {
-    this.map = new Map(maps.Demo);
+  startMap(map) {
+    this.map = new Map(map);
+    this.map.overworld = this;
     this.map.mountObjects();
+  }
+
+  init() {
+    this.startMap(maps.Demo);
 
     this.directionInput = new DirectionInput();
     this.directionInput.init();
