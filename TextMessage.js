@@ -19,6 +19,13 @@ class TextMessage {
       // Closes the text message.
       this.done();
     });
+
+    this.actionListener = new KeyPressListener("Space", () => {
+      // Unbind the listener to stop it from constantly listening.
+      this.actionListener.unbind();
+      
+      this.done();
+    })
   }
 
   done() {

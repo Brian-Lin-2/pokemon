@@ -23,6 +23,15 @@ const utils = {
 
     return {x,y};
   },
+  oppositeDirection(direction) {
+    switch (direction) {
+      case "left": return "right";
+      case "right": return "left";
+      case "up": return "down";
+      case "down": return "up";
+    }
+
+  },
   createEvent(name, detail) {
     const event = new CustomEvent(name, { detail });
     document.dispatchEvent(event);

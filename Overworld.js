@@ -43,6 +43,13 @@ class Overworld {
     step();
   }
 
+  bindActionInput() {
+    // Checks for interactiivty with objects.
+    new KeyPressListener("Space", () => {
+      this.map.interact();
+    })
+  }
+
   init() {
     this.map = new Map(maps.PalletTown);
     this.map.mountObjects();
@@ -52,10 +59,6 @@ class Overworld {
 
     this.startGameLoop();
 
-    this.map.startCutscene([
-      { type: "message", text: "Hello" }
-      // { who: "hero", type: "walk", direction: "down" },
-      // { who: "hero", type: "walk", direction: "down" },
-    ])
+    this.bindActionInput();
   }
 }

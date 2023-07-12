@@ -52,6 +52,18 @@ class Map {
     Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this));
   }
 
+  interact() {
+    const hero = this.gameObjects["hero"];
+    const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
+    const match = Object.values(this.gameObjects).find(object => {
+      return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
+    });
+
+    if (!this.isCutscenePlaying && match && match.talking.length > 0) {
+      this.startCutscene(match.talking[0].events);
+    }
+  }
+
   // For game objects.
   addWall(x, y) {
     this.walls[`${x},${y}`] = true;
@@ -134,6 +146,15 @@ let maps = {
           { type: "stand", direction: "left", time: 2000 },
           { type: "walk", direction: "left" },
           { type: "stand", direction: "left", time: 2000 },
+        ],
+        talking: [
+          // Allows us to store multiple dialogues for specific events.
+          {
+            events: [
+              { type: "message", text: "Loser", faceHero:"npc1" },
+              { type: "message", text: "haha" },
+            ]
+          }
         ]
       }),
       npc2: new Person({
