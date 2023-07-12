@@ -21,7 +21,7 @@ class Person extends GameObject {
     } else {
 
       // Case 1: User input and arrow is pressed.
-      if (this.isHero && state.arrow) {
+      if (!state.map.isCutscenePlaying && this.isHero && state.arrow) {
         this.startBehavior(state, {
           type: "walk",
           direction: state.arrow,

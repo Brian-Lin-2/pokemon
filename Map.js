@@ -9,7 +9,7 @@ class Map {
     this.upperImage = new Image();
     this.upperImage.src = config.upperSrc;
 
-    this.isCutscenePlaying = false;
+    this.isCutscenePlaying = true;
   }
 
   drawLowerImage(ctx, camera) {
@@ -32,6 +32,21 @@ class Map {
 
       object.mount(this);
     })
+  }
+
+  async startCutscene(events) {
+    this.isCutscenePlaying = true;
+
+    // Start a loop of async events and await each one.
+    for (let i = 0; i < events.length; i++) {
+      const eventHandler = new Event({
+        event: events[i],
+        map: this,
+      })
+      await eventHandler.init();
+    }
+
+    this.isCutscenePlaying = false;
   }
 
   // For game objects.
