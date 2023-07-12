@@ -70,10 +70,13 @@ let maps = {
         src: "images/characters/people/mom.png",
         behaviorLoop: [
           { type: "walk", direction: "left" },
-          { type: "stand", direction: "left", time: 800 },
+          { type: "stand", direction: "left", time: 2000 },
           { type: "walk", direction: "up" },
+          { type: "stand", direction: "up", time: 2000 },
           { type: "walk", direction: "right" },
+          { type: "stand", direction: "right", time: 2000 },
           { type: "walk", direction: "down" },
+          { type: "stand", direction: "down", time: 2000 },
         ]
       })
     },
@@ -97,20 +100,41 @@ let maps = {
         src: "/images/characters/people/red.png"
       }),
       npc1: new Person({
-        x: utils.grid(5),
-        y: utils.grid(15),
-        direction: "down",
-        src: "/images/characters/people/kid.png"
+        x: utils.grid(4),
+        y: utils.grid(10),
+        src: "/images/characters/people/kid.png",
+        behaviorLoop: [
+          { type: "walk", direction: "right" },
+          { type: "stand", direction: "right", time: 2000 },
+          { type: "walk", direction: "right" },
+          { type: "stand", direction: "right", time: 2000 },
+          { type: "walk", direction: "right" },
+          { type: "stand", direction: "right", time: 2000 },
+          { type: "walk", direction: "left" },
+          { type: "stand", direction: "left", time: 2000 },
+          { type: "walk", direction: "left" },
+          { type: "stand", direction: "left", time: 2000 },
+          { type: "walk", direction: "left" },
+          { type: "stand", direction: "left", time: 2000 },
+        ]
       }),
       npc2: new Person({
         x: utils.grid(14),
         y: utils.grid(17),
         src: "/images/characters/people/man.png",
         behaviorLoop: [
-          { type: "walk", direction: "left" },
-          { type: "walk", direction: "up" },
           { type: "walk", direction: "right" },
-          { type: "walk", direction: "down" },
+          { type: "stand", direction: "right", time: 2000 },
+          { type: "walk", direction: "right" },
+          { type: "stand", direction: "right", time: 2000 },
+          { type: "walk", direction: "right" },
+          { type: "stand", direction: "right", time: 2000 },
+          { type: "walk", direction: "left" },
+          { type: "stand", direction: "left", time: 2000 },
+          { type: "walk", direction: "left" },
+          { type: "stand", direction: "left", time: 2000 },
+          { type: "walk", direction: "left" },
+          { type: "stand", direction: "left", time: 2000 },
         ]
       })
     },
