@@ -4,6 +4,7 @@ class Person extends GameObject {
 
     // Locks them to the grid (can't stop halfway).
     this.movingProgressRemaining = 0;
+    this.isStanding = false;
 
     this.isHero = config.isHero || false;
 
@@ -57,11 +58,15 @@ class Person extends GameObject {
     }
 
     if (behavior.type === "stand") {
+      this.standing = true;
+      
       setTimeout(() => {
         utils.createEvent("PersonStandComplete", {
           whoId: this.id
         })
       }, behavior.time)
+
+      this.standing = false;
     }
   }
 
