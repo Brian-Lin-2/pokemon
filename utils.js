@@ -23,7 +23,7 @@ const utils = {
 
     return {x,y};
   },
-  checkEvent(name, detail) {
+  createEvent(name, detail) {
     const event = new CustomEvent(name, { detail });
     document.dispatchEvent(event);
   }

@@ -6,7 +6,24 @@ class Event {
 
   // resolve variable indicates when the behavior is done. Triggers the promise.
   stand(resolve) {
+    const person = this.map.gameObjects[ this.event.who ]
+    person.startBehavior({
+      map: this.map,
+    }, {
+      type: "stand",
+      direction: this.event.direction,
+      time: this.event.time,
+    })
 
+    // Creates a handler to check when a person is done walking, then resolves the event.
+    const completeHandler = e => {
+      if (e.detail.whoId === this.event.who) {
+        document.removeEventListener("PersonStandComplete", completeHandler);
+        resolve();
+      }
+    }
+
+    document.addEventListener("PersonStandComplete", completeHandler)
   }
 
   walk(resolve) {

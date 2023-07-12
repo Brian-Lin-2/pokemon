@@ -70,6 +70,7 @@ let maps = {
         src: "images/characters/people/mom.png",
         behaviorLoop: [
           { type: "walk", direction: "left" },
+          { type: "stand", direction: "left", time: 800 },
           { type: "walk", direction: "up" },
           { type: "walk", direction: "right" },
           { type: "walk", direction: "down" },
