@@ -51,5 +51,11 @@ class Overworld {
     this.directionInput.init();
 
     this.startGameLoop();
+
+    this.map.startCutscene([
+      { type: "message", text: "Hello" }
+      // { who: "hero", type: "walk", direction: "down" },
+      // { who: "hero", type: "walk", direction: "down" },
+    ])
   }
 }

@@ -49,7 +49,7 @@ class Map {
     this.isCutscenePlaying = false;
 
     // Reset NPCS back to idle behavior.
-    Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
+    Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this));
   }
 
   // For game objects.
