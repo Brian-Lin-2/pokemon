@@ -25,7 +25,10 @@ class Overworld {
       this.map.drawLowerImage(this.ctx, camera);
 
       // Object.values() converts an object into an array.
-      Object.values(this.map.gameObjects).forEach(object => {
+      Object.values(this.map.gameObjects).sort((a,b) => {
+        // Makes sure characters are layered correctly.
+        return a.y - b.y;
+      }).forEach(object => {
         object.sprite.draw(this.ctx, camera);
       })
 
