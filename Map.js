@@ -9,7 +9,7 @@ class Map {
     this.upperImage = new Image();
     this.upperImage.src = config.upperSrc;
 
-    this.isCutscenePlaying = true;
+    this.isCutscenePlaying = false;
   }
 
   drawLowerImage(ctx, camera) {
@@ -47,6 +47,9 @@ class Map {
     }
 
     this.isCutscenePlaying = false;
+
+    // Reset NPCS back to idle behavior.
+    Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
   }
 
   // For game objects.
