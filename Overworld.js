@@ -98,5 +98,9 @@ class Overworld {
 
     // Constantly refreshes the game.
     this.startGameLoop();
+
+    this.map.startCutscene([
+      { type: "message", text: "You are challenged by <br /> Loser Trainer Ashley!" },
+    ])
   }
 }

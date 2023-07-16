@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "pokemon";
+  src: url("/images/fonts/pokemon-font.ttf");
+}
+
 .TextMessage {
   position: absolute;
   left: 0;
@@ -5,7 +10,7 @@
   bottom: 0;
   height: 36px;
   margin-bottom: -3px;
-  padding: 6px 9px;
+  padding: 7px 10px;
   background-image: url("/images/other/textbox.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -13,7 +18,11 @@
 
 .TextMessage_p {
   margin: 0;
-  font-size: 8px;
+  font-family: "pokemon";
+  opacity: 65%;
+  line-height: 10px;
+  font-size: 9px;
+  margin-right: 8px;
 }
 
 .TextMessage_button {
