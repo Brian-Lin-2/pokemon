@@ -75,8 +75,6 @@ class Map {
     }
   }
 
-  
-
   // For game objects.
   addWall(x, y) {
     this.walls[`${x},${y}`] = true;
@@ -314,7 +312,7 @@ let maps = {
       [utils.asGridCoord(8, 6)]: true,
       [utils.asGridCoord(9, 6)]: true,
       [utils.asGridCoord(5, 7)]: true,
-      [utils.asGridCoord(6, 7)]: true,
+      // [utils.asGridCoord(6, 7)]: true,
       [utils.asGridCoord(7, 7)]: true,
       [utils.asGridCoord(8, 7)]: true,
       [utils.asGridCoord(9, 7)]: true,
@@ -397,11 +395,19 @@ let maps = {
       [utils.asGridCoord(8, 19)]: true,
       [utils.asGridCoord(9, 19)]: true,
       [utils.asGridCoord(10, 19)]: true,
-    }
+    },
+    [utils.asGridCoord(6, 7)]: [
+      {
+        events: [
+          { type: "changeMap", map: "HeroBedroom" }
+        ]
+      }
+    ]
   },
   HeroBedroom: {
     lowerSrc: "/images/maps/HeroBedroomLower.png",
-    upperSrc: "/images/maps/HeroBedroomUpper.png",
+    // upperSrc: "/images/maps/HeroBedroomUpper.png",
+    upperSrc: "",
     gameObjects: {
       hero: new Person({
         isHero: true,
@@ -465,7 +471,16 @@ let maps = {
 
       // Bed.
       [utils.asGridCoord(1, 6)]: true,
-    }
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(8, 2)]: [
+        {
+          events: [
+            { type: "changeMap", map: "HeroHome", coords: "8,2" }
+          ]
+        }
+      ]
+    },
   },
   HeroHome: {
     lowerSrc: "/images/maps/HeroHomeLower.png",
@@ -522,7 +537,7 @@ let maps = {
       [utils.asGridCoord(0, 9)]: true,
       [utils.asGridCoord(1, 9)]: true,
       [utils.asGridCoord(2, 9)]: true,
-      [utils.asGridCoord(3, 9)]: true,
+      // [utils.asGridCoord(3, 9)]: true,
       [utils.asGridCoord(4, 9)]: true,
       [utils.asGridCoord(5, 9)]: true,
       [utils.asGridCoord(6, 9)]: true,
@@ -532,8 +547,10 @@ let maps = {
       [utils.asGridCoord(10, 9)]: true,
 
       // Stairs.
-      [utils.asGridCoord(10, 2)]: true,
+      // [utils.asGridCoord(10, 2)]: true,
       [utils.asGridCoord(11, 2)]: true,
+      [utils.asGridCoord(10, 3)]: true,
+      [utils.asGridCoord(11, 3)]: true,
 
       // Plants.
       [utils.asGridCoord(0, 7)]: true,
@@ -544,7 +561,23 @@ let maps = {
       [utils.asGridCoord(5, 5)]: true,
       [utils.asGridCoord(6, 4)]: true,
       [utils.asGridCoord(6, 5)]: true,
-    }
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(10, 2)]: [
+        {
+          events: [
+            { type: "changeMap", map: "HeroBedroom" }
+          ]
+        }
+      ],
+      [utils.asGridCoord(3, 9)]: [
+        {
+          events: [
+            { type: "changeMap", map: "PalletTown" }
+          ]
+        }
+      ]
+    },
   },
   RivalHome: {
     lowerSrc: "/images/maps/RivalHomeLower.png",
