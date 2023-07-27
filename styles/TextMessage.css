@@ -31,6 +31,7 @@
 
 .TextMessage_button {
   font-size: 8px;
+  font-weight: bold;
   cursor: pointer;
   color: white;
 
