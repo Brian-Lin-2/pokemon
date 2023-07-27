@@ -20,7 +20,7 @@
   margin: 0;
   font-family: "pokemon";
   opacity: 65%;
-  line-height: 10px;
+  line-height: 11px;
   font-size: 9px;
   margin-right: 8px;
 }
@@ -34,6 +34,7 @@
   border: 0;
   font-family: inherit;
   cursor: pointer;
+  color: white;
 
   position: absolute;
   right: 6px;

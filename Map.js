@@ -330,7 +330,7 @@ let maps = {
       [utils.asGridCoord(17, 6)]: true,
       [utils.asGridCoord(18, 6)]: true,
       [utils.asGridCoord(14, 7)]: true,
-      [utils.asGridCoord(15, 7)]: true,
+      // [utils.asGridCoord(15, 7)]: true,
       [utils.asGridCoord(16, 7)]: true,
       [utils.asGridCoord(17, 7)]: true,
       [utils.asGridCoord(18, 7)]: true,
@@ -361,7 +361,7 @@ let maps = {
       [utils.asGridCoord(13, 13)]: true,
       [utils.asGridCoord(14, 13)]: true,
       [utils.asGridCoord(15, 13)]: true,
-      [utils.asGridCoord(16, 13)]: true,
+      // [utils.asGridCoord(16, 13)]: true,
       [utils.asGridCoord(17, 13)]: true,
       [utils.asGridCoord(18, 13)]: true,
       [utils.asGridCoord(19, 13)]: true,
@@ -396,13 +396,29 @@ let maps = {
       [utils.asGridCoord(9, 19)]: true,
       [utils.asGridCoord(10, 19)]: true,
     },
-    [utils.asGridCoord(6, 7)]: [
-      {
-        events: [
-          { type: "changeMap", map: "HeroBedroom" }
-        ]
-      }
-    ]
+    cutsceneSpaces: {
+      [utils.asGridCoord(6, 7)]: [
+        {
+          events: [
+            { type: "changeMap", map: "HeroHome" }
+          ]
+        }
+      ],
+      [utils.asGridCoord(15, 7)]: [
+        {
+          events: [
+            { type: "changeMap", map: "RivalHome" }
+          ]
+        }
+      ],
+      [utils.asGridCoord(16, 13)]: [
+        {
+          events: [
+            { type: "changeMap", map: "Lab" }
+          ]
+        }
+      ]
+    }
   },
   HeroBedroom: {
     lowerSrc: "/images/maps/HeroBedroomLower.png",
@@ -581,7 +597,8 @@ let maps = {
   },
   RivalHome: {
     lowerSrc: "/images/maps/RivalHomeLower.png",
-    upperSrc: "/images/maps/RivalHomeUpper.png",
+    upperSrc: "",
+    // upperSrc: "/images/maps/RivalHomeUpper.png",
     gameObjects: {
       hero: new Person({
         isHero: true,
@@ -637,7 +654,7 @@ let maps = {
       [utils.asGridCoord(1, 9)]: true,
       [utils.asGridCoord(2, 9)]: true,
       [utils.asGridCoord(3, 9)]: true,
-      [utils.asGridCoord(4, 9)]: true,
+      // [utils.asGridCoord(4, 9)]: true,
       [utils.asGridCoord(5, 9)]: true,
       [utils.asGridCoord(6, 9)]: true,
       [utils.asGridCoord(7, 9)]: true,
@@ -654,11 +671,21 @@ let maps = {
       [utils.asGridCoord(6, 5)]: true,
       [utils.asGridCoord(7, 4)]: true,
       [utils.asGridCoord(7, 5)]: true,
-    }
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(4, 9)]: [
+        {
+          events: [
+            { type: "changeMap", map: "PalletTown" }
+          ]
+        }
+      ],
+    },
   },
   Lab: {
     lowerSrc: "/images/maps/LabLower.png",
-    upperSrc: "/images/maps/LabUpper.png",
+    upperSrc: "",
+    // upperSrc: "/images/maps/LabUpper.png",
     gameObjects: {
       hero: new Person({
         isHero: true,
@@ -731,7 +758,7 @@ let maps = {
       [utils.asGridCoord(3, 13)]: true,
       [utils.asGridCoord(4, 13)]: true,
       [utils.asGridCoord(5, 13)]: true,
-      [utils.asGridCoord(6, 13)]: true,
+      // [utils.asGridCoord(6, 13)]: true,
       [utils.asGridCoord(7, 13)]: true,
       [utils.asGridCoord(8, 13)]: true,
       [utils.asGridCoord(9, 13)]: true,
@@ -767,6 +794,15 @@ let maps = {
       // Plants.
       [utils.asGridCoord(0, 12)]: true,
       [utils.asGridCoord(12, 12)]: true,
-    }
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(6, 13)]: [
+        {
+          events: [
+            { type: "changeMap", map: "PalletTown" }
+          ]
+        }
+      ],
+    },
   },
 }
