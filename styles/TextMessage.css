@@ -25,18 +25,30 @@
   margin-right: 8px;
 }
 
+.TextMessage span {
+  opacity: 0;
+}
+
 .TextMessage_button {
-  margin: 0;
   font-size: 8px;
-  padding: 0;
-  -webkit-appearance: none;
-  background: none;
-  border: 0;
-  font-family: inherit;
   cursor: pointer;
   color: white;
 
+  animation: floating 0.75s ease-in-out infinite;
+
   position: absolute;
   right: 6px;
-  bottom: 6px;
+  bottom: 7px;
+
+  opacity: 0;
+}
+
+@keyframes floating {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 1px); }
+  100%   { transform: translate(0, 0px); }   
+}
+
+.TextMessage .revealed {
+  opacity: 1;
 }

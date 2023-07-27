@@ -58,7 +58,7 @@ class Person extends GameObject {
     }
 
     if (behavior.type === "stand") {
-      this.standing = true;
+      this.isStanding = true;
       
       setTimeout(() => {
         utils.createEvent("PersonStandComplete", {
@@ -66,7 +66,7 @@ class Person extends GameObject {
         })
       }, behavior.time)
 
-      this.standing = false;
+      this.isStanding = false;
     }
   }
 

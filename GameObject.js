@@ -43,7 +43,7 @@ class GameObject {
     await eventHandler.init();
 
     // Transitions into next event.
-    this.behaviorLoopIndex ++;
+    this.behaviorLoopIndex++;
     if (this.behaviorLoopIndex === this.behaviorLoop.length) {
       this.behaviorLoopIndex = 0;
     }
