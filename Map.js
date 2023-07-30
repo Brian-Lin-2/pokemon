@@ -1,7 +1,11 @@
 class Map {
   constructor(config) {
     this.overworld = null;
-    this.gameObjects = config.gameObjects;
+
+    // Fills this with our objectConfigs data onload.
+    this.gameObjects = {};
+
+    this.configObjects = config.configObjects;
 
     this.cutsceneSpaces = config.cutsceneSpaces || {};
     this.walls = config.walls || {};
@@ -29,12 +33,18 @@ class Map {
   }
 
   mountObjects() {
-    Object.keys(this.gameObjects).forEach(key => {
+    Object.keys(this.configObjects).forEach(key => {
       // Key allows us to identify a specific sprite.
-      let object = this.gameObjects[key];
+      let object = this.configObjects[key];
       object.id = key;
 
-      object.mount(this);
+      // Change later if we have an object that's not a person.
+      let instance = new Person(object);
+
+      this.gameObjects[key] = instance;
+      this.gameObjects[key].id = key;
+
+      instance.mount(this);
     })
   }
 
@@ -101,7 +111,7 @@ let maps = {
   Demo: {
     lowerSrc: "/images/maps/DemoLower.png",
     upperSrc: "/images/maps/DemoUpper.png",
-    gameObjects: {
+    configObjects: {
       hero: {
         isHero: true,
         x: utils.grid(5),
@@ -152,15 +162,15 @@ let maps = {
   PalletTown: {
     lowerSrc: "/images/maps/PalletTownLower.png",
     upperSrc: "/images/maps/PalletTownUpper.png",
-    gameObjects: {
-      hero: new Person({
+    configObjects: {
+      hero: {
         isHero: true,
         x: utils.grid(6),
         y: utils.grid(8),
         direction: "down",
         src: "/images/characters/people/red.png"
-      }),
-      npc1: new Person({
+      },
+      npc1: {
         x: utils.grid(4),
         y: utils.grid(10),
         src: "/images/characters/people/kid.png",
@@ -187,26 +197,26 @@ let maps = {
             ]
           }
         ]
-      }),
-      npc2: new Person({
+      },
+      npc2: {
         x: utils.grid(14),
         y: utils.grid(17),
         src: "/images/characters/people/man.png",
         behaviorLoop: [
-          // { type: "walk", direction: "right" },
-          // { type: "stand", direction: "right", time: 2000 },
-          // { type: "walk", direction: "right" },
-          // { type: "stand", direction: "right", time: 2000 },
-          // { type: "walk", direction: "right" },
-          // { type: "stand", direction: "right", time: 2000 },
-          // { type: "walk", direction: "left" },
-          // { type: "stand", direction: "left", time: 2000 },
-          // { type: "walk", direction: "left" },
-          // { type: "stand", direction: "left", time: 2000 },
-          // { type: "walk", direction: "left" },
-          // { type: "stand", direction: "left", time: 2000 },
+          { type: "walk", direction: "right" },
+          { type: "stand", direction: "right", time: 2000 },
+          { type: "walk", direction: "right" },
+          { type: "stand", direction: "right", time: 2000 },
+          { type: "walk", direction: "right" },
+          { type: "stand", direction: "right", time: 2000 },
+          { type: "walk", direction: "left" },
+          { type: "stand", direction: "left", time: 2000 },
+          { type: "walk", direction: "left" },
+          { type: "stand", direction: "left", time: 2000 },
+          { type: "walk", direction: "left" },
+          { type: "stand", direction: "left", time: 2000 },
         ]
-      })
+      }
     },
     walls: {
       // Top Wall.
@@ -428,14 +438,15 @@ let maps = {
     lowerSrc: "/images/maps/HeroBedroomLower.png",
     // upperSrc: "/images/maps/HeroBedroomUpper.png",
     upperSrc: "",
-    gameObjects: {
-      hero: new Person({
+    configObjects: {
+      hero: {
+        type: "person",
         isHero: true,
         x: utils.grid(3),
         y: utils.grid(6),
         direction: "down",
         src: "/images/characters/people/red.png"
-      })
+      }
     },
     walls: {
       // Top wall.
@@ -505,20 +516,20 @@ let maps = {
   HeroHome: {
     lowerSrc: "/images/maps/HeroHomeLower.png",
     upperSrc: "/images/maps/HeroHomeUpper.png",
-    gameObjects: {
-      hero: new Person({
+    configObjects: {
+      hero: {
         isHero: true,
         x: utils.grid(9),
         y: utils.grid(2),
         direction:"left",
         src: "/images/characters/people/red.png"
-      }),
-      mom: new Person({
+      },
+      mom: {
         x: utils.grid(7),
         y: utils.grid(4),
         direction:"left",
         src: "images/characters/people/mom.png"
-      })
+      }
     },
     walls: {
       // Top wall.
@@ -603,20 +614,20 @@ let maps = {
     lowerSrc: "/images/maps/RivalHomeLower.png",
     upperSrc: "",
     // upperSrc: "/images/maps/RivalHomeUpper.png",
-    gameObjects: {
-      hero: new Person({
+    configObjects: {
+      hero: {
         isHero: true,
         x: utils.grid(4),
         y: utils.grid(8),
         direction: "up",
         src: "/images/characters/people/red.png"
-      }),
-      rivalMom: new Person({
+      },
+      rivalMom: {
         x: utils.grid(5),
         y: utils.grid(4),
         direction: "right",
         src: "images/characters/people/sister.png"
-      })
+      }
     },
     walls: {
       // Top wall.
@@ -690,26 +701,26 @@ let maps = {
     lowerSrc: "/images/maps/LabLower.png",
     upperSrc: "",
     // upperSrc: "/images/maps/LabUpper.png",
-    gameObjects: {
-      hero: new Person({
+    configObjects: {
+      hero: {
         isHero: true,
         x: utils.grid(6),
         y: utils.grid(12),
         direction: "up",
         src: "/images/characters/people/red.png"
-      }),
-      rival: new Person({
+      },
+      rival: {
         x: utils.grid(5),
         y: utils.grid(4),
         direction: "down",
         src: "images/characters/people/blue.png"
-      }),
-      professor: new Person({
+      },
+      professor: {
         x: utils.grid(6),
         y: utils.grid(3),
         direction: "down",
         src: "images/characters/people/professor.png"
-      })
+      }
     },
     walls: {
       // Top Wall.
