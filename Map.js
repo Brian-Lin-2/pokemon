@@ -2,6 +2,7 @@ class Map {
   constructor(config) {
     this.overworld = null;
     this.gameObjects = config.gameObjects;
+
     this.cutsceneSpaces = config.cutsceneSpaces || {};
     this.walls = config.walls || {};
 
@@ -29,6 +30,7 @@ class Map {
 
   mountObjects() {
     Object.keys(this.gameObjects).forEach(key => {
+      // Key allows us to identify a specific sprite.
       let object = this.gameObjects[key];
       object.id = key;
 
@@ -56,6 +58,8 @@ class Map {
 
   interact() {
     const hero = this.gameObjects["hero"];
+
+    // Scans the pixel in front of the hero for an object.
     const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
     const match = Object.values(this.gameObjects).find(object => {
       return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
@@ -71,7 +75,7 @@ class Map {
     const match = this.cutsceneSpaces[ `${hero.x},${hero.y}`]
 
     if (!this.isCutscenePlaying && match) {
-      this.startCutscene( match[0].events );
+      this.startCutscene(match[0].events);
     }
   }
 
@@ -98,14 +102,14 @@ let maps = {
     lowerSrc: "/images/maps/DemoLower.png",
     upperSrc: "/images/maps/DemoUpper.png",
     gameObjects: {
-      hero: new Person({
+      hero: {
         isHero: true,
         x: utils.grid(5),
         y: utils.grid(6),
         direction: "down",
         src: "/images/characters/people/red.png"
-      }),
-      mom: new Person({
+      },
+      mom: {
         x: utils.grid(7),
         y: utils.grid(9),
         src: "images/characters/people/mom.png",
@@ -119,7 +123,7 @@ let maps = {
           { type: "walk", direction: "down" },
           { type: "stand", direction: "down", time: 2000 },
         ]
-      })
+      }
     },
     walls: {
       // Dynamic key equivalent to "num, num": true
@@ -189,18 +193,18 @@ let maps = {
         y: utils.grid(17),
         src: "/images/characters/people/man.png",
         behaviorLoop: [
-          { type: "walk", direction: "right" },
-          { type: "stand", direction: "right", time: 2000 },
-          { type: "walk", direction: "right" },
-          { type: "stand", direction: "right", time: 2000 },
-          { type: "walk", direction: "right" },
-          { type: "stand", direction: "right", time: 2000 },
-          { type: "walk", direction: "left" },
-          { type: "stand", direction: "left", time: 2000 },
-          { type: "walk", direction: "left" },
-          { type: "stand", direction: "left", time: 2000 },
-          { type: "walk", direction: "left" },
-          { type: "stand", direction: "left", time: 2000 },
+          // { type: "walk", direction: "right" },
+          // { type: "stand", direction: "right", time: 2000 },
+          // { type: "walk", direction: "right" },
+          // { type: "stand", direction: "right", time: 2000 },
+          // { type: "walk", direction: "right" },
+          // { type: "stand", direction: "right", time: 2000 },
+          // { type: "walk", direction: "left" },
+          // { type: "stand", direction: "left", time: 2000 },
+          // { type: "walk", direction: "left" },
+          // { type: "stand", direction: "left", time: 2000 },
+          // { type: "walk", direction: "left" },
+          // { type: "stand", direction: "left", time: 2000 },
         ]
       })
     },

@@ -79,7 +79,7 @@ class Person extends GameObject {
       this.movingProgressRemaining -= 1;
 
       if (this.movingProgressRemaining === 0) {
-        // Allows for event detection.
+        // Allows us to check the space for any potential cutscenes.
         utils.createEvent("PersonWalkingComplete", {
           whoId: this.id,
         })

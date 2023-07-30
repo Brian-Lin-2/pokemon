@@ -27,7 +27,6 @@ class TextMessage {
     });
 
     this.actionListener = new KeyPressListener("Space", () => {
-      // Unbind the listener to stop it from constantly listening.
       this.done();
     })
   }
@@ -35,6 +34,8 @@ class TextMessage {
   done() {
     if (this.revealingText.isDone) {
       this.element.remove();
+      
+      // Unbind the listener to stop it from constantly listening.
       this.actionListener.unbind();
       this.onComplete();
     }

@@ -30,10 +30,12 @@ class GameObject {
   update() {}
 
   async doBehaviorEvent(map) {
+    // Edge cases.
     if (map.isCutscenePlaying || this.behaviorLoop.length === 0 || this.isStanding) {
       return;
     }
 
+    // Behavior determined by specific sprite from Map.
     let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
     eventConfig.who = this.id;
 
@@ -41,6 +43,7 @@ class GameObject {
 
     // Gives us a nice delay before the next behavior is fired.
     await eventHandler.init();
+    // console.log("Waiting...");
 
     // Transitions into next event.
     this.behaviorLoopIndex++;

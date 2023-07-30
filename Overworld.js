@@ -44,7 +44,7 @@ class Overworld {
   }
 
   checkActionInput() {
-    // Checks for interactiivty with objects.
+    // Checks for interactivity with objects.
     new KeyPressListener("Space", () => {
       this.map.interact();
     })
@@ -64,29 +64,29 @@ class Overworld {
     this.map.overworld = this;
     this.map.mountObjects();
 
-    if (map.lowerSrc === "/images/maps/HeroHomeLower.png") {
-      this.map.startCutscene([
-        { who: "mom", type:"stand", direction: "left", time: 1000 },
-        { type: "message", text: "Oh!" },
-        { who: "mom", type:"stand", direction: "right", time: 500 },
-        { type: "message", text: "You're finally up!" },
-        { type: "message", text: "You're going to be late." },
-        { type: "message", text: "The professor was looking for you." },
-        { type: "message", text: "wait..." },
-        { who: "mom", type:"walk", direction: "right" },
-        { who: "mom", type:"walk", direction: "up" },
-        { who: "mom", type:"walk", direction: "up" },
-        { who: "mom", type:"stand", direction: "right" },
-        { type: "message", text: "Did you wet your bed again?" },
-        { type: "message", text: "You were talking about striking down giratina." },
-        { type: "message", text: "What a loser haha." },
-        { type: "message", text: "Move along now kiddo." },
-      ])
-    }
+    // if (map.lowerSrc === "/images/maps/HeroHomeLower.png") {
+    //   this.map.startCutscene([
+    //     { who: "mom", type:"stand", direction: "left", time: 1000 },
+    //     { type: "message", text: "Oh!" },
+    //     { who: "mom", type:"stand", direction: "right", time: 500 },
+    //     { type: "message", text: "You're finally up!" },
+    //     { type: "message", text: "You're going to be late." },
+    //     { type: "message", text: "The professor was looking for you." },
+    //     { type: "message", text: "wait..." },
+    //     { who: "mom", type:"walk", direction: "right" },
+    //     { who: "mom", type:"walk", direction: "up" },
+    //     { who: "mom", type:"walk", direction: "up" },
+    //     { who: "mom", type:"stand", direction: "right" },
+    //     { type: "message", text: "Did you wet your bed again?" },
+    //     { type: "message", text: "You were talking about striking down giratina." },
+    //     { type: "message", text: "What a loser haha." },
+    //     { type: "message", text: "Move along now kiddo." },
+    //   ])
+    // }
   }
 
   init() {
-    this.startMap(maps.HeroBedroom);
+    this.startMap(maps.PalletTown);
 
     // Hero movement.
     this.directionInput = new DirectionInput();
