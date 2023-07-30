@@ -37,6 +37,11 @@ class Person extends GameObject {
   }
 
   startBehavior(state, behavior) {
+    // Prevents any async code from still running if character was removed.
+    if (!this.isMounted) {
+      return;
+    }
+
     // Sets character direciton to a specific indicated behavior.
     this.direction = behavior.direction;
 
@@ -89,7 +94,7 @@ class Person extends GameObject {
 
       if (this.movingProgressRemaining === 0) {
         this.intentPosition = null;
-        
+
         // Allows us to check the space for any potential cutscenes.
         utils.createEvent("PersonWalkingComplete", {
           whoId: this.id,

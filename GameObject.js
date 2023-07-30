@@ -15,6 +15,8 @@ class GameObject {
     this.behaviorLoopIndex = 0;
 
     this.talking = config.talking || [];
+
+    this.retryTimeout = null;
   }
 
   mount(map) {
@@ -30,7 +32,20 @@ class GameObject {
 
   async doBehaviorEvent(map) {
     // Edge cases.
-    if (map.isCutscenePlaying || this.behaviorLoop.length === 0 || this.isStanding) {
+    if (this.behaviorLoop.length === 0) {
+      return;
+    }
+
+    if (map.isCutscenePlaying) {
+      // Makes sure we don't have multiple timeouts stacked.
+      if (this.retryTimeout) {
+        clearTimeout(this.retryTimeout);
+      }
+
+      this.retryTimeout = setTimeout(() => {
+        this.doBehaviorEvent(map);
+      }, 1000);
+
       return;
     }
 
