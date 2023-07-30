@@ -6,6 +6,9 @@ class Person extends GameObject {
     this.movingProgressRemaining = 0;
     this.isStanding = false;
 
+    // [x, y]
+    this.nextPos = null;
+
     this.isHero = config.isHero || false;
 
     this.directionUpdate = {
@@ -51,8 +54,14 @@ class Person extends GameObject {
       }
 
       // Walking.
-      state.map.moveWall(this.x, this.y, this.direction);
       this.movingProgressRemaining = 16;
+
+      // Caculates our next position.
+      const nextPos = utils.nextPosition(this.x, this.y, this.direction);
+      this.nextPos = [
+        nextPos.x,
+        nextPos.y,
+      ]
 
       this.updateSprite(state);
     }
@@ -79,6 +88,8 @@ class Person extends GameObject {
       this.movingProgressRemaining -= 1;
 
       if (this.movingProgressRemaining === 0) {
+        this.intentPosition = null;
+        
         // Allows us to check the space for any potential cutscenes.
         utils.createEvent("PersonWalkingComplete", {
           whoId: this.id,

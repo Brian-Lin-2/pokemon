@@ -29,7 +29,25 @@ class Map {
 
   isSpaceTaken(currentX, currentY, direction) {
     const { x, y } = utils.nextPosition(currentX, currentY, direction);
-    return this.walls[`${x},${y}`] || false;
+    
+    // Space is taken.
+    if (this.walls[`${x},${y}`]) {
+      return true;
+    }
+
+    // Check for game objects at this position.
+    return Object.values(this.gameObjects).find(obj => {
+      if (obj.x === x && obj.y === y) {
+        // Makes sure we can't step on a square an object is moving to.
+        if (obj.nextPos && obj.nextPos[0] === x && obj.nextPos[1] === y) {
+          return true;
+        }
+
+        return true;
+      }
+
+      return false;
+    })
   }
 
   mountObjects() {
@@ -87,22 +105,6 @@ class Map {
     if (!this.isCutscenePlaying && match) {
       this.startCutscene(match[0].events);
     }
-  }
-
-  // For game objects.
-  addWall(x, y) {
-    this.walls[`${x},${y}`] = true;
-  }
-
-  removeWall(x, y) {
-    delete this.walls[`${x},${y}`];
-  }
-
-  // If game object has movement.
-  moveWall(oldX, oldY, direction) {
-    this.removeWall(oldX, oldY);
-    const { x, y } = utils.nextPosition(oldX, oldY, direction);
-    this.addWall(x, y);
   }
 }
 
