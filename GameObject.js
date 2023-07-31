@@ -57,8 +57,6 @@ class GameObject {
 
     // Gives us a nice delay before the next behavior is fired.
     await eventHandler.init();
-    // console.log("Waiting...");
-
     // Transitions into next event.
     this.behaviorLoopIndex++;
     if (this.behaviorLoopIndex === this.behaviorLoop.length) {

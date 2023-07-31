@@ -38,11 +38,11 @@ class Map {
     // Check for game objects at this position.
     return Object.values(this.gameObjects).find(obj => {
       if (obj.x === x && obj.y === y) {
-        // Makes sure we can't step on a square an object is moving to.
-        if (obj.nextPos && obj.nextPos[0] === x && obj.nextPos[1] === y) {
-          return true;
-        }
+        return true;
+      }
 
+      // Makes sure we can't step on a square an object is moving to.
+      if (obj.nextPos && obj.nextPos[0] === x && obj.nextPos[1] === y) {
         return true;
       }
 
