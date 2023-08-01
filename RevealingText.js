@@ -5,7 +5,7 @@ class RevealingText {
     
     this.text = config.text;
     this.button = config.button;
-    this.speed = config.speed || 50;
+    this.speed = config.speed || 30;
 
     this.timeout = null;
     this.isDone = false;
@@ -37,7 +37,7 @@ class RevealingText {
       // Reveals each character.
       characters.push({
         span,
-        delayAfter: character === " " ? 0 : this.speed
+        delayAfter: character === " " ? 0 : this.speed,
       })
     })
 

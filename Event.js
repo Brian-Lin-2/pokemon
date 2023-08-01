@@ -64,6 +64,10 @@ class Event {
     message.init(document.querySelector(".game-container"));
   }
 
+  wait(resolve) {
+    setTimeout(resolve, this.event.delay);
+  }
+
   changeMap(resolve) {
     // Remove object data from old maps.
     Object.values(this.map.gameObjects).forEach(obj => {

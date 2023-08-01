@@ -83,10 +83,37 @@ class Overworld {
     //     { type: "message", text: "Move along now kiddo." },
     //   ])
     // }
+
+    if (map.lowerSrc === "/images/maps/LabLower.png") {
+      this.map.startCutscene([
+        { who: "hero", type:"walk", direction: "up" },
+        { who: "hero", type:"walk", direction: "up" },
+        { who: "hero", type:"walk", direction: "up" },
+        { who: "hero", type:"walk", direction: "up" },
+        { who: "hero", type:"walk", direction: "up" },
+        { who: "hero", type:"walk", direction: "up" },
+        { who: "hero", type:"walk", direction: "up" },
+        { who: "hero", type:"walk", direction: "up" },
+        { who: "rival", type:"stand", direction: "up" },
+        { type: "message", text: "Blue: Gramps! I'm fed up with waiting!"},
+        { type: "wait", delay: "1000"},
+        { who: "professor", type: "message", text: "Oak: Blue? Let me think..."},
+        { who: "professor", type: "message", text: "Oh, that's right I told you to come! Just wait!"},
+        { who: "professor", type: "message", text: "Here, Red."},
+        { who: "professor", type: "message", text: "There are three POKÉMON here."},
+        { who: "professor", type: "message", text: "Haha!"},
+        { who: "professor", type: "message", text: "The POKÉMON are held inside these POKÉBALLS."},
+        { who: "professor", type: "message", text: "When I was young, I was a serious POKÉMON TRAINER."},
+        { who: "professor", type: "message", text: "But now in my old age, I have only these three left."},
+        { who: "professor", type: "message", text: "You can have one. Go on, choose!"},
+        { who: "rival", type: "message", text: "Blue: Hey! Gramps! No fair! What about me?"},
+        { who: "professor", type: "message", text: "Oak: Be patient, Blue. You can have one, too!"},
+      ])
+    }
   }
 
   init() {
-    this.startMap(maps.PalletTown);
+    this.startMap(maps.HeroBedroom);
 
     // Hero movement.
     this.directionInput = new DirectionInput();

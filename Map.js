@@ -131,6 +131,17 @@ let maps = {
           { type: "stand", direction: "right", time: 2000 },
           { type: "walk", direction: "down" },
           { type: "stand", direction: "down", time: 2000 },
+        ],
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Mom: ...Right. All boys leave home someday.", faceHero:"mom" },
+              { type: "message", text: "It said so on TV." },
+              { type: "message", text: "It said so on TV." },
+              { type: "message", text: "Oh, yes. PROF. OAK, next door, was looking for you." },
+              { type: "stand", direction: "left" },
+            ]
+          }
         ]
       }
     },
@@ -214,6 +225,13 @@ let maps = {
           { type: "stand", direction: "left", time: 2000 },
           { type: "walk", direction: "left" },
           { type: "stand", direction: "left", time: 2000 },
+        ],
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Move kiddo.", faceHero:"npc2" },
+            ]
+          }
         ]
       }
     },
@@ -497,6 +515,7 @@ let maps = {
       [utils.asGridCoord(8, 3)]: true,
 
       // Console.
+      [utils.asGridCoord(5, 4)]: true,
       [utils.asGridCoord(5, 5)]: true,
 
       // Bed.
@@ -527,7 +546,18 @@ let maps = {
         x: utils.grid(7),
         y: utils.grid(4),
         direction:"left",
-        src: "images/characters/people/mom.png"
+        src: "images/characters/people/mom.png",
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Mom: ...Right. All boys leave home someday.", faceHero:"mom" },
+              { type: "message", text: "It said so on TV." },
+              { type: "message", text: "It said so on TV." },
+              { type: "message", text: "Oh, yes. PROF. OAK, next door, was looking for you." },
+              { type: "stand", direction: "left" },
+            ]
+          }
+        ]
       }
     },
     walls: {
@@ -621,11 +651,20 @@ let maps = {
         direction: "up",
         src: "/images/characters/people/red.png"
       },
-      rivalMom: {
+      rivalSister: {
         x: utils.grid(5),
         y: utils.grid(4),
         direction: "right",
-        src: "images/characters/people/sister.png"
+        src: "images/characters/people/sister.png",
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Daisy: Hi, Red!", faceHero:"rivalSister" },
+              { type: "message", text: "My brother, GREEN, is out at Grandpa's LAB." },
+              { who: "rivalSister", type: "stand", direction: "right" },
+            ]
+          }
+        ]
       }
     },
     walls: {
@@ -712,13 +751,27 @@ let maps = {
         x: utils.grid(5),
         y: utils.grid(4),
         direction: "down",
-        src: "images/characters/people/blue.png"
+        src: "images/characters/people/blue.png",
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Hurry up and choose!", faceHero:"rival" },             
+            ]
+          }
+        ]
       },
       professor: {
         x: utils.grid(6),
         y: utils.grid(3),
         direction: "down",
-        src: "images/characters/people/professor.png"
+        src: "images/characters/people/professor.png",
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Take your time there's no rush.", faceHero:"professor" },             
+            ]
+          }
+        ]
       }
     },
     walls: {
