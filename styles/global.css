@@ -23,8 +23,8 @@ body {
 .game-container {
   position: relative;
   width: 180px;
-  height: 140px;
-  margin: 20px auto;
+  height: 132px;
+  margin: 50px auto;
   outline: 1px solid hsl(0, 0%, 100%);
   transform: scale(3) translateY(50%);
 }

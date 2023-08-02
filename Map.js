@@ -202,8 +202,8 @@ let maps = {
           // Allows us to store multiple dialogues for specific events.
           {
             events: [
-              { type: "message", text: "Loser", faceHero:"npc1" },
-              { type: "message", text: "haha" },
+              { type: "message", text: "Hello, I'm four years old!", faceHero:"npc1" },
+              { type: "message", text: "You're kind of short! I'm the same height as you!", faceHero:"npc1" },
             ]
           }
         ]
@@ -552,9 +552,8 @@ let maps = {
             events: [
               { type: "message", text: "Mom: ...Right. All boys leave home someday.", faceHero:"mom" },
               { type: "message", text: "It said so on TV." },
-              { type: "message", text: "It said so on TV." },
               { type: "message", text: "Oh, yes. PROF. OAK, next door, was looking for you." },
-              { type: "stand", direction: "left" },
+              { who: "mom", type: "stand", direction: "left" },
             ]
           }
         ]
@@ -660,7 +659,7 @@ let maps = {
           {
             events: [
               { type: "message", text: "Daisy: Hi, Red!", faceHero:"rivalSister" },
-              { type: "message", text: "My brother, GREEN, is out at Grandpa's LAB." },
+              { type: "message", text: "My brother, BLUE, is out at Grandpa's LAB." },
               { who: "rivalSister", type: "stand", direction: "right" },
             ]
           }
@@ -838,6 +837,8 @@ let maps = {
       [utils.asGridCoord(0, 4)]: true,
 
       // Machine.
+      [utils.asGridCoord(1, 4)]: true,
+      [utils.asGridCoord(2, 4)]: true,
       [utils.asGridCoord(1, 5)]: true,
       [utils.asGridCoord(2, 5)]: true,
 

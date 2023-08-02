@@ -68,6 +68,16 @@ class Event {
     setTimeout(resolve, this.event.delay);
   }
 
+  battle(resolve) {
+    const battle = new Battle({
+      onComplete: () => {
+        resolve();
+      }
+    });
+
+    battle.init(document.querySelector(".game-container"));
+  }
+
   changeMap(resolve) {
     // Remove object data from old maps.
     Object.values(this.map.gameObjects).forEach(obj => {
