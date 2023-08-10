@@ -86,15 +86,15 @@ class Overworld {
 
     if (map.lowerSrc === "/images/maps/LabLower.png") {
       this.map.startCutscene([
-        { who: "hero", type:"walk", direction: "up" },
-        { who: "hero", type:"walk", direction: "up" },
-        { who: "hero", type:"walk", direction: "up" },
-        { who: "hero", type:"walk", direction: "up" },
-        { who: "hero", type:"walk", direction: "up" },
-        { who: "hero", type:"walk", direction: "up" },
-        { who: "hero", type:"walk", direction: "up" },
-        { who: "hero", type:"walk", direction: "up" },
-        { who: "rival", type:"stand", direction: "up" },
+        { who: "hero", type: "walk", direction: "up" },
+        { who: "hero", type: "walk", direction: "up" },
+        { who: "hero", type: "walk", direction: "up" },
+        { who: "hero", type: "walk", direction: "up" },
+        { who: "hero", type: "walk", direction: "up" },
+        { who: "hero", type: "walk", direction: "up" },
+        { who: "hero", type: "walk", direction: "up" },
+        { who: "hero", type: "walk", direction: "up" },
+        { who: "rival", type: "stand", direction: "up" },
         { type: "message", text: "Blue: Gramps! I'm fed up with waiting!"},
         { type: "wait", delay: "1000"},
         { who: "professor", type: "message", text: "Oak: Blue? Let me think..."},
@@ -125,5 +125,9 @@ class Overworld {
 
     // Constantly refreshes the game.
     this.startGameLoop();
+
+    this.map.startCutscene([
+      { type: "battle" }
+    ])
   }
 }
