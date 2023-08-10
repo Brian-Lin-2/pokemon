@@ -1,10 +1,49 @@
+@font-face {
+  font-family: "pokemon";
+  src: url("/images/fonts/pokemon-font.ttf");
+}
+
 .Battle {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  background: url(/images/maps/battle.jpg);
+  background: url(/images/maps/test.png);
   background-size: contain;
   image-rendering: pixelated;
+}
+
+.heroHP {
+  position: absolute;
+  z-index: 10;
+  bottom: 20px;
+  right: -32px;
+  scale: 70%;
+}
+
+.rivalHP {
+  position: absolute;
+  z-index: 10;
+  top: 4px;
+  left: -29px;
+  scale: 70%;
+}
+
+.heroLV {
+  position: absolute;
+  bottom: 48px;
+  right: 12.5px;
+  z-index: 20;
+  font-weight: bold;
+  font-size: 6.5px;
+}
+
+.rivalLV {
+  position: absolute;
+  top: 15.5px;
+  left: 57.5px;
+  z-index: 20;
+  font-weight: bold;
+  font-size: 6.5px;
 }
