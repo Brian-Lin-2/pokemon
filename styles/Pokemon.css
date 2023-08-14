@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "pokemon";
+  src: url("/images/fonts/pokemon-font.ttf");
+}
+
+.pokemon[data-name="hero"] {
+  position: absolute;
+  bottom: 19px;
+  right: 40px;
+  z-index: 30;
+}
+
+.pokemon[data-name="rival"] {
+  position: absolute;
+  top: 13.5px;
+  left: 4px;
+  z-index: 30;
+}
+
+.pokemon_name {
+  font-family: "pokemon";
+  font-size: 8px;
+  opacity: 70%;
+}
+
+.pokemon_hp {
+  position: absolute;
+  left: 20px;
+  top: 4px;
+  z-index: 30;
+  width: 26px;
+  height: 3px;
+}
+
+.pokemon_hp > rect {
+  transition: width 0.2s;
+}
+
+.pokemon_xp {
+  position: absolute;
+  left: 20px;
+  top: 8px;
+  z-index: 30;
+  width: 26px;
+  height: 2px;
+}

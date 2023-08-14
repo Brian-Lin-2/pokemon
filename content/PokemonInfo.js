@@ -1,25 +1,25 @@
-window.Types = {
+let types = {
   water: "water",
   fire: "fire",
   grass: "grass",
 }
 
-window.PokemonInfo = {
+let info = {
   "001": {
     name: "Bulbasaur",
-    type: Types.grass,
+    type: types.grass,
     frontSprite: "/images/characters/pokemon/bulbasaur-front.png",
     backSprite: "/images/characters/pokemon/bulbasaur-back.png"
   },
   "004": {
     name: "Charmander",
-    type: Types.fire,
+    type: types.fire,
     frontSprite: "/images/characters/pokemon/charmander-front.png",
     backSprite: "/images/characters/pokemon/charmander-back.png"
   },
   "007": {
     name: "Squirtle",
-    type: Types.water,
+    type: types.water,
     frontSprite: "/images/characters/pokemon/squirtle-front.png",
     backSprite: "/images/characters/pokemon/squirtle-back.png"
   }
