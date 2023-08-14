@@ -73,3 +73,17 @@
 .pokemon[data-team="rival"] .pokemon_xp {
   display: none;
 }
+
+.pokemon_sprite[data-team="hero"] {
+  position: absolute;
+  bottom: 20px;
+  left: 6px;
+  scale: 75%;
+}
+
+.pokemon_sprite[data-team="rival"] {
+  position: absolute;
+  top: 6px;
+  right: 2px;
+  scale: 75%;
+}

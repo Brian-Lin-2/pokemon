@@ -30,15 +30,13 @@ class Pokemon {
     // Either hero or rival.
     this.hudElement.setAttribute("data-team", this.team);
 
+    // Displays the name, level, hp, etc..
     this.hudElement.innerHTML = (`
       <p class="pokemon_name">${this.name}</p>
       <p class="pokemon_level"></p>
       <div class="pokemon_currHp">
         <p>${this.hp}</p>
         <p>${this.maxHp}</p>
-      </div>
-      <div class="pokemon_sprite_crop>
-        <img class="pokemon_sprite" src="${this.icon}" alt="${this.name}" />
       </div>
       <svg viewBox="0 0 42 3" class="pokemon_hp">
       <rect x=0 y=0 width="0%" height=1 fill="#009201" />
@@ -51,6 +49,20 @@ class Pokemon {
       </svg>
     `);
 
+    // Actual sprite.
+    this.pokemonSprite = document.createElement("img");
+    this.pokemonSprite.classList.add("pokemon_sprite");
+
+    if (this.team == "hero") {
+      this.pokemonSprite.setAttribute("src", this.backSprite);
+    }
+    else {
+      this.pokemonSprite.setAttribute("src", this.frontSprite);
+    }
+
+    this.pokemonSprite.setAttribute("alt", this.name);
+    this.pokemonSprite.setAttribute("data-team", this.team);
+
     this.hpBar = this.hudElement.querySelectorAll(".pokemon_hp > rect");
     this.xpBar = this.hudElement.querySelectorAll(".pokemon_xp > rect");
   }
@@ -61,6 +73,7 @@ class Pokemon {
       this[key] = changes[key]
     });
 
+    // Updates hp and xp bars.
     this.hpBar.forEach(rect => rect.style.width = `${this.hpPercent}%`)
     this.xpBar.forEach(rect => rect.style.width = `${this.xpPercent}%`)
   }
@@ -68,6 +81,7 @@ class Pokemon {
   init(container) {
     this.createElement();
     container.appendChild(this.hudElement);
+    container.appendChild(this.pokemonSprite);
     this.update();
   }
 }
