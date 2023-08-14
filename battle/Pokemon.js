@@ -29,7 +29,10 @@ class Pokemon {
     this.hudElement.innerHTML = (`
       <p class="pokemon_name">${this.name}</p>
       <p class="pokemon_level"></p>
-      <p class="pokemon_currHp"></p>
+      <div class="pokemon_currHp">
+        <p>${this.hp}</p>
+        <p>${this.maxHp}</p>
+      </div>
       <div class="pokemon_sprite_crop>
         <img class="pokemon_sprite" src="${this.icon}" alt="${this.name}" />
       </div>
