@@ -3,33 +3,41 @@
   src: url("/images/fonts/pokemon-font.ttf");
 }
 
-.pokemon[data-name="hero"] {
-  position: absolute;
-  bottom: 19px;
-  right: 40px;
-  z-index: 30;
-}
-
-.pokemon[data-name="rival"] {
-  position: absolute;
-  top: 13.5px;
-  left: 4px;
-  z-index: 30;
-}
-
 .pokemon_name {
   font-family: "pokemon";
   font-size: 8px;
   opacity: 70%;
 }
 
+.pokemon[data-team="hero"] .pokemon_name {
+  position: absolute;
+  bottom: 45.5px;
+  right: 40px;
+  z-index: 30;
+}
+
+.pokemon[data-team="rival"] .pokemon_name {
+  position: absolute;
+  top: 13.5px;
+  left: 4px;
+  z-index: 30;
+}
+
 .pokemon_hp {
   position: absolute;
-  left: 20px;
-  top: 4px;
+  width: 34.5px;
+  height: 2.5px;
   z-index: 30;
-  width: 26px;
-  height: 3px;
+}
+
+.pokemon[data-team="hero"] .pokemon_hp {
+  bottom: 49px;
+  right: 5.25px;
+}
+
+.pokemon[data-team="rival"] .pokemon_hp {
+  top: 32.5px;
+  left: 34.5px;
 }
 
 .pokemon_hp > rect {

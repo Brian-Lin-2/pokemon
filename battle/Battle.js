@@ -25,13 +25,13 @@ class Battle {
     this.element.classList.add("Battle");
     this.element.innerHTML = (`
       <div>
-        <img class="heroHP" src="/images/other/hero-hp.png" alt="heroHP"/>
-        <p class="heroLV">5</p>
+        <img class="hero_hp" src="/images/other/hero-hp.png" alt="heroHP"/>
+        <p class="hero_lv">5</p>
       </div>
 
       <div>
-        <img class="rivalHP" src="/images/other/rival-hp.png" alt="rivalHP">
-        <p class="rivalLV">5</p>
+        <img class="rival_hp" src="/images/other/rival-hp.png" alt="rivalHP">
+        <p class="rival_lv">5</p>
       </div>
 
       </div>
