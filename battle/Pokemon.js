@@ -15,6 +15,10 @@ class Pokemon {
     // Makes sure percentage never goes negative.
     return percent > 0 ? percent : 0;
   }
+
+  get xpPercent() {
+    return this.xp / this.maxXp * 100;
+  }
   
   createElement() {
     this.hudElement = document.createElement("div");
@@ -37,17 +41,18 @@ class Pokemon {
         <img class="pokemon_sprite" src="${this.icon}" alt="${this.name}" />
       </div>
       <svg viewBox="0 0 42 3" class="pokemon_hp">
-      <rect x=0  y=0 width="0%" height=1 fill="#009201" />
-      <rect x=0  y=1 width="0%" height=1.75 fill="#19c320" />
+      <rect x=0 y=0 width="0%" height=1 fill="#009201" />
+      <rect x=0 y=1 width="0%" height=1.75 fill="#19c320" />
       </svg>
 
-      <svg viewBox="0 0 26 3" class="pokemon_xp">
-        <rect x=0  y=0 width="0%" height=1 fill="#ffd76a" />
-        <rect x=0  y=0 width="0%" height=1 fill="#ffd76a" />
+      <svg viewBox="0 0 102 3" class="pokemon_xp">
+        <rect x=0 y=0 width="0%" height=1 fill="#305fd7" />
+        <rect x=0 y=1 width="0%" height=1.75 fill="#4891f8" />
       </svg>
     `);
 
     this.hpBar = this.hudElement.querySelectorAll(".pokemon_hp > rect");
+    this.xpBar = this.hudElement.querySelectorAll(".pokemon_xp > rect");
   }
 
   update(changes={}) {
@@ -57,6 +62,7 @@ class Pokemon {
     });
 
     this.hpBar.forEach(rect => rect.style.width = `${this.hpPercent}%`)
+    this.xpBar.forEach(rect => rect.style.width = `${this.xpPercent}%`)
   }
 
   init(container) {

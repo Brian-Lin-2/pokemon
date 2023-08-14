@@ -7,6 +7,7 @@ class Battle {
         hp: 50,
         maxHp: 50,
         xp: 0,
+        maxXp: 100,
         level: 5,
       }, this),
       "rival": new Pokemon({
@@ -15,6 +16,7 @@ class Battle {
         hp: 50,
         maxHp: 50,
         xp: 0,
+        maxXp: 100,
         level: 5,
       }, this),
     }

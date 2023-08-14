@@ -62,11 +62,14 @@
   transition: width 0.2s;
 }
 
-.pokemon_xp {
+.pokemon[data-team="hero"] .pokemon_xp {
   position: absolute;
-  left: 20px;
-  top: 8px;
+  bottom: 38px;
+  right: 5px;
   z-index: 30;
-  width: 26px;
   height: 2px;
+}
+
+.pokemon[data-team="rival"] .pokemon_xp {
+  display: none;
 }
