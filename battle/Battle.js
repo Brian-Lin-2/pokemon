@@ -4,9 +4,9 @@ class Battle {
       "hero": new Pokemon({
         ...info["001"],
         team: "hero",
-        hp: 50,
+        hp: 25,
         maxHp: 50,
-        xp: 0,
+        xp: 75,
         maxXp: 100,
         level: 5,
       }, this),
@@ -49,5 +49,20 @@ class Battle {
       trainer.id = key;
       trainer.init(this.element);
     })
+
+    // Create a simple turn cycle system.
+    // Waits for little events before continuing the cycle.
+    this.turnCycle = new TurnCycle({
+      battle: this,
+      onNewEvent: event => {
+        return new Promise(resolve => {
+          const battleEvent = new BattleEvent(event, this);
+          battleEvent.init(resolve);
+        })
+      }
+    })
+
+    // Starts the first turn!
+    this.turnCycle.init();
   }
 }
