@@ -20,17 +20,35 @@ class BattleEvent {
   }
 
   async change(resolve) {
-    const {trainer, target, damage} = this.event;
+    const {trainer, target} = this.event;
 
-    if (damage) {
+    if (this.event.damage) {
       // Modify the target to have less HP.
       target.update({
-        hp: target.hp - (trainer.attack * damage / target.defense),
+        hp: target.hp - (trainer.attack * this.event.damage / target.defense),
       })
-
-      // Animations.
-      target.pokemonSprite.classList.add("battle_damage");
     }
+
+    if (this.event.debuff) {
+      // Less attack.
+      if (this.event.debuff === "attack" && target.attack > 0.2) {
+        target.update({
+          attack: target.attack - 0.2,
+        })
+      }
+      // Less defense.
+      else if (this.event.debuff === "defense" && target.defense > 0.2) {
+        target.update({
+          defense: target.defense - 0.2
+        })
+      };
+
+      console.log(target.attack);
+      console.log(target.defense);
+    }
+
+    // Animations.
+    target.pokemonSprite.classList.add("battle_damage");
 
     // Wait a little bit.
     await utils.wait(600);

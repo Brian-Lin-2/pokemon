@@ -73,8 +73,6 @@ class Pokemon {
       this[key] = changes[key]
     });
 
-    console.log(this.hp);
-
     // Updates hp and xp bars.
     this.hpBar.forEach(rect => rect.style.width = `${this.hpPercent}%`)
     this.xpBar.forEach(rect => rect.style.width = `${this.xpPercent}%`)
