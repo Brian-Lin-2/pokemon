@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "pokemon";
+  src: url("/images/fonts/pokemon-font.ttf");
+}
+
+.KeyboardMenu {
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.KeyboardMenu button {
+  width: 50px;
+  font-family: "pokemon";
+  font-weight: bold;
+  font-size: 8px;
+}
+
+.option {
+  height: 15px;
+}

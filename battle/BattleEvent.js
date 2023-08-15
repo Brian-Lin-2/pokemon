@@ -42,9 +42,6 @@ class BattleEvent {
           defense: target.defense - 0.2
         })
       };
-
-      console.log(target.attack);
-      console.log(target.defense);
     }
 
     // Animations.

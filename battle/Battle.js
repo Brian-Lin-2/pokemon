@@ -9,6 +9,7 @@ class Battle {
         xp: 75,
         maxXp: 100,
         level: 5,
+        isHero: true,
       }, this),
       "rival": new Pokemon({
         ...info["004"],
