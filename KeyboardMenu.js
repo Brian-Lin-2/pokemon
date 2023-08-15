@@ -25,10 +25,17 @@ class KeyboardMenu {
   createElement() {
     this.element = document.createElement("div");
     this.element.classList.add("KeyboardMenu");
+
+    // Text that appears next to move.
+    this.textBox = document.createElement("div");
+    this.textBox.classList.add("textBox");
+    this.textBox.innerHTML = (`<p>What will you do?</p>`);
+    this.textBoxText = this.textBox.querySelector("p");
   }
 
   init(container) {
     this.createElement();
     container.appendChild(this.element);
+    container.appendChild(this.textBox);
   }
 }
