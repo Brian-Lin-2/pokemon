@@ -9,18 +9,21 @@ let info = {
     name: "Bulbasaur",
     type: types.grass,
     frontSprite: "/images/characters/pokemon/bulbasaur-front.png",
-    backSprite: "/images/characters/pokemon/bulbasaur-back.png"
+    backSprite: "/images/characters/pokemon/bulbasaur-back.png",
+    moves: [ "tackle" ],
   },
   "004": {
     name: "Charmander",
     type: types.fire,
     frontSprite: "/images/characters/pokemon/charmander-front.png",
-    backSprite: "/images/characters/pokemon/charmander-back.png"
+    backSprite: "/images/characters/pokemon/charmander-back.png",
+    moves: [ "tackle" ],
   },
   "007": {
     name: "Squirtle",
     type: types.water,
     frontSprite: "/images/characters/pokemon/squirtle-front.png",
-    backSprite: "/images/characters/pokemon/squirtle-back.png"
+    backSprite: "/images/characters/pokemon/squirtle-back.png",
+    moves: [ "tackle" ],
   }
 }

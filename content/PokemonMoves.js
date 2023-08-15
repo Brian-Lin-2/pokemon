@@ -3,14 +3,16 @@ let moves = {
     name: "Scratch",
     success: [
       { type: "message", text: "Scratch!" },
-      { type: "animation", animation: "scratch" }
+      { type: "animation", animation: "scratch" },
+      { type: "change", damage: 10 }
     ]
   },
   tackle: {
     name: "Tackle",
     success: [
       { type: "message", text: "Tackle!" },
-      { type: "animation", animation: "tackle" }
+      // { type: "animation", animation: "tackle" },
+      // { type: "change", damage: 10 }
     ]
   },
   growl: {
@@ -18,7 +20,6 @@ let moves = {
     success: [
       { type: "message", text: "Growl!" },
       { type: "animation", animation: "growl" },
-      { type: "change", damage: 10 }
     ]
   },
   leer: {
