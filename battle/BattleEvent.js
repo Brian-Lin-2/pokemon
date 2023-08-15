@@ -25,7 +25,7 @@ class BattleEvent {
     if (damage) {
       // Modify the target to have less HP.
       target.update({
-        hp: target.hp - damage,
+        hp: target.hp - (trainer.attack * damage / target.defense),
       })
 
       // Animations.
