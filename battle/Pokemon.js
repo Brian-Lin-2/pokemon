@@ -35,7 +35,7 @@ class Pokemon {
       <p class="pokemon_name">${this.name}</p>
       <p class="pokemon_level"></p>
       <div class="pokemon_currHp">
-        <p>${this.hp}</p>
+        <p class="pokemon_remHp">${this.hp}</p>
         <p>${this.maxHp}</p>
       </div>
       <svg viewBox="0 0 42 3" class="pokemon_hp">
@@ -73,9 +73,14 @@ class Pokemon {
       this[key] = changes[key]
     });
 
+    console.log(this.hp);
+
     // Updates hp and xp bars.
     this.hpBar.forEach(rect => rect.style.width = `${this.hpPercent}%`)
     this.xpBar.forEach(rect => rect.style.width = `${this.xpPercent}%`)
+
+    let hp = this.hudElement.querySelector(".pokemon_remHp");
+    if (hp) { hp.innerText = this.hp }
   }
 
   init(container) {

@@ -5,8 +5,12 @@ class BattleEvent {
   }
 
   message(resolve) {
+    const text = this.event.text
+    .replace("{POKEMON}", this.event.trainer?.name)
+    .replace("{TARGET}", this.event.target?.name)
+
     const message = new TextMessage({
-      text: this.event.text,
+      text: text,
       onComplete: () => {
         resolve();
       }
@@ -15,9 +19,28 @@ class BattleEvent {
     message.init(this.battle.element);
   }
 
+  async change(resolve) {
+    const {trainer, target, damage} = this.event;
+
+    if (damage) {
+      // Modify the target to have less HP.
+      target.update({
+        hp: target.hp - damage,
+      })
+
+      // Animations.
+      target.pokemonSprite.classList.add("battle_damage");
+    }
+
+    // Wait a little bit.
+    await utils.wait(600);
+
+    target.pokemonSprite.classList.remove("battle_damage");
+
+    resolve();
+  }
+
   battleMenu(resolve) {
-    console.log(this.event.trainer);
-    console.log(this.event.enemy);
     const battleMenu = new BattleMenu({
       trainer: this.event.trainer,
       enemy: this.event.enemy,

@@ -2,7 +2,7 @@ let moves = {
   scratch: {
     name: "Scratch",
     success: [
-      { type: "message", text: "Scratch!" },
+      { type: "message", text: "{POKEMON} uses Scratch!" },
       { type: "animation", animation: "scratch" },
       { type: "change", damage: 10 }
     ]
@@ -10,9 +10,9 @@ let moves = {
   tackle: {
     name: "Tackle",
     success: [
-      { type: "message", text: "Tackle!" },
+      { type: "message", text: "{POKEMON} uses Tackle!" },
       // { type: "animation", animation: "tackle" },
-      // { type: "change", damage: 10 }
+      { type: "change", damage: 10 }
     ]
   },
   growl: {

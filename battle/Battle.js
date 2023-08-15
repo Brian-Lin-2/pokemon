@@ -4,7 +4,7 @@ class Battle {
       "hero": new Pokemon({
         ...info["001"],
         team: "hero",
-        hp: 25,
+        hp: 50,
         maxHp: 50,
         xp: 75,
         maxXp: 100,

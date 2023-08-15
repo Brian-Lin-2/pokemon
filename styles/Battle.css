@@ -32,20 +32,31 @@
 
 .hero_lv {
   position: absolute;
-  bottom: 48px;
-  right: 12.5px;
+  bottom: 48.5px;
+  right: 13px;
   z-index: 20;
   font-weight: bold;
-  font-size: 6.5px;
+  font-size: 6px;
   opacity: 70%;
 }
 
 .rival_lv {
   position: absolute;
-  top: 15.5px;
+  top: 16.5px;
   left: 58px;
   z-index: 20;
   font-weight: bold;
-  font-size: 6.5px;
+  font-size: 6px;
   opacity: 70%;
+}
+
+/* Animations. */
+@keyframes battle_damage {
+  to {
+    visibility: hidden;
+  }
+}
+
+.battle_damage {
+  animation: battle_damage 0.3s steps(2, start) infinite;
 }
