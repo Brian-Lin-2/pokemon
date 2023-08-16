@@ -69,6 +69,24 @@ class BattleEvent {
     battleMenu.init(this.battle.element);
   }
 
+  xp(resolve) {
+    let amount = this.event.xp;
+    const {pokemon} = this.event;
+    const step = () => {
+      if (amount > 0) {
+        amount -= 1;
+        pokemon.xp += 1;
+        pokemon.update();
+        requestAnimationFrame(step);
+        return;
+      }
+
+      resolve();
+    }
+
+    requestAnimationFrame(step);
+  }
+
   init(resolve) {
     this[this.event.type](resolve);
   }

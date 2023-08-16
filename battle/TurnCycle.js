@@ -30,8 +30,38 @@ class TurnCycle {
       await this.onNewEvent(event);
     }
 
-    this.currentTeam = this.currentTeam === "player" ? "enemy" : "player";
-    
+    // Check for winning team.
+    const fainted = battleMenu.target.hp <= 0;
+
+    if (fainted) {
+      await this.onNewEvent({
+        type: "message", text: `${battleMenu.target.name} has fainted!`,
+      })
+
+      // Only give XP to player.
+      const xp = parseInt(Math.random() * 4) + 35;
+
+      await this.onNewEvent({
+        type: "message", text: `${trainer.name} gained ${xp} Exp. Points!`
+      })
+
+      if (battleMenu.target.team === "rival") {
+        await this.onNewEvent({
+          type: "xp",
+          xp,
+          pokemon: trainer,
+        })
+      }
+
+      await this.onNewEvent({
+        type: "message", text: `${trainer.trainer} won the battle!`
+      })
+
+      // Cut to end screen.
+
+      return;
+    }
+
     // Flips to next person.
     this.turn(two, one);
   }
