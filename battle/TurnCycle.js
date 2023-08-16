@@ -39,13 +39,13 @@ class TurnCycle {
       })
 
       // Only give XP to player.
-      const xp = parseInt(Math.random() * 4) + 35;
-
-      await this.onNewEvent({
-        type: "message", text: `${trainer.name} gained ${xp} Exp. Points!`
-      })
-
       if (battleMenu.target.team === "rival") {
+        const xp = Math.round(Math.random() * 4) + 35;
+
+        await this.onNewEvent({
+          type: "message", text: `${trainer.name} gained ${xp} Exp. Points!`
+        })
+
         await this.onNewEvent({
           type: "xp",
           xp,

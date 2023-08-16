@@ -61,8 +61,10 @@ class BattleMenu {
   }
 
   decide() {
-    // Still have to add enemy moves.
-    this.confirm(moves[this.trainer.moves[0]])
+    // Only two moves for now. 50% chance to use each.
+    let randomMove = Math.round(Math.random());
+    console.log(randomMove);
+    this.confirm(moves[this.trainer.moves[randomMove]])
   }
 
   showMenu(container) {

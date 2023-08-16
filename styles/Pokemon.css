@@ -76,9 +76,9 @@
 
 .pokemon_sprite[data-team="hero"] {
   position: absolute;
-  bottom: 20px;
+  bottom: 15.5px;
   left: 6px;
-  scale: 75%;
+  scale: 60%;
 }
 
 .pokemon_sprite[data-team="rival"] {

@@ -2,7 +2,7 @@ class Battle {
   constructor() {
     this.trainers = {
       "hero": new Pokemon({
-        ...info["001"],
+        ...info["004"],
         team: "hero",
         trainer: "Red",
         hp: 22,
@@ -13,7 +13,7 @@ class Battle {
         isHero: true,
       }, this),
       "rival": new Pokemon({
-        ...info["004"],
+        ...info["007"],
         team: "rival",
         trainer: "Blue",
         hp: 22,

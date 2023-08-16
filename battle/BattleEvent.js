@@ -71,12 +71,11 @@ class BattleEvent {
 
   xp(resolve) {
     let amount = this.event.xp;
-    const {pokemon} = this.event;
     const step = () => {
       if (amount > 0) {
-        amount -= 1;
-        pokemon.xp += 1;
-        pokemon.update();
+        amount--;
+        this.event.pokemon.xp++;
+        this.event.pokemon.update();
         requestAnimationFrame(step);
         return;
       }
