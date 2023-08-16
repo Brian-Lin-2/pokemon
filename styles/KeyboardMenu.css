@@ -3,10 +3,10 @@
   src: url("/images/fonts/pokemon-font.ttf");
 }
 
-.KeyboardMenu {
+.keyboardMenu {
   position: absolute;
-  right: 14px;
-  bottom: 3.5px;
+  right: 15px;
+  bottom: 5px;
   z-index: 30;
   display: grid;
   grid-template-columns: auto auto;
@@ -16,9 +16,9 @@
   gap: 0.5px;
 }
 
-.KeyboardMenu button {
+.keyboardMenu button {
   width: 35px;
-  height: 12px;
+  height: 11.5px;
   font-family: "pokemon";
   font-weight: bold;
   font-size: 7px;
@@ -28,33 +28,11 @@
   border-radius: 20px;
 }
 
-.KeyboardMenu button:focus {
+.keyboardMenu button:focus {
   background: gray;
   color: white;
 }
 
 .option {
   display: flex;
-}
-
-.textBox {
-  position: absolute;
-  bottom: 1px;
-  font-family: "pokemon";
-  height: 31px;
-  width: 180px;
-  background-image: url("/images/other/textbox.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.textBox p {
-  position: absolute;
-  top: -3px;
-  left: 4px;
-  width: 80px;
-  margin-left: 5px;
-  font-size: 9px;
-  opacity: 65%;
-  line-height: 11px;
 }

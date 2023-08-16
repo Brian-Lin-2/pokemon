@@ -7,6 +7,7 @@ class KeyboardMenu {
     this.right = null;
     this.confirm = null;
     this.current = 0;
+    this.onStart = true;
   }
 
   setOptions(options) {
@@ -37,18 +38,22 @@ class KeyboardMenu {
 
   createElement() {
     this.element = document.createElement("div");
-    this.element.classList.add("KeyboardMenu");
+    this.element.classList.add("keyboardMenu");
 
-    // Text that appears next to move.
-    this.textBox = document.createElement("div");
-    this.textBox.classList.add("textBox");
-    this.textBox.innerHTML = (`<p>What will you do?</p>`);
+    // Creates textbox once.
+    if (this.onStart) {
+      this.textBox = document.createElement("div");
+      this.textBox.classList.add("textMessage");
+      this.onStart = false;
+    }
+    
+    this.textBox.innerHTML = (`<p class="textMessage_p">What will you do?</p>`);
     this.textBoxText = this.textBox.querySelector("p");
   }
 
   end() {
     this.element.remove();
-    this.textBox.remove();
+    this.textBoxText.remove();
 
     // Clean up bindings.
     this.up.unbind();

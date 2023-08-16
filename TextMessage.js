@@ -8,17 +8,17 @@ class TextMessage {
   createElement() {
     // Create text box.
     this.element = document.createElement("div");
-    this.element.classList.add("TextMessage");
+    this.element.classList.add("textMessage");
 
     this.element.innerHTML = (`
-      <p class="TextMessage_p"></p>
-      <a class="TextMessage_button">v</a>
+      <p class="textMessage_p"></p>
+      <a class="textMessage_button">v</a>
     `)
 
     this.revealingText = new RevealingText({
-      element: this.element.querySelector(".TextMessage_p"),
+      element: this.element.querySelector(".textMessage_p"),
       text: this.text,
-      button: this.element.querySelector(".TextMessage_button"),
+      button: this.element.querySelector(".textMessage_button"),
     })
 
     this.element.querySelector("a").addEventListener("click", () => {

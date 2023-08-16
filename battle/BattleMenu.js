@@ -16,13 +16,13 @@ class BattleMenu {
           }
         },
         {
-          label: "Item",
+          label: "Bag",
           handler: () => {
             // Does something when chosen.
           }
         },
         {
-          label: "Bag",
+          label: "Pokemon",
           handler: () => {
             // Does something when chosen.
           }
