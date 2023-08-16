@@ -14,10 +14,9 @@ class KeyboardMenu {
 
     // Combine all the options together.
     this.element.innerHTML = this.options.map((option, index) => {
-      const autoFocusAttr = index === 0 ? "autofocus" : "";
       return (`
         <div class="option">
-          <button ${autoFocusAttr} data-button="${index}">
+          <button data-button="${index}">
             ${option.label}
           </button>
         </div>
@@ -28,6 +27,11 @@ class KeyboardMenu {
       button.addEventListener("focus", () => {
         this.prevFocus = button;
       });
+    })
+
+    // Allows us to autofocus the first button.
+    setTimeout(() => {
+      this.element.querySelector("button[data-button]").focus();
     })
   }
 
