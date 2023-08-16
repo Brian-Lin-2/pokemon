@@ -39,8 +39,8 @@ class Pokemon {
         <p>${this.maxHp}</p>
       </div>
       <svg viewBox="0 0 42 3" class="pokemon_hp">
-      <rect x=0 y=0 width="0%" height=1 fill="#009201" />
-      <rect x=0 y=1 width="0%" height=1.75 fill="#19c320" />
+        <rect x=0 y=0 width="0%" height=1 fill="#009201" />
+        <rect x=0 y=1 width="0%" height=1.75 fill="#19c320" />
       </svg>
 
       <svg viewBox="0 0 102 3" class="pokemon_xp">
@@ -79,6 +79,17 @@ class Pokemon {
 
     let hp = this.hudElement.querySelector(".pokemon_remHp");
     if (hp) { hp.innerText = this.hp }
+
+    // Changes color based on hp. For now there's no healing, so we don't have to worry about increasing health.
+    let hpColor = this.hudElement.querySelectorAll(".pokemon_hp rect");
+    if (this.hpPercent <= 20) {
+      hpColor[0].style.fill = "#a0252b";
+      hpColor[1].style.fill = "#fc421d";
+    }
+    else if (this.hpPercent <= 50) {
+      hpColor[0].style.fill = "#b87510";
+      hpColor[1].style.fill = "#fcb800";
+    }
   }
 
   init(container) {

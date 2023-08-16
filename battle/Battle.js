@@ -4,8 +4,8 @@ class Battle {
       "hero": new Pokemon({
         ...info["001"],
         team: "hero",
-        hp: 20,
-        maxHp: 20,
+        hp: 22,
+        maxHp: 22,
         xp: 75,
         maxXp: 100,
         level: 5,
@@ -14,8 +14,8 @@ class Battle {
       "rival": new Pokemon({
         ...info["004"],
         team: "rival",
-        hp: 20,
-        maxHp: 20,
+        hp: 22,
+        maxHp: 22,
         xp: 0,
         maxXp: 100,
         level: 5,
