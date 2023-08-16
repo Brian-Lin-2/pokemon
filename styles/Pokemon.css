@@ -87,3 +87,12 @@
   right: 2px;
   scale: 75%;
 }
+
+.pokemon_faint {
+  animation: fainting 1s ease-in-out forwards;
+}
+
+@keyframes fainting {
+  0% { transform: translate(0,  0px); }
+  100% { transform: translate(0,  40px); opacity: 0% }
+}

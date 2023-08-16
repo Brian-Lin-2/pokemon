@@ -92,6 +92,11 @@ class Pokemon {
     }
   }
 
+  fainted() {
+    // Add fainting animation.
+    this.pokemonSprite.classList.add("pokemon_faint");
+  }
+
   init(container) {
     this.createElement();
     container.appendChild(this.hudElement);

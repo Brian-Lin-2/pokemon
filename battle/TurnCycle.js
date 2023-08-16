@@ -34,6 +34,8 @@ class TurnCycle {
     const fainted = battleMenu.target.hp <= 0;
 
     if (fainted) {
+      battleMenu.target.fainted();
+
       await this.onNewEvent({
         type: "message", text: `${battleMenu.target.name} has fainted!`,
       })
@@ -69,7 +71,7 @@ class TurnCycle {
   async init() {
     await this.onNewEvent({
       type: "message",
-      text: "Battle Begins!",
+      text: "You are challenged by Pokémon Trainer Blue!",
     });
 
     // Starts the first turn!

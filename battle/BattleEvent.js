@@ -6,7 +6,7 @@ class BattleEvent {
 
   message(resolve) {
     const text = this.event.text
-    .replace("{POKEMON}", this.event.trainer?.name)
+    .replace("{POKÉMON}", this.event.trainer?.name)
     .replace("{TARGET}", this.event.target?.name)
 
     const message = new TextMessage({
