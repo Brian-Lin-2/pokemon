@@ -12,7 +12,7 @@ let info = {
     backSprite: "/images/characters/pokemon/bulbasaur-back.png",
     attack: 1,
     defense: 1,
-    moves: [ "tackle", "growl", "scratch", "leer" ],
+    moves: [ "tackle", "growl", "", "" ],
   },
   "004": {
     name: "Charmander",

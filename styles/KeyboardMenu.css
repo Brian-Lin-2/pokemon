@@ -6,7 +6,7 @@
 .KeyboardMenu {
   position: absolute;
   right: 14px;
-  bottom: 10px;
+  bottom: 3.5px;
   z-index: 30;
   display: grid;
   grid-template-columns: auto auto;
@@ -34,7 +34,7 @@
 }
 
 .option {
-  height: 12px;
+  display: flex;
 }
 
 .textBox {

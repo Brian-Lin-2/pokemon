@@ -38,9 +38,12 @@ class BattleMenu {
         ...this.trainer.moves.map(key => {
           const move = moves[key];
           return {
-            label: move.name,
+            // If there's no move, we just leave a blank slot.
+            label: move?.name || "",
             handler: () => {
-              this.confirm(move);
+              if (move) {
+                this.confirm(move);
+              }
             }
           }
         })
