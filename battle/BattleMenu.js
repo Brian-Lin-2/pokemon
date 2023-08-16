@@ -11,8 +11,8 @@ class BattleMenu {
         {
           label: "Attack",
           handler: () => {
-            // Does something when chosen.
-            console.log("working");
+            // Refreshes the menu and changes it to the attack menu.
+            this.keyboardMenu.setOptions(this.options().attacks)
           }
         },
         {
@@ -33,15 +33,33 @@ class BattleMenu {
             // Does something when chosen.
           }
         }
+      ],
+      attacks: [
+        ...this.trainer.moves.map(key => {
+          const move = moves[key];
+          return {
+            label: move.name,
+            handler: () => {
+              this.confirm(move);
+            }
+          }
+        })
       ]
     }
   }
 
-  decide() {
+  confirm(move) {
+    this.keyboardMenu?.end();
+
     this.onComplete({
-      moves: moves[this.trainer.moves[0]],
+      move,
       target: this.enemy,
-    })
+    });
+  }
+
+  decide() {
+    // Still have to add enemy moves.
+    this.confirm(moves[this.trainer.moves[0]])
   }
 
   showMenu(container) {

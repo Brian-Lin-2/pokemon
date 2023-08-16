@@ -16,7 +16,7 @@ class TurnCycle {
     })
 
     // Takes the result of the move (message, change).
-    const resultingEvents = battleMenu.moves.success;
+    const resultingEvents = battleMenu.move.success;
 
     for (let i = 0; i < resultingEvents.length; i++) {
       const event = {

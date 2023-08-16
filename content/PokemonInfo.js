@@ -12,7 +12,7 @@ let info = {
     backSprite: "/images/characters/pokemon/bulbasaur-back.png",
     attack: 1,
     defense: 1,
-    moves: [ "tackle" ],
+    moves: [ "tackle", "growl", "scratch", "leer" ],
   },
   "004": {
     name: "Charmander",
@@ -21,7 +21,7 @@ let info = {
     backSprite: "/images/characters/pokemon/charmander-back.png",
     attack: 1,
     defense: 1,
-    moves: [ "tackle" ],
+    moves: [ "tackle", "growl" ],
   },
   "007": {
     name: "Squirtle",
@@ -30,6 +30,6 @@ let info = {
     backSprite: "/images/characters/pokemon/squirtle-back.png",
     attack: 1,
     defense: 1,
-    moves: [ "tackle" ],
+    moves: [ "tackle", "growl" ],
   }
 }

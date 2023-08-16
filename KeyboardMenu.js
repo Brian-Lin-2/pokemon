@@ -5,6 +5,7 @@ class KeyboardMenu {
     this.down = null;
     this.left = null;
     this.right = null;
+    this.confirm = null;
     this.current = 0;
   }
 
@@ -26,7 +27,7 @@ class KeyboardMenu {
     this.element.querySelectorAll("button").forEach(button => {
       button.addEventListener("focus", () => {
         this.prevFocus = button;
-      })
+      });
     })
   }
 
@@ -82,5 +83,9 @@ class KeyboardMenu {
     this.down = new KeyPressListener("KeyS", () => { this.selection(0, 2, 1, 3) });
     this.left = new KeyPressListener("KeyA", () => { this.selection(1, 0, 3, 2) });
     this.right = new KeyPressListener("KeyD", () => { this.selection(0, 1, 2, 3) });
+
+    // Confirmation. handler() will fire off any code associated with the option.
+    this.confirm = new KeyPressListener("Enter", () => { this.options[this.current].handler() })
+    this.confirm = new KeyPressListener("Space", () => { this.options[this.current].handler() })
   }
 }

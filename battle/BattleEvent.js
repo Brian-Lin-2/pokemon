@@ -25,21 +25,22 @@ class BattleEvent {
     if (this.event.damage) {
       // Modify the target to have less HP.
       target.update({
-        hp: target.hp - (trainer.attack * this.event.damage / target.defense),
+        // Makes sure hp is always a whole number and attacks will do at least 1 damage.
+        hp: Math.round(Math.max(target.hp - (trainer.attack * this.event.damage / target.defense), 1)),
       })
     }
 
     if (this.event.debuff) {
       // Less attack.
-      if (this.event.debuff === "attack" && target.attack > 0.2) {
+      if (this.event.debuff === "attack" && target.attack > 0.1) {
         target.update({
-          attack: target.attack - 0.2,
+          attack: target.attack - 0.15,
         })
       }
       // Less defense.
-      else if (this.event.debuff === "defense" && target.defense > 0.2) {
+      else if (this.event.debuff === "defense" && target.defense > 0.1) {
         target.update({
-          defense: target.defense - 0.2
+          defense: target.defense - 0.15,
         })
       };
     }
