@@ -1,7 +1,8 @@
 class TurnCycle {
-  constructor({ battle, onNewEvent }) {
+  constructor({ battle, onNewEvent, endBattle }) {
     this.battle = battle;
     this.onNewEvent = onNewEvent;
+    this.endBattle = endBattle;
   }
 
   async turn(one, two) {
@@ -59,7 +60,7 @@ class TurnCycle {
         type: "message", text: `${trainer.trainer} won the battle!`
       })
 
-      // Cut to end screen.
+      this.endBattle();
 
       return;
     }

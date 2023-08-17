@@ -1,5 +1,6 @@
 class Battle {
-  constructor() {
+  constructor({ onComplete }) {
+    this.onComplete = onComplete;
     this.trainers = {
       "hero": new Pokemon({
         ...info["004"],
@@ -62,6 +63,10 @@ class Battle {
           const battleEvent = new BattleEvent(event, this);
           battleEvent.init(resolve);
         })
+      },
+      endBattle: () => {
+        this.element.remove();
+        this.onComplete();
       }
     })
 
