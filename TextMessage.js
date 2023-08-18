@@ -5,7 +5,7 @@ class TextMessage {
     this.element = null;
   }
 
-  createElement() {
+  createElement(type) {
     // Create text box.
     this.element = document.createElement("div");
     this.element.classList.add("textMessage");
@@ -18,17 +18,13 @@ class TextMessage {
     this.revealingText = new RevealingText({
       element: this.element.querySelector(".textMessage_p"),
       text: this.text,
+      menu: this.element.querySelector(".textMessage_menu"),
       button: this.element.querySelector(".textMessage_button"),
     })
 
-    this.element.querySelector("a").addEventListener("click", () => {
-      // Closes the text message.
-      this.done();
-    });
-
     this.actionListener = new KeyPressListener("Space", () => {
       this.done();
-    })
+    });
   }
 
   done() {
@@ -41,9 +37,9 @@ class TextMessage {
     }
   }
 
-  init(container) {
-    this.createElement();
+  init(container, type) {
+    this.createElement(type);
     container.appendChild(this.element);
-    this.revealingText.init();
+    this.revealingText.init(type);
   }
 }

@@ -2104,50 +2104,11 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "Take your time there's no rush.", faceHero: "professor" },             
+              { type: "message", text: "Take your time there's no rush.", faceHero:"professor" },             
             ]
           }
         ]
-      },
-      bulbasaur: {
-        x: utils.grid(8),
-        y: utils.grid(4),
-        talking: [
-          {
-            events: [
-              { type: "message", text: "bulba" },
-              { type: "addPokemon", hero: "001", rival: "004" },
-              { type: "battle" }
-            ]
-          }
-        ]
-      },
-      charmander: {
-        x: utils.grid(9),
-        y: utils.grid(4),
-        talking: [
-          {
-            events: [
-              { type: "message", text: "char" },
-              { type: "addPokemon", hero: "004", rival: "007" },
-              { type: "battle" }
-            ]
-          }
-        ]
-      },
-      squirtle: {
-        x: utils.grid(10),
-        y: utils.grid(4),
-        talking: [
-          {
-            events: [
-              { type: "message", text: "squir" },
-              { type: "addPokemon", hero: "007", rival: "001" },
-              { type: "battle" }
-            ]
-          }
-        ]
-      },
+      }
     },
     walls: {
       // Top Wall.

@@ -71,11 +71,21 @@ class Event {
     message.init(document.querySelector(".game-container"), "text-message");
   }
 
+<<<<<<< HEAD
   addPokemon(resolve) {
     // Global variables from Battle.js
     heroTeam = this.event.hero;
     rivalTeam = this.event.rival;
     resolve();
+=======
+  confirm(resolve) {
+    // Global variables from Battle.js
+    heroTeam = this.event.hero;
+    rivalTeam = this.event.rival;
+
+    const message = new TextMessage({ text: this.event.text, onComplete: () => resolve() });
+    message.init(document.querySelector(".game-container"), "confirm-message");
+>>>>>>> d1f17d31afd16862763be1853969808e9758d210
   }
 
   wait(resolve) {

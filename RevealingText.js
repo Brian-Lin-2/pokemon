@@ -4,6 +4,7 @@ class RevealingText {
     this.element = config.element;
     
     this.text = config.text;
+    this.menu = config.menu;
     this.button = config.button;
     this.speed = config.speed || 30;
 
@@ -11,22 +12,26 @@ class RevealingText {
     this.isDone = false;
   }
 
-  revealOneCharacter(list) {
+  revealOneCharacter(list, type) {
     const next = list.splice(0,1)[0];
     next.span.classList.add("revealed");
 
     // Fires off the recursion based on the delay we set.
     if (list.length > 0) {
       this.timeout = setTimeout(() => {
-        this.revealOneCharacter(list);
+        this.revealOneCharacter(list, type);
       }, next.delayAfter)
-    } else {
+    } 
+    else if (type == "text-message") {
       this.button.classList.add("revealed");
       this.isDone = true;
     }
+    else if (type == "confirm-message") {
+      console.log("confirm");
+    }
   }
 
-  init() {
+  init(type) {
     let characters = [];
     this.text.split("").forEach(character => {
       // Allows us to separate words.
@@ -41,6 +46,6 @@ class RevealingText {
       })
     })
 
-    this.revealOneCharacter(characters);
+    this.revealOneCharacter(characters, type);
   }
 }
