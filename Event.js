@@ -68,7 +68,16 @@ class Event {
     }
 
     const message = new TextMessage({ text: this.event.text, onComplete: () => resolve() });
-    message.init(document.querySelector(".game-container"));
+    message.init(document.querySelector(".game-container"), "text-message");
+  }
+
+  confirm(resolve) {
+    // Global variables from Battle.js
+    heroTeam = this.event.hero;
+    rivalTeam = this.event.rival;
+
+    const message = new TextMessage({ text: this.event.text, onComplete: () => resolve() });
+    message.init(document.querySelector(".game-container"), "confirm-message");
   }
 
   wait(resolve) {
@@ -79,7 +88,7 @@ class Event {
     const battle = new Battle({
       onComplete: () => {
         resolve();
-      }
+      },
     });
 
     battle.init(document.querySelector(".game-container"));

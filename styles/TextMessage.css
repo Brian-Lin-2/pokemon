@@ -29,6 +29,12 @@
   opacity: 0;
 }
 
+.textMessage_menu {
+  position: absolute;
+  z-index: 50;
+  opacity: 0;
+}
+
 .textMessage_button {
   font-size: 8px;
   font-weight: bold;

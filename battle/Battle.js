@@ -3,7 +3,7 @@ class Battle {
     this.onComplete = onComplete;
     this.trainers = {
       "hero": new Pokemon({
-        ...info["004"],
+        ...info[heroTeam],
         team: "hero",
         trainer: "Red",
         hp: 22,
@@ -14,7 +14,7 @@ class Battle {
         isHero: true,
       }, this),
       "rival": new Pokemon({
-        ...info["007"],
+        ...info[rivalTeam],
         team: "rival",
         trainer: "Blue",
         hp: 22,
@@ -74,3 +74,6 @@ class Battle {
     this.turnCycle.init();
   }
 }
+
+let heroTeam = "";
+let rivalTeam = "";
