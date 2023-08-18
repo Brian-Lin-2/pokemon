@@ -241,7 +241,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "RED's Home" },
+              { type: "message", text: "RED's Home", interact: "up" },
             ]
           }
         ]
@@ -252,7 +252,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "BLUE's Home" },
+              { type: "message", text: "BLUE's Home", interact: "up" },
             ]
           }
         ]
@@ -263,7 +263,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "Pallet Town: The Town of Beginnings." },
+              { type: "message", text: "Pallet Town: The Town of Beginnings.", interact: "up" },
             ]
           }
         ]
@@ -274,7 +274,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "OAK's Lab" },
+              { type: "message", text: "OAK's Lab", interact: "up" },
             ]
           }
         ]
@@ -285,7 +285,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "Trainer Tip: You can interact with this sign by pressing space/enter!" },
+              { type: "message", text: "Trainer Tip: You can interact with this sign by pressing space/enter!", interact: "up" },
             ]
           }
         ]
@@ -508,10 +508,12 @@ let maps = {
       [utils.asGridCoord(12, 0)]: [
         {
           events: [
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
             { type: "message", text: "Ah yes the void." },
             { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
-            { who: "hero", type: "stand", direction: "up", time: 1000 },
-            { type: "message", text: "Time to head to OAK's lab." },
+            { type: "message", text: "You used to stare at the endless abyss for hours on end." },
+            { who: "hero", type: "stand", direction: "up", time: 2000 },
+            { type: "message", text: "You suddenly have an urge to go to OAK's Lab." },
             { who: "hero", type: "stand", direction: "down" },
           ]
         }
@@ -519,10 +521,12 @@ let maps = {
       [utils.asGridCoord(13, 0)]: [
         {
           events: [
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
             { type: "message", text: "Ah yes the void." },
             { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
-            { who: "hero", type: "stand", direction: "up", time: 1000 },
-            { type: "message", text: "Time to head to OAK's lab." },
+            { type: "message", text: "You used to stare at the endless abyss for hours on end." },
+            { who: "hero", type: "stand", direction: "up", time: 2000 },
+            { type: "message", text: "You suddenly have an urge to go to OAK's Lab." },
             { who: "hero", type: "stand", direction: "down" },
           ]
         }
@@ -600,7 +604,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "RED's Home" },
+              { type: "message", text: "RED's Home", interact: "up" },
             ]
           }
         ]
@@ -611,7 +615,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "BLUE's Home" },
+              { type: "message", text: "BLUE's Home", interact: "up" },
             ]
           }
         ]
@@ -622,7 +626,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "Pallet Town: The Town of Beginnings." },
+              { type: "message", text: "Pallet Town: The Town of Beginnings.", interact: "up" },
             ]
           }
         ]
@@ -633,7 +637,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "OAK's Lab" },
+              { type: "message", text: "OAK's Lab", interact: "up" },
             ]
           }
         ]
@@ -644,7 +648,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "Trainer Tip: You can interact with this sign by pressing space/enter!" },
+              { type: "message", text: "Trainer Tip: You can interact with this sign by pressing space/enter!", interact: "up" },
             ]
           }
         ]
@@ -867,10 +871,12 @@ let maps = {
       [utils.asGridCoord(12, 0)]: [
         {
           events: [
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
             { type: "message", text: "Ah yes the void." },
             { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
-            { who: "hero", type: "stand", direction: "up", time: 1000 },
-            { type: "message", text: "Time to head to OAK's lab." },
+            { type: "message", text: "You used to stare at the endless abyss for hours on end." },
+            { who: "hero", type: "stand", direction: "up", time: 2000 },
+            { type: "message", text: "You suddenly have an urge to go to OAK's Lab." },
             { who: "hero", type: "stand", direction: "down" },
           ]
         }
@@ -878,10 +884,12 @@ let maps = {
       [utils.asGridCoord(13, 0)]: [
         {
           events: [
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
             { type: "message", text: "Ah yes the void." },
             { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
-            { who: "hero", type: "stand", direction: "up", time: 1000 },
-            { type: "message", text: "Time to head to OAK's lab." },
+            { type: "message", text: "You used to stare at the endless abyss for hours on end." },
+            { who: "hero", type: "stand", direction: "up", time: 2000 },
+            { type: "message", text: "You suddenly have an urge to go to OAK's Lab." },
             { who: "hero", type: "stand", direction: "down" },
           ]
         }
@@ -959,7 +967,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "RED's Home" },
+              { type: "message", text: "RED's Home", interact: "up" },
             ]
           }
         ]
@@ -970,7 +978,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "BLUE's Home" },
+              { type: "message", text: "BLUE's Home", interact: "up" },
             ]
           }
         ]
@@ -981,7 +989,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "Pallet Town: The Town of Beginnings." },
+              { type: "message", text: "Pallet Town: The Town of Beginnings.", interact: "up" },
             ]
           }
         ]
@@ -992,7 +1000,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "OAK's Lab" },
+              { type: "message", text: "OAK's Lab", interact: "up" },
             ]
           }
         ]
@@ -1003,7 +1011,7 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "Trainer Tip: You can interact with this sign by pressing space/enter!" },
+              { type: "message", text: "Trainer Tip: You can interact with this sign by pressing space/enter!", interact: "up" },
             ]
           }
         ]
@@ -1226,10 +1234,12 @@ let maps = {
       [utils.asGridCoord(12, 0)]: [
         {
           events: [
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
             { type: "message", text: "Ah yes the void." },
             { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
-            { who: "hero", type: "stand", direction: "up", time: 1000 },
-            { type: "message", text: "Time to head to OAK's lab." },
+            { type: "message", text: "You used to stare at the endless abyss for hours on end." },
+            { who: "hero", type: "stand", direction: "up", time: 2000 },
+            { type: "message", text: "You suddenly have an urge to go to OAK's Lab." },
             { who: "hero", type: "stand", direction: "down" },
           ]
         }
@@ -1237,10 +1247,12 @@ let maps = {
       [utils.asGridCoord(13, 0)]: [
         {
           events: [
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
             { type: "message", text: "Ah yes the void." },
             { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
-            { who: "hero", type: "stand", direction: "up", time: 1000 },
-            { type: "message", text: "Time to head to OAK's lab." },
+            { type: "message", text: "You used to stare at the endless abyss for hours on end." },
+            { who: "hero", type: "stand", direction: "up", time: 2000 },
+            { type: "message", text: "You suddenly have an urge to go to OAK's Lab." },
             { who: "hero", type: "stand", direction: "down" },
           ]
         }

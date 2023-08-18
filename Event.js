@@ -55,6 +55,13 @@ class Event {
   }
 
   message(resolve) {
+    // Makes only the indicated direction interactable.
+    if (this.event.interact && this.map.gameObjects["hero"].direction != this.event.interact) {
+      resolve();
+      return;
+    }
+
+    // Makes the sprite face the hero.
     if (this.event.faceHero) {
       const obj = this.map.gameObjects[this.event.faceHero];
       obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
