@@ -4,6 +4,7 @@ class Overworld {
     this.canvas = this.element.querySelector(".game-canvas");
     this.ctx = this.canvas.getContext("2d");
     this.map = null;
+    this.labCutscene = true;
   }
 
   startGameLoop() {
@@ -84,7 +85,7 @@ class Overworld {
     //   ])
     // }
 
-    if (map.lowerSrc === "/images/maps/LabLower.png") {
+    if (this.labCutscene && map.lowerSrc === "/images/maps/LabLower.png") {
       this.map.startCutscene([
         { who: "hero", type: "walk", direction: "up" },
         { who: "hero", type: "walk", direction: "up" },
@@ -109,11 +110,13 @@ class Overworld {
         { who: "rival", type: "message", text: "Blue: Hey! Gramps! No fair! What about me?"},
         { who: "professor", type: "message", text: "Oak: Be patient, Blue. You can have one, too!"},
       ])
+
+      this.labCutscene = false;
     }
   }
 
   init() {
-    this.startMap(maps.HeroBedroom);
+    this.startMap(maps.PalletTown);
 
     // Hero movement.
     this.directionInput = new DirectionInput();
