@@ -38,7 +38,7 @@ class Overworld {
       this.map.drawUpperImage(this.ctx, camera);
 
       // Fires off step again after the new frame is loaded.
-      // Callbcak function which will prevent an infinite loop.
+      // Callback function which will prevent an infinite loop.
       requestAnimationFrame(() => {
         step();
       })
@@ -118,7 +118,7 @@ class Overworld {
   }
 
   init() {
-    this.startMap(maps.Lab);
+    this.startMap(maps.HeroBedroom);
 
     // Hero movement.
     this.directionInput = new DirectionInput();

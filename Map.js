@@ -2,10 +2,7 @@ class Map {
   constructor(config) {
     this.overworld = null;
 
-    // Fills this with our objectConfigs data onload.
-    this.gameObjects = {};
-
-    this.configObjects = config.configObjects;
+    this.gameObjects = config.gameObjects;
 
     this.cutsceneSpaces = config.cutsceneSpaces || {};
     this.walls = config.walls || {};
@@ -51,18 +48,13 @@ class Map {
   }
 
   mountObjects() {
-    Object.keys(this.configObjects).forEach(key => {
+    Object.keys(this.gameObjects).forEach(key => {
+      console.log(this.gameObjects[key]);
       // Key allows us to identify a specific sprite.
-      let object = this.configObjects[key];
+      let object = this.gameObjects[key];
       object.id = key;
 
-      // Change later if we have an object that's not a person.
-      let instance = new Person(object);
-
-      this.gameObjects[key] = instance;
-      this.gameObjects[key].id = key;
-
-      instance.mount(this);
+      object.mount(this);
     })
   }
 
@@ -111,15 +103,15 @@ let maps = {
   Demo: {
     lowerSrc: "/images/maps/DemoLower.png",
     upperSrc: "/images/maps/DemoUpper.png",
-    configObjects: {
-      hero: {
+    gameObjects: {
+      hero: new Person({
         isHero: true,
         x: utils.grid(5),
         y: utils.grid(6),
         direction: "down",
         src: "/images/characters/people/red.png"
-      },
-      mom: {
+      }),
+      mom: new Person({
         x: utils.grid(7),
         y: utils.grid(9),
         src: "images/characters/people/mom.png",
@@ -136,15 +128,11 @@ let maps = {
         talking: [
           {
             events: [
-              { type: "message", text: "Mom: ...Right. All boys leave home someday.", faceHero:"mom" },
-              { type: "message", text: "It said so on TV." },
-              { type: "message", text: "It said so on TV." },
-              { type: "message", text: "Oh, yes. PROF. OAK, next door, was looking for you." },
-              { type: "stand", direction: "left" },
+              { who: "mom", type: "walk", direction: "left" },
             ]
           }
         ]
-      }
+      }),
     },
     walls: {
       // Dynamic key equivalent to "num, num": true
@@ -164,7 +152,7 @@ let maps = {
       [utils.asGridCoord(5,10)]: [
         {
           events: [
-            { type: "changeMap", map: "HeroHome" }
+            { type: "changeMap", map: "PalletTown" }
           ]
         }
       ]
@@ -173,15 +161,15 @@ let maps = {
   PalletTown: {
     lowerSrc: "/images/maps/PalletTownLower.png",
     upperSrc: "/images/maps/PalletTownUpper.png",
-    configObjects: {
-      hero: {
+    gameObjects: {
+      hero: new Person({
         isHero: true,
         x: utils.grid(6),
         y: utils.grid(8),
         direction: "down",
         src: "/images/characters/people/red.png"
-      },
-      npc1: {
+      }),
+      npc1: new Person({
         x: utils.grid(4),
         y: utils.grid(10),
         src: "/images/characters/people/kid.png",
@@ -208,8 +196,8 @@ let maps = {
             ]
           }
         ]
-      },
-      npc2: {
+      }),
+      npc2: new Person({
         x: utils.grid(14),
         y: utils.grid(17),
         src: "/images/characters/people/man.png",
@@ -234,8 +222,8 @@ let maps = {
             ]
           }
         ]
-      },
-      hero_mailbox: {
+      }),
+      hero_mailbox: new Person({
         x: utils.grid(4),
         y: utils.grid(7),
         talking: [
@@ -245,8 +233,8 @@ let maps = {
             ]
           }
         ]
-      },
-      rival_mailbox: {
+      }),
+      rival_mailbox: new Person({
         x: utils.grid(13),
         y: utils.grid(7),
         talking: [
@@ -256,8 +244,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sign_1: {
+      }),
+      sign_1: new Person({
         x: utils.grid(9),
         y: utils.grid(11),
         talking: [
@@ -267,8 +255,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sign_2: {
+      }),
+      sign_2: new Person({
         x: utils.grid(16),
         y: utils.grid(16),
         talking: [
@@ -278,8 +266,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sign_3: {
+      }),
+      sign_3: new Person({
         x: utils.grid(5),
         y: utils.grid(14),
         talking: [
@@ -289,7 +277,7 @@ let maps = {
             ]
           }
         ]
-      },
+      }),
     },
     walls: {
       // Top Wall.
@@ -536,15 +524,15 @@ let maps = {
   PalletTown2: {
     lowerSrc: "/images/maps/PalletTownLower.png",
     upperSrc: "/images/maps/PalletTownUpper.png",
-    configObjects: {
-      hero: {
+    gameObjects: {
+      hero: new Person({
         isHero: true,
         x: utils.grid(15),
         y: utils.grid(8),
         direction: "down",
         src: "/images/characters/people/red.png"
-      },
-      npc1: {
+      }),
+      npc1: new Person({
         x: utils.grid(4),
         y: utils.grid(10),
         src: "/images/characters/people/kid.png",
@@ -571,8 +559,8 @@ let maps = {
             ]
           }
         ]
-      },
-      npc2: {
+      }),
+      npc2: new Person({
         x: utils.grid(14),
         y: utils.grid(17),
         src: "/images/characters/people/man.png",
@@ -597,8 +585,8 @@ let maps = {
             ]
           }
         ]
-      },
-      hero_mailbox: {
+      }),
+      hero_mailbox: new Person({
         x: utils.grid(4),
         y: utils.grid(7),
         talking: [
@@ -608,8 +596,8 @@ let maps = {
             ]
           }
         ]
-      },
-      rival_mailbox: {
+      }),
+      rival_mailbox: new Person({
         x: utils.grid(13),
         y: utils.grid(7),
         talking: [
@@ -619,8 +607,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sign_1: {
+      }),
+      sign_1: new Person({
         x: utils.grid(9),
         y: utils.grid(11),
         talking: [
@@ -630,8 +618,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sign_2: {
+      }),
+      sign_2: new Person({
         x: utils.grid(16),
         y: utils.grid(16),
         talking: [
@@ -641,8 +629,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sign_3: {
+      }),
+      sign_3: new Person({
         x: utils.grid(5),
         y: utils.grid(14),
         talking: [
@@ -652,7 +640,7 @@ let maps = {
             ]
           }
         ]
-      },
+      }),
     },
     walls: {
       // Top Wall.
@@ -899,15 +887,15 @@ let maps = {
   PalletTown3: {
     lowerSrc: "/images/maps/PalletTownLower.png",
     upperSrc: "/images/maps/PalletTownUpper.png",
-    configObjects: {
-      hero: {
+    gameObjects: {
+      hero: new Person({
         isHero: true,
         x: utils.grid(16),
         y: utils.grid(14),
         direction: "down",
         src: "/images/characters/people/red.png"
-      },
-      npc1: {
+      }),
+      npc1: new Person({
         x: utils.grid(4),
         y: utils.grid(10),
         src: "/images/characters/people/kid.png",
@@ -934,8 +922,8 @@ let maps = {
             ]
           }
         ]
-      },
-      npc2: {
+      }),
+      npc2: new Person({
         x: utils.grid(14),
         y: utils.grid(17),
         src: "/images/characters/people/man.png",
@@ -960,8 +948,8 @@ let maps = {
             ]
           }
         ]
-      },
-      hero_mailbox: {
+      }),
+      hero_mailbox: new Person({
         x: utils.grid(4),
         y: utils.grid(7),
         talking: [
@@ -971,8 +959,8 @@ let maps = {
             ]
           }
         ]
-      },
-      rival_mailbox: {
+      }),
+      rival_mailbox: new Person({
         x: utils.grid(13),
         y: utils.grid(7),
         talking: [
@@ -982,8 +970,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sign_1: {
+      }),
+      sign_1: new Person({
         x: utils.grid(9),
         y: utils.grid(11),
         talking: [
@@ -993,8 +981,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sign_2: {
+      }),
+      sign_2: new Person({
         x: utils.grid(16),
         y: utils.grid(16),
         talking: [
@@ -1004,8 +992,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sign_3: {
+      }),
+      sign_3: new Person({
         x: utils.grid(5),
         y: utils.grid(14),
         talking: [
@@ -1015,7 +1003,7 @@ let maps = {
             ]
           }
         ]
-      },
+      }),
     },
     walls: {
       // Top Wall.
@@ -1263,15 +1251,15 @@ let maps = {
     lowerSrc: "/images/maps/HeroBedroomLower.png",
     // upperSrc: "/images/maps/HeroBedroomUpper.png",
     upperSrc: "",
-    configObjects: {
-      hero: {
+    gameObjects: {
+      hero: new Person({
         isHero: true,
         x: utils.grid(3),
         y: utils.grid(6),
         direction: "down",
         src: "/images/characters/people/red.png"
-      },
-      computer: {
+      }),
+      computer: new Person({
         x: utils.grid(0),
         y: utils.grid(1),
         talking: [
@@ -1282,8 +1270,8 @@ let maps = {
             ]
           }
         ]
-      },
-      cabinet: {
+      }),
+      cabinet: new Person({
         x: utils.grid(2),
         y: utils.grid(1),
         talking: [
@@ -1293,8 +1281,8 @@ let maps = {
             ]
           }
         ]
-      },
-      bookshelf_left: {
+      }),
+      bookshelf_left: new Person({
         x: utils.grid(3),
         y: utils.grid(1),
         talking: [
@@ -1305,8 +1293,8 @@ let maps = {
             ]
           }
         ]
-      },
-      bookshelf_right: {
+      }),
+      bookshelf_right: new Person({
         x: utils.grid(4),
         y: utils.grid(1),
         talking: [
@@ -1317,8 +1305,8 @@ let maps = {
             ]
           }
         ]
-      },
-      switch: {
+      }),
+      switch: new Person({
         x: utils.grid(5),
         y: utils.grid(5),
         talking: [
@@ -1329,8 +1317,8 @@ let maps = {
             ]
           }
         ]
-      },
-      info: {
+      }),
+      info: new Person({
         x: utils.grid(10),
         y: utils.grid(1),
         talking: [
@@ -1341,7 +1329,7 @@ let maps = {
             ]
           }
         ]
-      }
+      })
     },
     walls: {
       // Top wall.
@@ -1413,15 +1401,15 @@ let maps = {
     lowerSrc: "/images/maps/HeroBedroomLower.png",
     // upperSrc: "/images/maps/HeroBedroomUpper.png",
     upperSrc: "",
-    configObjects: {
-      hero: {
+    gameObjects: {
+      hero: new Person({
         isHero: true,
         x: utils.grid(9),
         y: utils.grid(2),
         direction: "down",
         src: "/images/characters/people/red.png"
-      },
-      computer: {
+      }),
+      computer: new Person({
         x: utils.grid(0),
         y: utils.grid(1),
         talking: [
@@ -1432,8 +1420,8 @@ let maps = {
             ]
           }
         ]
-      },
-      cabinet: {
+      }),
+      cabinet: new Person({
         x: utils.grid(2),
         y: utils.grid(1),
         talking: [
@@ -1443,8 +1431,8 @@ let maps = {
             ]
           }
         ]
-      },
-      bookshelf_left: {
+      }),
+      bookshelf_left: new Person({
         x: utils.grid(3),
         y: utils.grid(1),
         talking: [
@@ -1455,8 +1443,8 @@ let maps = {
             ]
           }
         ]
-      },
-      bookshelf_right: {
+      }),
+      bookshelf_right: new Person({
         x: utils.grid(4),
         y: utils.grid(1),
         talking: [
@@ -1467,8 +1455,8 @@ let maps = {
             ]
           }
         ]
-      },
-      switch: {
+      }),
+      switch: new Person({
         x: utils.grid(5),
         y: utils.grid(5),
         talking: [
@@ -1479,8 +1467,8 @@ let maps = {
             ]
           }
         ]
-      },
-      info: {
+      }),
+      info: new Person({
         x: utils.grid(10),
         y: utils.grid(1),
         talking: [
@@ -1491,7 +1479,7 @@ let maps = {
             ]
           }
         ]
-      }
+      })
     },
     walls: {
       // Top wall.
@@ -1562,15 +1550,15 @@ let maps = {
   HeroHome: {
     lowerSrc: "/images/maps/HeroHomeLower.png",
     upperSrc: "/images/maps/HeroHomeUpper.png",
-    configObjects: {
-      hero: {
+    gameObjects: {
+      hero: new Person({
         isHero: true,
         x: utils.grid(9),
         y: utils.grid(2),
         direction:"left",
         src: "/images/characters/people/red.png"
-      },
-      mom: {
+      }),
+      mom: new Person({
         x: utils.grid(7),
         y: utils.grid(4),
         direction:"left",
@@ -1585,8 +1573,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sink_left: {
+      }),
+      sink_left: new Person({
         x: utils.grid(0),
         y: utils.grid(1),
         talking: [
@@ -1596,8 +1584,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sink_right: {
+      }),
+      sink_right: new Person({
         x: utils.grid(1),
         y: utils.grid(1),
         talking: [
@@ -1608,8 +1596,8 @@ let maps = {
             ]
           }
         ]
-      },
-      display: {
+      }),
+      display: new Person({
         x: utils.grid(2),
         y: utils.grid(1),
         talking: [
@@ -1620,8 +1608,8 @@ let maps = {
             ]
           }
         ]
-      },
-      trash: {
+      }),
+      trash: new Person({
         x: utils.grid(3),
         y: utils.grid(1),
         talking: [
@@ -1631,8 +1619,8 @@ let maps = {
             ]
           }
         ]
-      },
-      tv: {
+      }),
+      tv: new Person({
         x: utils.grid(5),
         y: utils.grid(1),
         talking: [
@@ -1642,7 +1630,7 @@ let maps = {
             ]
           }
         ]
-      },
+      }),
     },
     walls: {
       // Top wall.
@@ -1726,15 +1714,15 @@ let maps = {
   HeroHome2: {
     lowerSrc: "/images/maps/HeroHomeLower.png",
     upperSrc: "/images/maps/HeroHomeUpper.png",
-    configObjects: {
-      hero: {
+    gameObjects: {
+      hero: new Person({
         isHero: true,
         x: utils.grid(3),
         y: utils.grid(8),
         direction:"left",
         src: "/images/characters/people/red.png"
-      },
-      mom: {
+      }),
+      mom: new Person({
         x: utils.grid(7),
         y: utils.grid(4),
         direction:"left",
@@ -1749,8 +1737,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sink_left: {
+      }),
+      sink_left: new Person({
         x: utils.grid(0),
         y: utils.grid(1),
         talking: [
@@ -1760,8 +1748,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sink_right: {
+      }),
+      sink_right: new Person({
         x: utils.grid(1),
         y: utils.grid(1),
         talking: [
@@ -1772,8 +1760,8 @@ let maps = {
             ]
           }
         ]
-      },
-      display: {
+      }),
+      display: new Person({
         x: utils.grid(2),
         y: utils.grid(1),
         talking: [
@@ -1784,8 +1772,8 @@ let maps = {
             ]
           }
         ]
-      },
-      trash: {
+      }),
+      trash: new Person({
         x: utils.grid(3),
         y: utils.grid(1),
         talking: [
@@ -1795,8 +1783,8 @@ let maps = {
             ]
           }
         ]
-      },
-      tv: {
+      }),
+      tv: new Person({
         x: utils.grid(5),
         y: utils.grid(1),
         talking: [
@@ -1806,7 +1794,7 @@ let maps = {
             ]
           }
         ]
-      },
+      }),
     },
     walls: {
       // Top wall.
@@ -1891,15 +1879,15 @@ let maps = {
     lowerSrc: "/images/maps/RivalHomeLower.png",
     upperSrc: "",
     // upperSrc: "/images/maps/RivalHomeUpper.png",
-    configObjects: {
-      hero: {
+    gameObjects: {
+      hero: new Person({
         isHero: true,
         x: utils.grid(4),
         y: utils.grid(8),
         direction: "up",
         src: "/images/characters/people/red.png"
-      },
-      rivalSister: {
+      }),
+      rivalSister: new Person({
         x: utils.grid(5),
         y: utils.grid(4),
         direction: "right",
@@ -1913,8 +1901,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sink_left: {
+      }),
+      sink_left: new Person({
         x: utils.grid(0),
         y: utils.grid(1),
         talking: [
@@ -1924,8 +1912,8 @@ let maps = {
             ]
           }
         ]
-      },
-      sink_right: {
+      }),
+      sink_right: new Person({
         x: utils.grid(1),
         y: utils.grid(1),
         talking: [
@@ -1935,8 +1923,8 @@ let maps = {
             ]
           }
         ]
-      },
-      display: {
+      }),
+      display: new Person({
         x: utils.grid(2),
         y: utils.grid(1),
         talking: [
@@ -1946,8 +1934,8 @@ let maps = {
             ]
           }
         ]
-      },
-      trash: {
+      }),
+      trash: new Person({
         x: utils.grid(3),
         y: utils.grid(1),
         talking: [
@@ -1957,8 +1945,8 @@ let maps = {
             ]
           }
         ]
-      },
-      tv: {
+      }),
+      tv: new Person({
         x: utils.grid(5),
         y: utils.grid(1),
         talking: [
@@ -1968,8 +1956,8 @@ let maps = {
             ]
           }
         ]
-      },
-      picture: {
+      }),
+      picture: new Person({
         x: utils.grid(9),
         y: utils.grid(1),
         talking: [
@@ -1979,8 +1967,8 @@ let maps = {
             ]
           }
         ]
-      },
-      bookshelf_left: {
+      }),
+      bookshelf_left: new Person({
         x: utils.grid(10),
         y: utils.grid(1),
         talking: [
@@ -1990,8 +1978,8 @@ let maps = {
             ]
           }
         ]
-      },
-      bookshelf_left: {
+      }),
+      bookshelf_left: new Person({
         x: utils.grid(11),
         y: utils.grid(1),
         talking: [
@@ -2001,7 +1989,7 @@ let maps = {
             ]
           }
         ]
-      },
+      }),
     },
     walls: {
       // Top wall.
@@ -2075,15 +2063,15 @@ let maps = {
     lowerSrc: "/images/maps/LabLower.png",
     upperSrc: "",
     // upperSrc: "/images/maps/LabUpper.png",
-    configObjects: {
-      hero: {
+    gameObjects: {
+      hero: new Person({
         isHero: true,
         x: utils.grid(6),
         y: utils.grid(12),
         direction: "up",
         src: "/images/characters/people/red.png"
-      },
-      rival: {
+      }),
+      rival: new Person({
         x: utils.grid(5),
         y: utils.grid(4),
         direction: "down",
@@ -2095,8 +2083,8 @@ let maps = {
             ]
           }
         ]
-      },
-      professor: {
+      }),
+      professor: new Person({
         x: utils.grid(6),
         y: utils.grid(3),
         direction: "down",
@@ -2108,7 +2096,7 @@ let maps = {
             ]
           }
         ]
-      }
+      })
     },
     walls: {
       // Top Wall.
