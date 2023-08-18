@@ -6,7 +6,7 @@ class Overworld {
     this.map = null;
 
     // Cutscenes.
-    this.labCutscene = true;
+    this.labCutscene = false;
   }
 
   startGameLoop() {
@@ -118,7 +118,7 @@ class Overworld {
   }
 
   init() {
-    this.startMap(maps.PalletTown);
+    this.startMap(maps.Lab);
 
     // Hero movement.
     this.directionInput = new DirectionInput();
