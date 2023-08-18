@@ -234,7 +234,62 @@ let maps = {
             ]
           }
         ]
-      }
+      },
+      hero_mailbox: {
+        x: utils.grid(4),
+        y: utils.grid(7),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "RED's Home" },
+            ]
+          }
+        ]
+      },
+      rival_mailbox: {
+        x: utils.grid(13),
+        y: utils.grid(7),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "BLUE's Home" },
+            ]
+          }
+        ]
+      },
+      sign_1: {
+        x: utils.grid(9),
+        y: utils.grid(11),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Pallet Town: The Town of Beginnings." },
+            ]
+          }
+        ]
+      },
+      sign_2: {
+        x: utils.grid(16),
+        y: utils.grid(16),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "OAK's Lab" },
+            ]
+          }
+        ]
+      },
+      sign_3: {
+        x: utils.grid(5),
+        y: utils.grid(14),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Trainer Tip: You can interact with this sign by pressing space/enter!" },
+            ]
+          }
+        ]
+      },
     },
     walls: {
       // Top Wall.
@@ -449,7 +504,29 @@ let maps = {
             { type: "changeMap", map: "Lab" }
           ]
         }
-      ]
+      ],
+      [utils.asGridCoord(12, 0)]: [
+        {
+          events: [
+            { type: "message", text: "Ah yes the void." },
+            { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
+            { type: "message", text: "Time to head to OAK's lab." },
+            { who: "hero", type: "stand", direction: "down" },
+          ]
+        }
+      ],
+      [utils.asGridCoord(13, 0)]: [
+        {
+          events: [
+            { type: "message", text: "Ah yes the void." },
+            { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
+            { type: "message", text: "Time to head to OAK's lab." },
+            { who: "hero", type: "stand", direction: "down" },
+          ]
+        }
+      ],
     }
   },
   PalletTown2: {
@@ -516,7 +593,62 @@ let maps = {
             ]
           }
         ]
-      }
+      },
+      hero_mailbox: {
+        x: utils.grid(4),
+        y: utils.grid(7),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "RED's Home" },
+            ]
+          }
+        ]
+      },
+      rival_mailbox: {
+        x: utils.grid(13),
+        y: utils.grid(7),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "BLUE's Home" },
+            ]
+          }
+        ]
+      },
+      sign_1: {
+        x: utils.grid(9),
+        y: utils.grid(11),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Pallet Town: The Town of Beginnings." },
+            ]
+          }
+        ]
+      },
+      sign_2: {
+        x: utils.grid(16),
+        y: utils.grid(16),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "OAK's Lab" },
+            ]
+          }
+        ]
+      },
+      sign_3: {
+        x: utils.grid(5),
+        y: utils.grid(14),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Trainer Tip: You can interact with this sign by pressing space/enter!" },
+            ]
+          }
+        ]
+      },
     },
     walls: {
       // Top Wall.
@@ -731,7 +863,29 @@ let maps = {
             { type: "changeMap", map: "Lab" }
           ]
         }
-      ]
+      ],
+      [utils.asGridCoord(12, 0)]: [
+        {
+          events: [
+            { type: "message", text: "Ah yes the void." },
+            { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
+            { type: "message", text: "Time to head to OAK's lab." },
+            { who: "hero", type: "stand", direction: "down" },
+          ]
+        }
+      ],
+      [utils.asGridCoord(13, 0)]: [
+        {
+          events: [
+            { type: "message", text: "Ah yes the void." },
+            { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
+            { type: "message", text: "Time to head to OAK's lab." },
+            { who: "hero", type: "stand", direction: "down" },
+          ]
+        }
+      ],
     }
   },
   PalletTown3: {
@@ -741,7 +895,7 @@ let maps = {
       hero: {
         isHero: true,
         x: utils.grid(16),
-        y: utils.grid(14),
+        y: utils.grid(13),
         direction: "down",
         src: "/images/characters/people/red.png"
       },
@@ -798,7 +952,62 @@ let maps = {
             ]
           }
         ]
-      }
+      },
+      hero_mailbox: {
+        x: utils.grid(4),
+        y: utils.grid(7),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "RED's Home" },
+            ]
+          }
+        ]
+      },
+      rival_mailbox: {
+        x: utils.grid(13),
+        y: utils.grid(7),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "BLUE's Home" },
+            ]
+          }
+        ]
+      },
+      sign_1: {
+        x: utils.grid(9),
+        y: utils.grid(11),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Pallet Town: The Town of Beginnings." },
+            ]
+          }
+        ]
+      },
+      sign_2: {
+        x: utils.grid(16),
+        y: utils.grid(16),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "OAK's Lab" },
+            ]
+          }
+        ]
+      },
+      sign_3: {
+        x: utils.grid(5),
+        y: utils.grid(14),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "Trainer Tip: You can interact with this sign by pressing space/enter!" },
+            ]
+          }
+        ]
+      },
     },
     walls: {
       // Top Wall.
@@ -1013,7 +1222,29 @@ let maps = {
             { type: "changeMap", map: "Lab" }
           ]
         }
-      ]
+      ],
+      [utils.asGridCoord(12, 0)]: [
+        {
+          events: [
+            { type: "message", text: "Ah yes the void." },
+            { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
+            { type: "message", text: "Time to head to OAK's lab." },
+            { who: "hero", type: "stand", direction: "down" },
+          ]
+        }
+      ],
+      [utils.asGridCoord(13, 0)]: [
+        {
+          events: [
+            { type: "message", text: "Ah yes the void." },
+            { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
+            { type: "message", text: "Time to head to OAK's lab." },
+            { who: "hero", type: "stand", direction: "down" },
+          ]
+        }
+      ],
     }
   },
   HeroBedroom: {
@@ -1022,12 +1253,82 @@ let maps = {
     upperSrc: "",
     configObjects: {
       hero: {
-        type: "person",
         isHero: true,
         x: utils.grid(3),
         y: utils.grid(6),
         direction: "down",
         src: "/images/characters/people/red.png"
+      },
+      computer: {
+        x: utils.grid(0),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "You remember how you lost your past five League of Legends games." },
+              { type: "message", text: "You're not in the mood to use the computer right now." }
+            ]
+          }
+        ]
+      },
+      cabinet: {
+        x: utils.grid(2),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "There's multiple versions of your current outfit." },
+            ]
+          }
+        ]
+      },
+      bookshelf_left: {
+        x: utils.grid(3),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "It's full of comic books and manga." },
+              { type: "message", text: "Guess you're not much of a reader." },
+            ]
+          }
+        ]
+      },
+      bookshelf_right: {
+        x: utils.grid(4),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "It's full of comic books and manga." },
+              { type: "message", text: "Guess you're not much of a reader." },
+            ]
+          }
+        ]
+      },
+      switch: {
+        x: utils.grid(5),
+        y: utils.grid(5),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "It's the switch your dad got you for your 8th birthday." },
+              { type: "message", text: "He's been getting the milk for the past 2 years now." },
+            ]
+          }
+        ]
+      },
+      info: {
+        x: utils.grid(10),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "To-Do List:" },
+              { type: "message", text: "There's nothing written here." },
+            ]
+          }
+        ]
       }
     },
     walls: {
@@ -1090,10 +1391,10 @@ let maps = {
       [utils.asGridCoord(8, 2)]: [
         {
           events: [
-            { type: "changeMap", map: "HeroHome", coords: "8,2" }
+            { type: "changeMap", map: "HeroHome" }
           ]
         }
-      ]
+      ],
     },
   },
   HeroBedroom2: {
@@ -1102,12 +1403,82 @@ let maps = {
     upperSrc: "",
     configObjects: {
       hero: {
-        type: "person",
         isHero: true,
         x: utils.grid(9),
         y: utils.grid(2),
-        direction: "right",
+        direction: "down",
         src: "/images/characters/people/red.png"
+      },
+      computer: {
+        x: utils.grid(0),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "You remember how you lost your past five League of Legends games." },
+              { type: "message", text: "You're not in the mood to use the computer right now." }
+            ]
+          }
+        ]
+      },
+      cabinet: {
+        x: utils.grid(2),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "There's multiple versions of your current outfit." },
+            ]
+          }
+        ]
+      },
+      bookshelf_left: {
+        x: utils.grid(3),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "It's full of comic books and manga." },
+              { type: "message", text: "Guess you're not much of a reader." },
+            ]
+          }
+        ]
+      },
+      bookshelf_right: {
+        x: utils.grid(4),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "It's full of comic books and manga." },
+              { type: "message", text: "Guess you're not much of a reader." },
+            ]
+          }
+        ]
+      },
+      switch: {
+        x: utils.grid(5),
+        y: utils.grid(5),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "It's the switch your dad got you for your 8th birthday." },
+              { type: "message", text: "He's been getting the milk for the past 2 years now." },
+            ]
+          }
+        ]
+      },
+      info: {
+        x: utils.grid(10),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "To-Do List:" },
+              { type: "message", text: "There's nothing written here." },
+            ]
+          }
+        ]
       }
     },
     walls: {
@@ -1170,10 +1541,10 @@ let maps = {
       [utils.asGridCoord(8, 2)]: [
         {
           events: [
-            { type: "changeMap", map: "HeroHome", coords: "8,2" }
+            { type: "changeMap", map: "HeroHome" }
           ]
         }
-      ]
+      ],
     },
   },
   HeroHome: {
@@ -1202,7 +1573,64 @@ let maps = {
             ]
           }
         ]
-      }
+      },
+      sink_left: {
+        x: utils.grid(0),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "You washed your hands with soap." },
+            ]
+          }
+        ]
+      },
+      sink_right: {
+        x: utils.grid(1),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "You realize there's only one stove top." },
+              { type: "message", text: "You begin questioning everything." },
+            ]
+          }
+        ]
+      },
+      display: {
+        x: utils.grid(2),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "This is where your trophies are supposed to be." },
+              { type: "message", text: "It's empty." },
+            ]
+          }
+        ]
+      },
+      trash: {
+        x: utils.grid(3),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "There's nothing in the trash can." },
+            ]
+          }
+        ]
+      },
+      tv: {
+        x: utils.grid(5),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "This is a TV." },
+            ]
+          }
+        ]
+      },
     },
     walls: {
       // Top wall.
@@ -1291,7 +1719,7 @@ let maps = {
         isHero: true,
         x: utils.grid(3),
         y: utils.grid(8),
-        direction:"up",
+        direction:"left",
         src: "/images/characters/people/red.png"
       },
       mom: {
@@ -1309,7 +1737,64 @@ let maps = {
             ]
           }
         ]
-      }
+      },
+      sink_left: {
+        x: utils.grid(0),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "You washed your hands with soap." },
+            ]
+          }
+        ]
+      },
+      sink_right: {
+        x: utils.grid(1),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "You realize there's only one stove top." },
+              { type: "message", text: "You begin questioning everything." },
+            ]
+          }
+        ]
+      },
+      display: {
+        x: utils.grid(2),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "This is where your trophies are supposed to be." },
+              { type: "message", text: "It's empty." },
+            ]
+          }
+        ]
+      },
+      trash: {
+        x: utils.grid(3),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "There's nothing in the trash can." },
+            ]
+          }
+        ]
+      },
+      tv: {
+        x: utils.grid(5),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "This is a TV." },
+            ]
+          }
+        ]
+      },
     },
     walls: {
       // Top wall.
@@ -1416,7 +1901,95 @@ let maps = {
             ]
           }
         ]
-      }
+      },
+      sink_left: {
+        x: utils.grid(0),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "You try washing your hands, but there was no soap." },
+            ]
+          }
+        ]
+      },
+      sink_right: {
+        x: utils.grid(1),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "You question why every house only has one stove top." },
+            ]
+          }
+        ]
+      },
+      display: {
+        x: utils.grid(2),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "It's filled to the max with trophies." },
+            ]
+          }
+        ]
+      },
+      trash: {
+        x: utils.grid(3),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "There's nothing in the trash can." },
+            ]
+          }
+        ]
+      },
+      tv: {
+        x: utils.grid(5),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "This is a TV." },
+            ]
+          }
+        ]
+      },
+      picture: {
+        x: utils.grid(9),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "It's a picture of BLUE and his family enjoying a picnic." },
+            ]
+          }
+        ]
+      },
+      bookshelf_left: {
+        x: utils.grid(10),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "There are many scholary books written by famous philosophers and mathematicians." },
+            ]
+          }
+        ]
+      },
+      bookshelf_left: {
+        x: utils.grid(11),
+        y: utils.grid(1),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "There are many scholary books written by famous philosophers and mathematicians." },
+            ]
+          }
+        ]
+      },
     },
     walls: {
       // Top wall.

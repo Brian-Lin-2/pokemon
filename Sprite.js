@@ -8,10 +8,12 @@ class Sprite {
     }
 
     // Shadow.
-    this.shadow = new Image();
-    this.shadow.src = "/images/characters/shadow.png";
-    this.shadow.onload = () => {
+    if (config.src) {
+      this.shadow = new Image();
+      this.shadow.src = "/images/characters/shadow.png";
+      this.shadow.onload = () => {
       this.isShadowLoaded = true;
+    }
     }
 
     // Configure Animation and Initial State.
