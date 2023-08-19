@@ -66,7 +66,10 @@ class Map {
         event: events[i],
         map: this,
       })
-      await eventHandler.init();
+      const result = await eventHandler.init();
+      if (result == false) {
+        break;
+      }
     }
 
     this.isCutscenePlaying = false;

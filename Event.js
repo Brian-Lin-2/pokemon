@@ -75,8 +75,8 @@ class Event {
     const menu = new ConfirmMenu({
       heroTeam: this.event.hero,
       rivalTeam: this.event.rival,
-      onComplete: () => {
-        resolve();
+      onComplete: (confirm) => {
+        resolve(confirm);
       }
     })
 

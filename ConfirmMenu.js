@@ -13,14 +13,14 @@ class ConfirmMenu {
           heroTeam = this.heroTeam;
           rivalTeam = this.rivalTeam;
           this.close();
-          this.onComplete();
+          this.onComplete(true);
         }
       },
       { 
         label: "No",
         handler: () => {
           this.close();
-          this.onComplete();
+          this.onComplete(false);
         }
       },
     ]
@@ -33,7 +33,6 @@ class ConfirmMenu {
   close() {
     this.keyboardMenu.end();
     this.element.remove();
-    this.onComplete();
   }
 
   init(container) {
