@@ -82,7 +82,13 @@ class Map {
     });
 
     if (!this.isCutscenePlaying && match && match.talking.length > 0) {
-      this.startCutscene(match.talking[0].events);
+      const scenario = match.talking.find(scenario => {
+        return (scenario.required || []).every(cp => {
+          return playerState.checkpoint[cp];
+        })
+      })
+
+      scenario && this.startCutscene(scenario.events);
     }
   }
 
@@ -137,9 +143,16 @@ let maps = {
         y: utils.grid(9),
         talking: [
           {
+            required: ["CHOSEN_POKEMON_HERO"],
+            events: [
+              { type: "message", text: "You already chose a Pokemon!" },
+            ]
+          },
+          {
             events: [
               { type: "message", text: "test" },
               { type: "addPokemon", hero: "001", rival: "004" },
+              { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_HERO" },
             ]
           }
         ]

@@ -111,6 +111,12 @@ class Event {
     });
   }
 
+  addCheckpoint(resolve) {
+    // Global variable in PlayerState.js.
+    playerState.checkpoint[this.event.checkpoint] = true;
+    resolve();
+  }
+
   init() {
     return new Promise(resolve => {
       this[this.event.type](resolve)
