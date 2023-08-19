@@ -4,7 +4,6 @@ class RevealingText {
     this.element = config.element;
     
     this.text = config.text;
-    this.menu = config.menu;
     this.button = config.button;
     this.speed = config.speed || 30;
 
@@ -22,12 +21,9 @@ class RevealingText {
         this.revealOneCharacter(list, type);
       }, next.delayAfter)
     } 
-    else if (type == "text-message") {
+    else {
       this.button.classList.add("revealed");
       this.isDone = true;
-    }
-    else if (type == "confirm-message") {
-      console.log("confirm");
     }
   }
 

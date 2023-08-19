@@ -72,10 +72,15 @@ class Event {
   }
 
   addPokemon(resolve) {
-    // Global variables from Battle.js
-    heroTeam = this.event.hero;
-    rivalTeam = this.event.rival;
-    resolve();
+    const menu = new ConfirmMenu({
+      heroTeam: this.event.hero,
+      rivalTeam: this.event.rival,
+      onComplete: () => {
+        resolve();
+      }
+    })
+
+    menu.init(document.querySelector(".game-container"));
   }
 
   wait(resolve) {

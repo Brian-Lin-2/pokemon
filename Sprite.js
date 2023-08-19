@@ -12,8 +12,8 @@ class Sprite {
       this.shadow = new Image();
       this.shadow.src = "/images/characters/shadow.png";
       this.shadow.onload = () => {
-      this.isShadowLoaded = true;
-    }
+        this.isShadowLoaded = true;
+      }
     }
 
     // Configure Animation and Initial State.

@@ -18,7 +18,6 @@ class TextMessage {
     this.revealingText = new RevealingText({
       element: this.element.querySelector(".textMessage_p"),
       text: this.text,
-      menu: this.element.querySelector(".textMessage_menu"),
       button: this.element.querySelector(".textMessage_button"),
     })
 

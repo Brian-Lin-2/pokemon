@@ -49,7 +49,6 @@ class Map {
 
   mountObjects() {
     Object.keys(this.gameObjects).forEach(key => {
-      console.log(this.gameObjects[key]);
       // Key allows us to identify a specific sprite.
       let object = this.gameObjects[key];
       object.id = key;
@@ -133,6 +132,18 @@ let maps = {
           }
         ]
       }),
+      pokeball: new Pokeball({
+        x: utils.grid(3),
+        y: utils.grid(9),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "test" },
+              { type: "addPokemon", hero: "001", rival: "004" },
+            ]
+          }
+        ]
+      })
     },
     walls: {
       // Dynamic key equivalent to "num, num": true
@@ -2096,7 +2107,46 @@ let maps = {
             ]
           }
         ]
-      })
+      }),
+      bulbasaur: new Pokeball({
+        x: utils.grid(8),
+        y: utils.grid(4),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "bulba" },
+              { type: "addPokemon", hero: "001", rival: "004" },
+              { type: "battle" }
+            ]
+          }
+        ]
+      }),
+      charmander: new Pokeball({
+        x: utils.grid(9),
+        y: utils.grid(4),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "char" },
+              { type: "addPokemon", hero: "004", rival: "007" },
+              { type: "battle" }
+            ]
+          }
+        ]
+      }),
+      squirtle: new Pokeball({
+        x: utils.grid(10),
+        y: utils.grid(4),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "squir" },
+              { type: "addPokemon", hero: "007", rival: "001" },
+              { type: "battle" }
+            ]
+          }
+        ]
+      }),
     },
     walls: {
       // Top Wall.
