@@ -99,8 +99,14 @@ class Map {
     const hero = this.gameObjects["hero"];
     const match = this.cutsceneSpaces[ `${hero.x},${hero.y}`]
 
-    if (!this.isCutscenePlaying && match) {
-      this.startCutscene(match[0].events);
+    if (!this.isCutscenePlaying && match && match.length > 0) {
+      const scenario = match.find(scenario => {
+        return (scenario.required || []).every(cp => {
+          return playerState.checkpoint[cp];
+        })
+      })
+
+      scenario && this.startCutscene(scenario.events);
     }
   }
 }
@@ -2294,11 +2300,17 @@ let maps = {
       ],
       [utils.asGridCoord(6, 8)]: [
         {
+          required: ["CHOSEN_POKEMON_FINISHED"],
           events: [
             { type: "message", text: "BLUE: Hold on!" },
             { type: "battle" }
           ]
-        }
+        },
+        {
+          events: [
+            { type: "message", text: "test" },
+          ]
+        },
       ],
       [utils.asGridCoord(7, 8)]: [
         {

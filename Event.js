@@ -110,10 +110,6 @@ class Event {
     battle.init(document.querySelector(".game-container"));
   }
 
-  condition(resolve) {
-   
-  }
-
   changeMap(resolve) {
     // Remove object data from old maps.
     Object.values(this.map.gameObjects).forEach(obj => {
