@@ -10,7 +10,7 @@ let moves = {
     name: "Tackle",
     success: [
       { type: "message", text: "{POKÉMON} uses Tackle!" },
-      { type: "change", damage: 5 }
+      { type: "change", damage: 30 }
     ]
   },
   growl: {

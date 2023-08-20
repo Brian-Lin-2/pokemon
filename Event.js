@@ -55,12 +55,6 @@ class Event {
   }
 
   message(resolve) {
-    //  // For rival battle. Makes sure hero has a Pokemon.
-    //  if (!playerState.checkpoint[this.event.checkpoint] || playerState.checkpoint["POKEMON_BATTLE_FINISHED"]) {
-    //   resolve();
-    //   return;
-    // }
-
     // Makes only the indicated direction interactable.
     if (this.event.interact && this.map.gameObjects["hero"].direction != this.event.interact) {
       resolve();
@@ -110,7 +104,7 @@ class Event {
     battle.init(document.querySelector(".game-container"));
   }
 
-  changeMap(resolve) {
+  changeMap(resolve) {    
     // Remove object data from old maps.
     Object.values(this.map.gameObjects).forEach(obj => {
       obj.isMounted = false;
@@ -128,6 +122,11 @@ class Event {
     // Global variable in PlayerState.js.
     playerState.checkpoint[this.event.checkpoint] = true;
     resolve();
+  }
+
+  removeCheckpoint(resolve) {
+     playerState.checkpoint[this.event.checkpoint] = false;
+     resolve();
   }
 
   init() {

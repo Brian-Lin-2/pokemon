@@ -6,6 +6,7 @@ class Overworld {
     this.map = null;
 
     // Cutscenes.
+    this.homeCutscene = false;
     this.labCutscene = false;
   }
 
@@ -67,25 +68,29 @@ class Overworld {
     this.map.overworld = this;
     this.map.mountObjects();
 
-    // if (map.lowerSrc === "/images/maps/HeroHomeLower.png") {
-    //   this.map.startCutscene([
-    //     { who: "mom", type:"stand", direction: "left", time: 1000 },
-    //     { type: "message", text: "Oh!" },
-    //     { who: "mom", type:"stand", direction: "right", time: 500 },
-    //     { type: "message", text: "You're finally up!" },
-    //     { type: "message", text: "You're going to be late." },
-    //     { type: "message", text: "The professor was looking for you." },
-    //     { type: "message", text: "wait..." },
-    //     { who: "mom", type:"walk", direction: "right" },
-    //     { who: "mom", type:"walk", direction: "up" },
-    //     { who: "mom", type:"walk", direction: "up" },
-    //     { who: "mom", type:"stand", direction: "right" },
-    //     { type: "message", text: "Did you wet your bed again?" },
-    //     { type: "message", text: "You were talking about striking down giratina." },
-    //     { type: "message", text: "What a loser haha." },
-    //     { type: "message", text: "Move along now kiddo." },
-    //   ])
-    // }
+    if (this.homeCutscene && map.lowerSrc === "/images/maps/HeroHomeLower.png") {
+      this.map.startCutscene([
+        { who: "mom", type:"stand", direction: "left", time: 1000 },
+        { type: "message", text: "Mom: Oh!" },
+        { who: "mom", type:"stand", direction: "right", time: 500 },
+        { type: "message", text: "You're finally up!" },
+        { who: "mom", type:"walk", direction: "right" },
+        { who: "mom", type:"walk", direction: "up" },
+        { who: "mom", type:"walk", direction: "up" },
+        { who: "mom", type:"stand", direction: "right" },
+        { type: "message", text: "You're going to be late." },
+        { type: "message", text: "The professor was looking for you." },
+        { type: "message", text: "I can't believe my son is all grown up now." },
+        { type: "message", text: "Becoming a POKÉMON trainer just like your father!" },
+        { type: "message", text: "Make sure to call me sometimes okay?" },
+        { who: "mom", type:"walk", direction: "left" },
+        { who: "mom", type:"walk", direction: "down" },
+        { who: "mom", type:"walk", direction: "down" },
+        { who: "mom", type:"stand", direction: "left" },
+      ])
+
+      this.homeCutscene = false;
+    }
 
     if (this.labCutscene && map.lowerSrc === "/images/maps/LabLower.png") {
       this.map.startCutscene([
