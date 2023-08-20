@@ -9,6 +9,8 @@ class Pokeball extends GameObject {
 
   update() {
     // Removes the Pokeball.
-    this.sprite.src = "";
+    if (playerState.checkpoint["CHOSEN_POKEMON_HERO"]) {
+      this.sprite.image.src = "";
+    }
   }
 }

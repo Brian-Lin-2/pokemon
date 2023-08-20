@@ -73,6 +73,7 @@ class Event {
 
   addPokemon(resolve) {
     const menu = new ConfirmMenu({
+      name: this.event.name,
       heroTeam: this.event.hero,
       rivalTeam: this.event.rival,
       onComplete: (confirm) => {

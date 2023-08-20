@@ -1,5 +1,6 @@
 class ConfirmMenu {
-  constructor({ heroTeam, rivalTeam, onComplete }) {
+  constructor({ name, heroTeam, rivalTeam, onComplete }) {
+    this.name = name;
     this.heroTeam = heroTeam;
     this.rivalTeam = rivalTeam;
     this.onComplete = onComplete;
@@ -37,7 +38,9 @@ class ConfirmMenu {
 
   init(container) {
     this.createElement();
-    this.keyboardMenu = new KeyboardMenu();
+    this.keyboardMenu = new KeyboardMenu({
+      type: "pokeball", name: this.name
+    });
     this.keyboardMenu.init(this.element);
     this.keyboardMenu.setOptions(this.getOptions());
 

@@ -67,7 +67,10 @@ class BattleMenu {
   }
 
   showMenu(container) {
-    this.keyboardMenu = new KeyboardMenu();
+    this.keyboardMenu = new KeyboardMenu({
+      type: "battle", name: this.trainer.name
+    }
+    );
     this.keyboardMenu.init(container);
 
     // Creates a player UI.

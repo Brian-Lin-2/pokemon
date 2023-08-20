@@ -1,5 +1,5 @@
 class KeyboardMenu {
-  constructor() {
+  constructor({ type, name }) {
     this.options = [];
     this.up = null;
     this.down = null;
@@ -8,6 +8,14 @@ class KeyboardMenu {
     this.confirm = null;
     this.current = 0;
     this.onStart = true;
+
+    // Different text based on type.
+    if (type == "battle") {
+      this.text = `What will ${name} do?`
+    }
+    else if (type == "pokeball") {
+      this.text = `Do you want to choose ${name}?`
+    }
   }
 
   setOptions(options) {
@@ -47,7 +55,7 @@ class KeyboardMenu {
       this.onStart = false;
     }
     
-    this.textBox.innerHTML = (`<p class="textMessage_p">What will you do?</p>`);
+    this.textBox.innerHTML = (`<p class="textMessage_p battleMessage">${this.text}</p>`);
     this.textBoxText = this.textBox.querySelector("p");
   }
 

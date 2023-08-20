@@ -36,3 +36,7 @@
 .option {
   display: flex;
 }
+
+.battleMessage {
+  width: 50%;
+}
