@@ -123,8 +123,6 @@ class Map {
   }
 }
 
-// Brute force implementation for hero spawn.
-// Fix later not the most efficient.
 let maps = {
   Demo: {
     lowerSrc: "/images/maps/DemoLower.png",
@@ -529,21 +527,21 @@ let maps = {
       [utils.asGridCoord(6, 7)]: [
         {
           events: [
-            { type: "changeMap", map: "HeroHome2" }
+            { type: "changeMap", map: "HeroHome", heroPosition: { x: 3, y: 8, direction: "up" } }
           ]
         }
       ],
       [utils.asGridCoord(15, 7)]: [
         {
           events: [
-            { type: "changeMap", map: "RivalHome" }
+            { type: "changeMap", map: "RivalHome", heroPosition: { x: 4, y: 8, direction: "up" } }
           ]
         }
       ],
       [utils.asGridCoord(16, 13)]: [
         {
           events: [
-            { type: "changeMap", map: "Lab" }
+            { type: "changeMap", map: "Lab", heroPosition: { x: 6, y: 12, direction: "up" } }
           ]
         }
       ],
@@ -726,7 +724,7 @@ let maps = {
       [utils.asGridCoord(8, 2)]: [
         {
           events: [
-            { type: "changeMap", map: "HeroHome" }
+            { type: "changeMap", map: "HeroHome", heroPosition: { x: 9, y: 2, direction: "left" } }
           ]
         }
       ],
@@ -890,14 +888,14 @@ let maps = {
       [utils.asGridCoord(10, 2)]: [
         {
           events: [
-            { type: "changeMap", map: "HeroBedroom2" }
+            { type: "changeMap", map: "HeroBedroom", heroPosition: { x: 9, y: 2, direction: "right" } }
           ]
         }
       ],
       [utils.asGridCoord(3, 9)]: [
         {
           events: [
-            { type: "changeMap", map: "PalletTown" }
+            { type: "changeMap", map: "PalletTown", heroPosition: { x: 6, y: 8, direction: "down" }  }
           ]
         }
       ]
@@ -1016,7 +1014,7 @@ let maps = {
           }
         ]
       },
-      bookshelf_left: {
+      bookshelf_right: {
         type: "Person",
         x: utils.grid(11),
         y: utils.grid(1),
@@ -1091,7 +1089,7 @@ let maps = {
       [utils.asGridCoord(4, 9)]: [
         {
           events: [
-            { type: "changeMap", map: "PalletTown2" }
+            { type: "changeMap", map: "PalletTown", heroPosition: { x: 15, y: 8, direction: "down" } }
           ]
         }
       ],
@@ -1352,7 +1350,7 @@ let maps = {
       [utils.asGridCoord(6, 13)]: [
         {
           events: [
-            { type: "changeMap", map: "PalletTown3" }
+            { type: "changeMap", map: "PalletTown", heroPosition: { x: 16, y: 14, direction: "down" } }
           ]
         }
       ],

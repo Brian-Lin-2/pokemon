@@ -110,12 +110,24 @@ class Event {
       obj.isMounted = false;
     });
 
+    // Update hero position in data.
+    let hero = maps[this.event.map].configObjects.hero;
+    hero.x = utils.grid(this.event.heroPosition.x);
+    hero.y = utils.grid(this.event.heroPosition.y);
+    hero.direction = this.event.heroPosition.direction;
+
     const sceneTransition = new SceneTransition();
     sceneTransition.init(document.querySelector(".game-container"), () => {
       this.map.overworld.startMap(maps[this.event.map]);
       resolve();
       sceneTransition.fadeOut();
     });
+  }
+
+  updateHero(resolve) {
+    // Update hero position. Global variable in Map.js
+    heroPosition = this.event.heroPosition;
+    resolve();
   }
 
   addCheckpoint(resolve) {
