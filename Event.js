@@ -55,6 +55,12 @@ class Event {
   }
 
   message(resolve) {
+    //  // For rival battle. Makes sure hero has a Pokemon.
+    //  if (!playerState.checkpoint[this.event.checkpoint] || playerState.checkpoint["POKEMON_BATTLE_FINISHED"]) {
+    //   resolve();
+    //   return;
+    // }
+
     // Makes only the indicated direction interactable.
     if (this.event.interact && this.map.gameObjects["hero"].direction != this.event.interact) {
       resolve();
@@ -72,16 +78,22 @@ class Event {
   }
 
   addPokemon(resolve) {
-    const menu = new ConfirmMenu({
-      name: this.event.name,
-      heroTeam: this.event.hero,
-      rivalTeam: this.event.rival,
-      onComplete: (confirm) => {
-        resolve(confirm);
-      }
-    })
+    // Rival auto chooses a Pokemon.
+    if (this.event.rival) {
+      rivalTeam = this.event.rival;
+      resolve();
+    }
+    else {
+      const menu = new ConfirmMenu({
+        name: this.event.name,
+        heroTeam: this.event.hero,
+        onComplete: (confirm) => {
+          resolve(confirm);
+        }
+      })
 
-    menu.init(document.querySelector(".game-container"));
+      menu.init(document.querySelector(".game-container"));
+    }
   }
 
   wait(resolve) {
@@ -96,6 +108,10 @@ class Event {
     });
 
     battle.init(document.querySelector(".game-container"));
+  }
+
+  condition(resolve) {
+   
   }
 
   changeMap(resolve) {

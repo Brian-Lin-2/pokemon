@@ -147,16 +147,13 @@ let maps = {
         talking: [
           {
             required: ["CHOSEN_POKEMON_HERO"],
-            events: [
-              { type: "message", text: "You already chose a Pokemon!" },
-            ]
+            events: []
           },
           {
             events: [
               { type: "message", text: "test" },
               { type: "addPokemon", name: "BULBASAUR", hero: "001", rival: "004" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_HERO" },
-              { type: "battle" },
             ]
           }
         ]
@@ -2106,6 +2103,12 @@ let maps = {
         src: "images/characters/people/blue.png",
         talking: [
           {
+            required: ["CHOSEN_POKEMON_FINISHED"],
+            events: [
+              { type: "message", text: "Ha! Your POKÉMON is weak just like you.", faceHero: "rival" },
+            ]
+          },
+          {
             events: [
               { type: "message", text: "Hurry up and choose!", faceHero: "rival" },             
             ]
@@ -2119,6 +2122,12 @@ let maps = {
         src: "images/characters/people/professor.png",
         talking: [
           {
+            required: ["CHOSEN_POKEMON_FINISHED"],
+            events: [
+              { type: "message", text: "The bonds you create with your POKÉMON will last a lifetime!", faceHero: "professor" },
+            ]
+          },
+          {
             events: [
               { type: "message", text: "Take your time there's no rush.", faceHero:"professor" },             
             ]
@@ -2126,40 +2135,60 @@ let maps = {
         ]
       }),
       bulbasaur: new Pokeball({
+        checkpoint: "CHOSEN_POKEMON_BULBASAUR",
         x: utils.grid(8),
         y: utils.grid(4),
         talking: [
           {
+            required: ["CHOSEN_POKEMON_FINISHED"],
+            events: []
+          },
+          {
             events: [
-              { type: "message", text: "bulba" },
-              { type: "addPokemon", hero: "001", rival: "004" },
-              { type: "battle" }
+              { type: "message", text: "Ah! BULBASAUR is a fine choice." },
+              { type: "addPokemon", name: "BULBASAUR", hero: "001" },
+              { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_BULBASAUR" },
+              { type: "addPokemon", name: "CHARMANDER", rival: "004" },
+              { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_CHARMANDER" },
+              { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_FINISHED" },
             ]
           }
         ]
       }),
       charmander: new Pokeball({
+        checkpoint: "CHOSEN_POKEMON_CHARMANDER",
         x: utils.grid(9),
         y: utils.grid(4),
         talking: [
           {
+            required: ["CHOSEN_POKEMON_FINISHED"],
+            events: []
+          },
+          {
             events: [
-              { type: "message", text: "char" },
-              { type: "addPokemon", hero: "004", rival: "007" },
-              { type: "battle" }
+              { type: "message", text: "Ah! CHARMANDER is a fine choice." },
+              { type: "addPokemon", name: "CHARMANDER", hero: "004", rival: "007" },
+              { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_HERO" },
+              { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_CHARMANDER" },
             ]
           }
         ]
       }),
       squirtle: new Pokeball({
+        checkpoint: "CHOSEN_POKEMON_SQUIRTLE",
         x: utils.grid(10),
         y: utils.grid(4),
         talking: [
           {
+            required: ["CHOSEN_POKEMON_FINISHED"],
+            events: []
+          },
+          {
             events: [
-              { type: "message", text: "squir" },
-              { type: "addPokemon", hero: "007", rival: "001" },
-              { type: "battle" }
+              { type: "message", text: "Ah! SQUIRTLE is a fine choice." },
+              { type: "addPokemon", name: "SQUIRTLE", hero: "007", rival: "001" },
+              { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_HERO" },
+              { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_SQUIRTLE" },
             ]
           }
         ]
@@ -2260,6 +2289,28 @@ let maps = {
         {
           events: [
             { type: "changeMap", map: "PalletTown3" }
+          ]
+        }
+      ],
+      [utils.asGridCoord(6, 8)]: [
+        {
+          events: [
+            { type: "message", text: "BLUE: Hold on!" },
+            { type: "battle" }
+          ]
+        }
+      ],
+      [utils.asGridCoord(7, 8)]: [
+        {
+          events: [
+            { type: "battle" }
+          ]
+        }
+      ],
+      [utils.asGridCoord(8, 8)]: [
+        {
+          events: [
+            { type: "battle" }
           ]
         }
       ],

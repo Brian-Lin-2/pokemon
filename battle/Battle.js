@@ -1,6 +1,7 @@
 class Battle {
   constructor({ onComplete }) {
     this.onComplete = onComplete;
+
     this.trainers = {
       "hero": new Pokemon({
         ...info[heroTeam],

@@ -1,8 +1,7 @@
 class ConfirmMenu {
-  constructor({ name, heroTeam, rivalTeam, onComplete }) {
+  constructor({ name, heroTeam, onComplete }) {
     this.name = name;
     this.heroTeam = heroTeam;
-    this.rivalTeam = rivalTeam;
     this.onComplete = onComplete;
   }
 
@@ -10,9 +9,8 @@ class ConfirmMenu {
     return [
       { label: "Yes",
         handler: () => {
-          // Global variables from Battle.js
-          heroTeam = this.heroTeam;
-          rivalTeam = this.rivalTeam;
+          // Global variable from Battle.js
+          heroTeam = this.heroTeam
           this.close();
           this.onComplete(true);
         }
