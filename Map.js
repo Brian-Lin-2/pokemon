@@ -175,9 +175,6 @@ let maps = {
           },
           {
             events: [
-              { type: "message", text: "test" },
-              { type: "addPokemon", name: "BULBASAUR", hero: "001", rival: "004" },
-              { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_HERO" },
             ]
           }
         ]

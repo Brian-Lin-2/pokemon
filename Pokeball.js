@@ -4,7 +4,8 @@ class Pokeball extends GameObject {
     this.checkpoint = config.checkpoint;
     this.sprite = new Sprite({
       gameObject: this,
-      src: "./images/other/pokeball-2.png",
+      src: "./images/other/pokeball.png",
+      pokeball: true,
     })
   }
 

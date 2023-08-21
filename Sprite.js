@@ -80,7 +80,7 @@ class Sprite {
       32, 48, // right, bottom
       x, y, // position
       16, 24 // size
-    )
+    );
 
     this.updateAnimationProgress();
   }
