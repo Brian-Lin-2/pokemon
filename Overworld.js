@@ -9,7 +9,7 @@ class Overworld {
     this.tutorialCutscene = true;
     this.homeCutscene = false;
     this.labCutscene = false;
-    this.endCutscene = true;
+    this.endCutscene = false;
   }
 
   startGameLoop() {
@@ -50,9 +50,17 @@ class Overworld {
   }
 
   checkActionInput() {
-    // Checks for interactivity with objects.
+    // Checks for interactivity with objects. Exits are not included.
     new KeyPressListener("Space", () => {
-      this.map.interact();
+      this.map.interact({ isExit: false });
+    })
+
+    // Only for exits.
+    document.addEventListener("keydown", (e) => {
+      if (e.code == "KeyW" || e.code == "KeyS" || e.code == "KeyA" || e.code == "KeyD" ||
+          e.code == "ArrowUp" || e.code == "ArrowDown" || e.code == "ArrowLeft" || e.code == "ArrowRight") {
+        this.map.interact({ isExit: true });
+      }
     })
   }
 
@@ -72,7 +80,7 @@ class Overworld {
 
     if (this.tutorialCutscene && map.lowerSrc === "/images/maps/HeroBedroomLower.png") {
       this.map.startCutscene([
-        { type: "playMusic", name: "tutorial" },
+        { type: "playMusic", name: "heroHome" },
         { type: "message", text: "Interact: Use Space or Enter." },
         { type: "message", text: "Movement: Use WASD or Arrow Keys." },
         { type: "message", text: "This is the story of a 10 year old boy named RED." },
@@ -148,7 +156,7 @@ class Overworld {
   }
 
   init() {
-    this.startMap(maps.Lab);
+    this.startMap(maps.HeroBedroom);
 
     // Hero movement.
     this.directionInput = new DirectionInput();

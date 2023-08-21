@@ -91,17 +91,19 @@ class Map {
     this.isCutscenePlaying = false;
   }
 
-  interact() {
+  interact({ isExit }) {
     const hero = this.gameObjects["hero"];
 
     // Scans the pixel in front of the hero for an object.
     const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
     const match = Object.values(this.gameObjects).find(object => {
+      // Exits have a different interaction.
+      if (isExit) { if (!object.id.includes("exit")) return }
       return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
     });
 
-    if (!this.isCutscenePlaying && match && match.talking.length > 0) {
-      const scenario = match.talking.find(scenario => {
+    if (!this.isCutscenePlaying && match && match.action.length > 0) {
+      const scenario = match.action.find(scenario => {
         return (scenario.required || []).every(cp => {
           return playerState.checkpoint[cp];
         })
@@ -156,7 +158,7 @@ let maps = {
           { type: "walk", direction: "down" },
           { type: "stand", direction: "down", time: 2000 },
         ],
-        talking: [
+        action: [
           {
             events: [
               { who: "mom", type: "walk", direction: "left" },
@@ -168,13 +170,14 @@ let maps = {
         type: "Pokeball",
         x: utils.grid(3),
         y: utils.grid(9),
-        talking: [
+        action: [
           {
             required: ["CHOSEN_POKEMON_HERO"],
             events: []
           },
           {
             events: [
+              { type: "message", text: "test" },
             ]
           }
         ]
@@ -183,7 +186,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(4),
         y: utils.grid(9),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "test" },
@@ -191,6 +194,19 @@ let maps = {
           }
         ]
       },
+      exit_1: {
+        type: "GameObject",
+        x: utils.grid(5),
+        y: utils.grid(9),
+        action: [
+          {
+            events: [
+              { type: "message", text: "test" },
+              { who: "hero", type: "stand", direction: "up" },
+            ]
+          }
+        ]
+      }
     },
     walls: {
       // Dynamic key equivalent to "num, num": true
@@ -198,6 +214,7 @@ let maps = {
       [utils.asGridCoord(8, 6)]: true,
       [utils.asGridCoord(7, 7)]: true,
       [utils.asGridCoord(8, 7)]: true,
+      [utils.asGridCoord(5, 10)]: true,
     },
     cutsceneSpaces: {
       [utils.asGridCoord(7,4)]: [
@@ -207,13 +224,6 @@ let maps = {
           ]
         }
       ],
-      [utils.asGridCoord(5,10)]: [
-        {
-          events: [
-            { type: "changeMap", map: "HeroBedroom", heroPosition: { x: 3, y: 6, direction: "down" } }
-          ]
-        }
-      ]
     }
   },
   PalletTown: {
@@ -247,7 +257,7 @@ let maps = {
           { type: "walk", direction: "left" },
           { type: "stand", direction: "left", time: 2000 },
         ],
-        talking: [
+        action: [
           // Allows us to store multiple dialogues for specific events.
           {
             events: [
@@ -276,7 +286,7 @@ let maps = {
           { type: "walk", direction: "left" },
           { type: "stand", direction: "left", time: 2000 },
         ],
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "Move kiddo.", faceHero:"npc2" },
@@ -288,7 +298,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(4),
         y: utils.grid(7),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "RED's Home", interact: "up" },
@@ -300,7 +310,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(13),
         y: utils.grid(7),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "BLUE's Home", interact: "up" },
@@ -312,7 +322,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(9),
         y: utils.grid(11),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "Pallet Town: The Town of Beginnings.", interact: "up" },
@@ -324,7 +334,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(16),
         y: utils.grid(16),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "OAK's Lab", interact: "up" },
@@ -336,7 +346,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(5),
         y: utils.grid(14),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "Trainer Tip: You can interact with this sign by pressing space/enter!", interact: "up" },
@@ -344,6 +354,45 @@ let maps = {
           }
         ]
       },
+      exit_1: {
+        type: "GameObject",
+        x: utils.grid(6),
+        y: utils.grid(7),
+        action: [
+          {
+            events: [
+              { type: "playMusic", name: "heroHome" },
+              { type: "changeMap", map: "HeroHome", heroPosition: { x: 3, y: 8, direction: "up" } }
+            ]
+          }
+        ]
+      },
+      exit_2: {
+        type: "GameObject",
+        x: utils.grid(15),
+        y: utils.grid(7),
+        action: [
+          {
+            events: [
+              { type: "playMusic", name: "rivalHome" },
+              { type: "changeMap", map: "RivalHome", heroPosition: { x: 4, y: 8, direction: "up" } }
+            ]
+          }
+        ]
+      },
+      exit_3: {
+        type: "GameObject",
+        x: utils.grid(16),
+        y: utils.grid(13),
+        action: [
+          {
+            events: [
+              { type: "playMusic", name: "lab" },
+              { type: "changeMap", map: "Lab", heroPosition: { x: 6, y: 12, direction: "up" } }
+            ]
+          }
+        ]
+      }
     },
     walls: {
       // Top Wall.
@@ -453,7 +502,7 @@ let maps = {
       [utils.asGridCoord(8, 6)]: true,
       [utils.asGridCoord(9, 6)]: true,
       [utils.asGridCoord(5, 7)]: true,
-      // [utils.asGridCoord(6, 7)]: true,
+      [utils.asGridCoord(6, 7)]: true,
       [utils.asGridCoord(7, 7)]: true,
       [utils.asGridCoord(8, 7)]: true,
       [utils.asGridCoord(9, 7)]: true,
@@ -471,7 +520,7 @@ let maps = {
       [utils.asGridCoord(17, 6)]: true,
       [utils.asGridCoord(18, 6)]: true,
       [utils.asGridCoord(14, 7)]: true,
-      // [utils.asGridCoord(15, 7)]: true,
+      [utils.asGridCoord(15, 7)]: true,
       [utils.asGridCoord(16, 7)]: true,
       [utils.asGridCoord(17, 7)]: true,
       [utils.asGridCoord(18, 7)]: true,
@@ -502,7 +551,7 @@ let maps = {
       [utils.asGridCoord(13, 13)]: true,
       [utils.asGridCoord(14, 13)]: true,
       [utils.asGridCoord(15, 13)]: true,
-      // [utils.asGridCoord(16, 13)]: true,
+      [utils.asGridCoord(16, 13)]: true,
       [utils.asGridCoord(17, 13)]: true,
       [utils.asGridCoord(18, 13)]: true,
       [utils.asGridCoord(19, 13)]: true,
@@ -538,28 +587,6 @@ let maps = {
       [utils.asGridCoord(10, 19)]: true,
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(6, 7)]: [
-        {
-          events: [
-            { type: "changeMap", map: "HeroHome", heroPosition: { x: 3, y: 8, direction: "up" } }
-          ]
-        }
-      ],
-      [utils.asGridCoord(15, 7)]: [
-        {
-          events: [
-            { type: "changeMap", map: "RivalHome", heroPosition: { x: 4, y: 8, direction: "up" } }
-          ]
-        }
-      ],
-      [utils.asGridCoord(16, 13)]: [
-        {
-          events: [
-            { type: "playMusic", name: "lab" },
-            { type: "changeMap", map: "Lab", heroPosition: { x: 6, y: 12, direction: "up" } }
-          ]
-        }
-      ],
       [utils.asGridCoord(12, 0)]: [
         {
           required: ["CHOSEN_POKEMON_FINISHED"],
@@ -615,7 +642,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(0),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "You remember how you lost your past five League of Legends games." },
@@ -628,7 +655,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(2),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "There's multiple versions of your current outfit." },
@@ -640,7 +667,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(3),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "It's full of comic books and manga." },
@@ -653,7 +680,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(4),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "It's full of comic books and manga." },
@@ -666,7 +693,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(5),
         y: utils.grid(5),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "It's the switch your dad got you for your 8th birthday." },
@@ -679,11 +706,23 @@ let maps = {
         type: "GameObject",
         x: utils.grid(10),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "To-Do List:" },
               { type: "message", text: "There's nothing written here." },
+            ]
+          }
+        ]
+      },
+      exit: {
+        type: "GameObject",
+        x: utils.grid(8),
+        y: utils.grid(2),
+        action: [
+          {
+            events: [
+              { type: "changeMap", map: "HeroHome", heroPosition: { x: 9, y: 2, direction: "left" } }
             ]
           }
         ]
@@ -736,6 +775,7 @@ let maps = {
       // Stairs.
       [utils.asGridCoord(7, 2)]: true,
       [utils.asGridCoord(7, 3)]: true,
+      [utils.asGridCoord(8, 2)]: true,
       [utils.asGridCoord(8, 3)]: true,
 
       // Console.
@@ -744,15 +784,6 @@ let maps = {
 
       // Bed.
       [utils.asGridCoord(1, 6)]: true,
-    },
-    cutsceneSpaces: {
-      [utils.asGridCoord(8, 2)]: [
-        {
-          events: [
-            { type: "changeMap", map: "HeroHome", heroPosition: { x: 9, y: 2, direction: "left" } }
-          ]
-        }
-      ],
     },
   },
   HeroHome: {
@@ -773,7 +804,7 @@ let maps = {
         y: utils.grid(4),
         direction:"left",
         src: "images/characters/people/mom.png",
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "Mom: ...Right. All boys leave home someday.", faceHero:"mom" },
@@ -788,7 +819,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(0),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "You washed your hands with soap." },
@@ -800,7 +831,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(1),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "You realize there's only one stove top." },
@@ -813,7 +844,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(2),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "This is where your trophies are supposed to be." },
@@ -826,7 +857,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(3),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "There's nothing in the trash can." },
@@ -838,7 +869,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(5),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "This is a TV." },
@@ -846,6 +877,31 @@ let maps = {
           }
         ]
       },
+      exit_1: {
+        type: "GameObject",
+        x: utils.grid(10),
+        y: utils.grid(2),
+        action: [
+          {
+            events: [
+              { type: "changeMap", map: "HeroBedroom", heroPosition: { x: 9, y: 2, direction: "right" } }
+            ]
+          }
+        ]
+      },
+      exit_2: {
+        type: "GameObject",
+        x: utils.grid(3),
+        y: utils.grid(9),
+        action: [
+          {
+            events: [
+              { type: "playMusic", name: "palletTown" },
+              { type: "changeMap", map: "PalletTown", heroPosition: { x: 6, y: 8, direction: "down" }  }
+            ]
+          }
+        ]
+      }
     },
     walls: {
       // Top wall.
@@ -884,7 +940,7 @@ let maps = {
       [utils.asGridCoord(0, 9)]: true,
       [utils.asGridCoord(1, 9)]: true,
       [utils.asGridCoord(2, 9)]: true,
-      // [utils.asGridCoord(3, 9)]: true,
+      [utils.asGridCoord(3, 9)]: true,
       [utils.asGridCoord(4, 9)]: true,
       [utils.asGridCoord(5, 9)]: true,
       [utils.asGridCoord(6, 9)]: true,
@@ -894,7 +950,7 @@ let maps = {
       [utils.asGridCoord(10, 9)]: true,
 
       // Stairs.
-      // [utils.asGridCoord(10, 2)]: true,
+      [utils.asGridCoord(10, 2)]: true,
       [utils.asGridCoord(11, 2)]: true,
       [utils.asGridCoord(10, 3)]: true,
       [utils.asGridCoord(11, 3)]: true,
@@ -908,23 +964,6 @@ let maps = {
       [utils.asGridCoord(5, 5)]: true,
       [utils.asGridCoord(6, 4)]: true,
       [utils.asGridCoord(6, 5)]: true,
-    },
-    cutsceneSpaces: {
-      [utils.asGridCoord(10, 2)]: [
-        {
-          events: [
-            { type: "changeMap", map: "HeroBedroom", heroPosition: { x: 9, y: 2, direction: "right" } }
-          ]
-        }
-      ],
-      [utils.asGridCoord(3, 9)]: [
-        {
-          events: [
-            { type: "playMusic", name: "palletTown" },
-            { type: "changeMap", map: "PalletTown", heroPosition: { x: 6, y: 8, direction: "down" }  }
-          ]
-        }
-      ]
     },
   },
   RivalHome: {
@@ -946,7 +985,7 @@ let maps = {
         y: utils.grid(4),
         direction: "right",
         src: "images/characters/people/sister.png",
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "Daisy: Hi, Red!", faceHero:"rivalSister" },
@@ -960,7 +999,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(0),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "You try washing your hands, but there was no soap." },
@@ -972,7 +1011,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(1),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "You question why every house only has one stove top." },
@@ -984,7 +1023,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(2),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "It's filled to the max with trophies." },
@@ -996,7 +1035,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(3),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "There's nothing in the trash can." },
@@ -1008,7 +1047,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(5),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "This is a TV." },
@@ -1020,7 +1059,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(9),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "It's a picture of BLUE and his family enjoying a picnic." },
@@ -1032,7 +1071,7 @@ let maps = {
         type: "GameObject",
         x: utils.grid(10),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "There are many scholary books written by famous philosophers and mathematicians." },
@@ -1044,10 +1083,23 @@ let maps = {
         type: "GameObject",
         x: utils.grid(11),
         y: utils.grid(1),
-        talking: [
+        action: [
           {
             events: [
               { type: "message", text: "There are many scholary books written by famous philosophers and mathematicians." },
+            ]
+          }
+        ]
+      },
+      exit: {
+        type: "GameObject",
+        x: utils.grid(4),
+        y: utils.grid(9),
+        action: [
+          {
+            events: [
+              { type: "playMusic", name: "palletTown" },
+              { type: "changeMap", map: "PalletTown", heroPosition: { x: 15, y: 8, direction: "down" } },
             ]
           }
         ]
@@ -1093,7 +1145,7 @@ let maps = {
       [utils.asGridCoord(1, 9)]: true,
       [utils.asGridCoord(2, 9)]: true,
       [utils.asGridCoord(3, 9)]: true,
-      // [utils.asGridCoord(4, 9)]: true,
+      [utils.asGridCoord(4, 9)]: true,
       [utils.asGridCoord(5, 9)]: true,
       [utils.asGridCoord(6, 9)]: true,
       [utils.asGridCoord(7, 9)]: true,
@@ -1110,15 +1162,6 @@ let maps = {
       [utils.asGridCoord(6, 5)]: true,
       [utils.asGridCoord(7, 4)]: true,
       [utils.asGridCoord(7, 5)]: true,
-    },
-    cutsceneSpaces: {
-      [utils.asGridCoord(4, 9)]: [
-        {
-          events: [
-            { type: "changeMap", map: "PalletTown", heroPosition: { x: 15, y: 8, direction: "down" } }
-          ]
-        }
-      ],
     },
   },
   Lab: {
@@ -1140,7 +1183,7 @@ let maps = {
         y: utils.grid(4),
         direction: "down",
         src: "images/characters/people/blue.png",
-        talking: [
+        action: [
           {
             required: ["CHOSEN_POKEMON_FINISHED"],
             events: [
@@ -1160,7 +1203,7 @@ let maps = {
         y: utils.grid(3),
         direction: "down",
         src: "images/characters/people/professor.png",
-        talking: [
+        action: [
           {
             required: ["CHOSEN_POKEMON_FINISHED"],
             events: [
@@ -1179,7 +1222,7 @@ let maps = {
         checkpoint: "CHOSEN_POKEMON_BULBASAUR",
         x: utils.grid(8),
         y: utils.grid(4),
-        talking: [
+        action: [
           {
             required: ["CHOSEN_POKEMON_FINISHED"],
             events: []
@@ -1214,7 +1257,7 @@ let maps = {
         checkpoint: "CHOSEN_POKEMON_CHARMANDER",
         x: utils.grid(9),
         y: utils.grid(4),
-        talking: [
+        action: [
           {
             required: ["CHOSEN_POKEMON_FINISHED"],
             events: []
@@ -1250,7 +1293,7 @@ let maps = {
         checkpoint: "CHOSEN_POKEMON_SQUIRTLE",
         x: utils.grid(10),
         y: utils.grid(4),
-        talking: [
+        action: [
           {
             required: ["CHOSEN_POKEMON_FINISHED"],
             events: []
@@ -1279,6 +1322,19 @@ let maps = {
           }
         ]
       },
+      exit: {
+        type: "GameObject",
+        x: utils.grid(6),
+        y: utils.grid(13),
+        action: [
+          {
+            events: [
+              { type: "playMusic", name: "palletTown" },
+              { type: "changeMap", map: "PalletTown", heroPosition: { x: 16, y: 14, direction: "down" } }
+            ]
+          }
+        ]
+      }
     },
     walls: {
       // Top Wall.
@@ -1331,7 +1387,7 @@ let maps = {
       [utils.asGridCoord(3, 13)]: true,
       [utils.asGridCoord(4, 13)]: true,
       [utils.asGridCoord(5, 13)]: true,
-      // [utils.asGridCoord(6, 13)]: true,
+      [utils.asGridCoord(6, 13)]: true,
       [utils.asGridCoord(7, 13)]: true,
       [utils.asGridCoord(8, 13)]: true,
       [utils.asGridCoord(9, 13)]: true,
@@ -1371,14 +1427,6 @@ let maps = {
       [utils.asGridCoord(12, 12)]: true,
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(6, 13)]: [
-        {
-          events: [
-            { type: "playMusic", name: "palletTown" },
-            { type: "changeMap", map: "PalletTown", heroPosition: { x: 16, y: 14, direction: "down" } }
-          ]
-        }
-      ],
       [utils.asGridCoord(5, 8)]: [
         {
           required: ["RIVAL_1"],
@@ -1685,7 +1733,8 @@ let maps = {
 
 // Music. Global variable.
 const music = {
-  tutorial: new Audio("/audio/tutorial.mp3"),
+  heroHome: new Audio("/audio/hero-home.mp3"),
+  rivalHome: new Audio("/audio/rival-home.mp3"),
   palletTown: new Audio("/audio/pallet-town.mp3"),
   lab: new Audio("/audio/lab.mp3"),
   rivalBattle: new Audio("/audio/rival-battle.mp3"),

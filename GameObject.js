@@ -14,7 +14,7 @@ class GameObject {
     // Tracks which behavior we're on.
     this.behaviorLoopIndex = 0;
 
-    this.talking = config.talking || [];
+    this.action = config.action || [];
 
     this.retryTimeout = null;
   }
