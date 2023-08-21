@@ -127,6 +127,7 @@ class Map {
   }
 }
 
+// Global variable.
 let maps = {
   Demo: {
     lowerSrc: "/images/maps/DemoLower.png",
@@ -1663,3 +1664,13 @@ let maps = {
     },
   },
 }
+
+// Music. Global variable.
+const music = {
+  tutorial: new Audio("/audio/tutorial.mp3"),
+  palletTown: new Audio("/audio/pallet-town.mp3"),
+  lab: new Audio("/audio/lab.mp3"),
+  rivalBattle: new Audio("/audio/rival-battle.mp3"),
+}
+
+let oldSong;

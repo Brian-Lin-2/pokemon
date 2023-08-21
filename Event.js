@@ -140,6 +140,24 @@ class Event {
      playerState.checkpoint[this.event.checkpoint] = false;
      resolve();
   }
+  
+  playMusic(resolve) {
+    // Global variables oldSong and music in Map.js
+    if (oldSong) {
+      console.log(oldSong);
+      music[oldSong.name].pause();
+      clearInterval(oldSong.interval);
+    }
+
+    oldSong = {
+      name: this.event.name,
+      interval: setInterval(()=>{
+        music[this.event.name].play()
+      }, 1000)
+    };
+
+    resolve();
+  }
 
   init() {
     return new Promise(resolve => {

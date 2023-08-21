@@ -6,7 +6,7 @@ class Overworld {
     this.map = null;
 
     // Cutscenes.
-    this.tutorialCutscene = false;
+    this.tutorialCutscene = true;
     this.homeCutscene = false;
     this.labCutscene = false;
     this.endCutscene = true;
@@ -72,11 +72,13 @@ class Overworld {
 
     if (this.tutorialCutscene && map.lowerSrc === "/images/maps/HeroBedroomLower.png") {
       this.map.startCutscene([
+        { type: "playMusic", name: "tutorial" },
         { type: "message", text: "Interact: Use Space or Enter." },
         { type: "message", text: "Movement: Use WASD or Arrow Keys." },
         { type: "message", text: "This is the story of a 10 year old boy named RED." },
-        { type: "message", text: "He lives in a world filled with mysterious creatures called POKEMON." },
+        { type: "message", text: "He lives in a world filled with mysterious creatures called POKEMON!" },
         { type: "message", text: "Together with his rival, BLUE, he embarks on a journey of a lifetime." },
+        { type: "playMusic", name: "palletTown" },
       ]);
 
       this.tutorialCutscene = false;
@@ -146,24 +148,8 @@ class Overworld {
     }
   }
 
-  playMusic(music) {
-    // Keeps checking for user interaction.
-    const checker = setInterval(()=>{
-      music.play()
-      .then(()=>{
-        clearInterval(checker);
-      })
-    }, 1000)
-  }
-
-  stopMusic(music) {
-    setTimeout(() => {
-      music.pause();
-    }, 3000)
-  }
-
   init() {
-    this.startMap(maps.PalletTown);
+    this.startMap(maps.HeroBedroom);
 
     // Hero movement.
     this.directionInput = new DirectionInput();
