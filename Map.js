@@ -563,6 +563,16 @@ let maps = {
       ],
       [utils.asGridCoord(12, 0)]: [
         {
+          required: ["CHOSEN_POKEMON_FINISHED"],
+          events: [
+            { who: "hero", type: "stand", direction: "up", time: 1000 },
+            { type: "message", text: "Ah yes the void." },
+            { type: "message", text: "You don't remember when it first appeared, but it seems to be spreading." },
+            { type: "message", text: "Some mysteries are best left unanswered." },
+            { who: "hero", type: "stand", direction: "down" },
+          ]
+        },
+        {
           events: [
             { who: "hero", type: "stand", direction: "up", time: 1000 },
             { type: "message", text: "Ah yes the void." },
@@ -1214,7 +1224,6 @@ let maps = {
               { type: "message", text: "Ah! CHARMANDER is a fine choice." },
               { type: "message", text: "It's a stubborn but strong creature with a powerful sense of justice." },
               { type: "addPokemon", name: "CHARMANDER", hero: "004" },
-              { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_HERO" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_CHARMANDER" },
               { type: "message", text: "Red received CHARMANDER from Professor Oak!" },
               { type: "message", text: "BLUE: Could you have chosen any slower?" },
@@ -1251,7 +1260,6 @@ let maps = {
               { type: "message", text: "Ah! SQUIRTLE is a fine choice." },
               { type: "message", text: "It's a friendly and cheerful creature with a laid-back personality." },
               { type: "addPokemon", name: "SQUIRTLE", hero: "007" },
-              { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_HERO" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_SQUIRTLE" },
               { type: "message", text: "RED received SQUIRTLE from Professor Oak!" },
               { type: "message", text: "BLUE: Could you have chosen any slower?" },

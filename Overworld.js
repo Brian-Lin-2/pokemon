@@ -6,8 +6,10 @@ class Overworld {
     this.map = null;
 
     // Cutscenes.
+    this.tutorialCutscene = false;
     this.homeCutscene = false;
     this.labCutscene = false;
+    this.endCutscene = true;
   }
 
   startGameLoop() {
@@ -68,6 +70,18 @@ class Overworld {
     this.map.overworld = this;
     this.map.mountObjects();
 
+    if (this.tutorialCutscene && map.lowerSrc === "/images/maps/HeroBedroomLower.png") {
+      this.map.startCutscene([
+        { type: "message", text: "Interact: Use Space or Enter." },
+        { type: "message", text: "Movement: Use WASD or Arrow Keys." },
+        { type: "message", text: "This is the story of a 10 year old boy named RED." },
+        { type: "message", text: "He lives in a world filled with mysterious creatures called POKEMON." },
+        { type: "message", text: "Together with his rival, BLUE, he embarks on a journey of a lifetime." },
+      ]);
+
+      this.tutorialCutscene = false;
+    }
+
     if (this.homeCutscene && map.lowerSrc === "/images/maps/HeroHomeLower.png") {
       this.map.startCutscene([
         { who: "mom", type:"stand", direction: "left", time: 1000 },
@@ -87,7 +101,7 @@ class Overworld {
         { who: "mom", type:"walk", direction: "down" },
         { who: "mom", type:"walk", direction: "down" },
         { who: "mom", type:"stand", direction: "left" },
-      ])
+      ]);
 
       this.homeCutscene = false;
     }
@@ -116,14 +130,24 @@ class Overworld {
         { who: "professor", type: "message", text: "You can have one. Go on, choose!"},
         { who: "rival", type: "message", text: "Blue: Hey! Gramps! No fair! What about me?"},
         { who: "professor", type: "message", text: "Oak: Be patient, Blue. You can have one, too!"},
-      ])
+      ]);
 
       this.labCutscene = false;
+    }
+
+    if (playerState.checkpoint["CHOSEN_POKEMON_FINISHED"] && this.endCutscene && map.lowerSrc === "/images/maps/PalletTownLower.png") {
+      this.map.startCutscene([
+        { type: "message", text: "Thank you for playing my website version of Pokémon FireRed and LeafGreen!" },
+        { type: "message", text: "This is all I have created so far, but feel free to explore the rest of the map." },
+        { type: "message", text: "There are many other interactions and cutscenes in this game." },
+      ])
+
+      this.endCutscene = false;
     }
   }
 
   init() {
-    this.startMap(maps.Demo);
+    this.startMap(maps.Lab);
 
     // Hero movement.
     this.directionInput = new DirectionInput();
