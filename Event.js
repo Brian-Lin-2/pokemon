@@ -144,8 +144,8 @@ class Event {
   playMusic(resolve) {
     // Global variables oldSong and music in Map.js
     if (oldSong) {
-      console.log(oldSong);
       music[oldSong.name].pause();
+      music[oldSong.name].currentTime = 0;
       clearInterval(oldSong.interval);
     }
 

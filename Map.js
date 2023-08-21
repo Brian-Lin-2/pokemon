@@ -558,6 +558,7 @@ let maps = {
       [utils.asGridCoord(16, 13)]: [
         {
           events: [
+            { type: "playMusic", name: "lab" },
             { type: "changeMap", map: "Lab", heroPosition: { x: 6, y: 12, direction: "up" } }
           ]
         }
@@ -922,6 +923,7 @@ let maps = {
       [utils.asGridCoord(3, 9)]: [
         {
           events: [
+            { type: "playMusic", name: "palletTown" },
             { type: "changeMap", map: "PalletTown", heroPosition: { x: 6, y: 8, direction: "down" }  }
           ]
         }
@@ -1375,6 +1377,7 @@ let maps = {
       [utils.asGridCoord(6, 13)]: [
         {
           events: [
+            { type: "playMusic", name: "palletTown" },
             { type: "changeMap", map: "PalletTown", heroPosition: { x: 16, y: 14, direction: "down" } }
           ]
         }
@@ -1392,7 +1395,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
             { type: "message", text: "Let me show you the difference in our skill!" },
+            { type: "playMusic", name: "rivalBattle" },
             { type: "battle" },
+            { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
             { type: "message", text: "Smell ya later!" },
             { who: "rival", type: "walk", direction: "right" },
@@ -1422,7 +1427,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
             { type: "message", text: "Let me show you the difference in our skill!" },
+            { type: "playMusic", name: "rivalBattle" },
             { type: "battle" },
+            { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
             { type: "message", text: "Smell ya later!" },
             { who: "rival", type: "walk", direction: "right" },
@@ -1453,7 +1460,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
             { type: "message", text: "Let me show you the difference in our skill!" },
+            { type: "playMusic", name: "rivalBattle" },
             { type: "battle" },
+            { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
             { type: "message", text: "Smell ya later!" },
             { who: "rival", type: "walk", direction: "right" },
@@ -1486,7 +1495,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
             { type: "message", text: "Let me show you the difference in our skill!" },
+            { type: "playMusic", name: "rivalBattle" },
             { type: "battle" },
+            { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
             { type: "message", text: "Smell ya later!" },
             { who: "rival", type: "walk", direction: "right" },
@@ -1516,7 +1527,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
             { type: "message", text: "Let me show you the difference in our skill!" },
+            { type: "playMusic", name: "rivalBattle" },
             { type: "battle" },
+            { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
             { type: "message", text: "Smell ya later!" },
             { who: "rival", type: "walk", direction: "right" },
@@ -1547,7 +1560,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
             { type: "message", text: "Let me show you the difference in our skill!" },
+            { type: "playMusic", name: "rivalBattle" },
             { type: "battle" },
+            { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
             { type: "message", text: "Smell ya later!" },
             { who: "rival", type: "walk", direction: "right" },
@@ -1581,7 +1596,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
             { type: "message", text: "Let me show you the difference in our skill!" },
+            { type: "playMusic", name: "rivalBattle" },
             { type: "battle" },
+            { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
             { type: "message", text: "Smell ya later!" },
             { who: "rival", type: "walk", direction: "left" },
@@ -1610,7 +1627,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
             { type: "message", text: "Let me show you the difference in our skill!" },
+            { type: "playMusic", name: "rivalBattle" },
             { type: "battle" },
+            { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
             { type: "message", text: "Smell ya later!" },
             { who: "rival", type: "walk", direction: "left" },
@@ -1640,7 +1659,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
             { type: "message", text: "Let me show you the difference in our skill!" },
+            { type: "playMusic", name: "rivalBattle" },
             { type: "battle" },
+            { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
             { type: "message", text: "Smell ya later!" },
             { who: "rival", type: "walk", direction: "left" },

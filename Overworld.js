@@ -78,7 +78,6 @@ class Overworld {
         { type: "message", text: "This is the story of a 10 year old boy named RED." },
         { type: "message", text: "He lives in a world filled with mysterious creatures called POKEMON!" },
         { type: "message", text: "Together with his rival, BLUE, he embarks on a journey of a lifetime." },
-        { type: "playMusic", name: "palletTown" },
       ]);
 
       this.tutorialCutscene = false;
