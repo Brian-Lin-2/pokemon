@@ -1,7 +1,7 @@
 class PlayerState {
   constructor() {
     this.checkpoint = {
-      CHOSEN_POKEMON_HERO: false,
+      // Added in as events are completed.
     };
   }
 }

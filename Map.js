@@ -60,9 +60,13 @@ class Map {
       if (object.type === "Person") {
         instance = new Person(object);
       }
-      else if (object.type === "Pokeball") {
+      if (object.type === "Pokeball") {
         instance = new Pokeball(object);
       }
+      if (object.type === "GameObject") {
+        instance = new GameObject(object);
+      }
+
       this.gameObjects[key] = instance;
       this.gameObjects[key].id = key;
       instance.mount(this);
@@ -177,6 +181,18 @@ let maps = {
           }
         ]
       },
+      test: {
+        type: "GameObject",
+        x: utils.grid(4),
+        y: utils.grid(9),
+        talking: [
+          {
+            events: [
+              { type: "message", text: "test" },
+            ]
+          }
+        ]
+      },
     },
     walls: {
       // Dynamic key equivalent to "num, num": true
@@ -196,7 +212,7 @@ let maps = {
       [utils.asGridCoord(5,10)]: [
         {
           events: [
-            { type: "changeMap", map: "PalletTown" }
+            { type: "changeMap", map: "HeroBedroom", heroPosition: { x: 3, y: 6, direction: "down" } }
           ]
         }
       ]
@@ -271,7 +287,7 @@ let maps = {
         ]
       },
       hero_mailbox: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(4),
         y: utils.grid(7),
         talking: [
@@ -283,7 +299,7 @@ let maps = {
         ]
       },
       rival_mailbox: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(13),
         y: utils.grid(7),
         talking: [
@@ -295,7 +311,7 @@ let maps = {
         ]
       },
       sign_1: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(9),
         y: utils.grid(11),
         talking: [
@@ -307,7 +323,7 @@ let maps = {
         ]
       },
       sign_2: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(16),
         y: utils.grid(16),
         talking: [
@@ -319,7 +335,7 @@ let maps = {
         ]
       },
       sign_3: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(5),
         y: utils.grid(14),
         talking: [
@@ -587,7 +603,7 @@ let maps = {
         src: "/images/characters/people/red.png"
       },
       computer: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(0),
         y: utils.grid(1),
         talking: [
@@ -600,7 +616,7 @@ let maps = {
         ]
       },
       cabinet: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(2),
         y: utils.grid(1),
         talking: [
@@ -612,7 +628,7 @@ let maps = {
         ]
       },
       bookshelf_left: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(3),
         y: utils.grid(1),
         talking: [
@@ -625,7 +641,7 @@ let maps = {
         ]
       },
       bookshelf_right: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(4),
         y: utils.grid(1),
         talking: [
@@ -638,7 +654,7 @@ let maps = {
         ]
       },
       switch: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(5),
         y: utils.grid(5),
         talking: [
@@ -651,7 +667,7 @@ let maps = {
         ]
       },
       info: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(10),
         y: utils.grid(1),
         talking: [
@@ -760,7 +776,7 @@ let maps = {
         ]
       },
       sink_left: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(0),
         y: utils.grid(1),
         talking: [
@@ -772,7 +788,7 @@ let maps = {
         ]
       },
       sink_right: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(1),
         y: utils.grid(1),
         talking: [
@@ -785,7 +801,7 @@ let maps = {
         ]
       },
       display: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(2),
         y: utils.grid(1),
         talking: [
@@ -798,7 +814,7 @@ let maps = {
         ]
       },
       trash: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(3),
         y: utils.grid(1),
         talking: [
@@ -810,7 +826,7 @@ let maps = {
         ]
       },
       tv: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(5),
         y: utils.grid(1),
         talking: [
@@ -931,7 +947,7 @@ let maps = {
         ]
       },
       sink_left: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(0),
         y: utils.grid(1),
         talking: [
@@ -943,7 +959,7 @@ let maps = {
         ]
       },
       sink_right: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(1),
         y: utils.grid(1),
         talking: [
@@ -955,7 +971,7 @@ let maps = {
         ]
       },
       display: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(2),
         y: utils.grid(1),
         talking: [
@@ -967,7 +983,7 @@ let maps = {
         ]
       },
       trash: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(3),
         y: utils.grid(1),
         talking: [
@@ -979,7 +995,7 @@ let maps = {
         ]
       },
       tv: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(5),
         y: utils.grid(1),
         talking: [
@@ -991,7 +1007,7 @@ let maps = {
         ]
       },
       picture: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(9),
         y: utils.grid(1),
         talking: [
@@ -1003,7 +1019,7 @@ let maps = {
         ]
       },
       bookshelf_left: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(10),
         y: utils.grid(1),
         talking: [
@@ -1015,7 +1031,7 @@ let maps = {
         ]
       },
       bookshelf_right: {
-        type: "Person",
+        type: "GameObject",
         x: utils.grid(11),
         y: utils.grid(1),
         talking: [
