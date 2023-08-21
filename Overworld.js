@@ -146,8 +146,24 @@ class Overworld {
     }
   }
 
+  playMusic(music) {
+    // Keeps checking for user interaction.
+    const checker = setInterval(()=>{
+      music.play()
+      .then(()=>{
+        clearInterval(checker);
+      })
+    }, 1000)
+  }
+
+  stopMusic(music) {
+    setTimeout(() => {
+      music.pause();
+    }, 3000)
+  }
+
   init() {
-    this.startMap(maps.Lab);
+    this.startMap(maps.PalletTown);
 
     // Hero movement.
     this.directionInput = new DirectionInput();
