@@ -21,39 +21,43 @@
     <canvas class="game-canvas" width="180" height="132"></canvas>  
   </div>
 
+  <!-- Make sure this is first -->
+  <script src="./misc/utils.js"></script>
+
   <!-- Content -->
   <script src="./content/PokemonInfo.js"></script>
   <script src="./content/PokemonMoves.js"></script>
+  <script src="./content/PlayerState.js"></script>
 
+  <!-- Main -->
+  <script src="./main/KeyboardMenu.js"></script>
+  <script src="./main/ConfirmMenu.js"></script>
+  <script src="./main/Overworld.js"></script>
+  <script src="./main/RevealingText.js"></script>
+  <script src="./main/TextMessage.js"></script>
+  <script src="./main/Event.js"></script>
+  <script src="./main/Map.js"></script>
 
-  <!-- Scripts -->
-  <script src="./utils.js"></script>
-  <script src="./DirectionInput.js"></script>
-  <script src="./Overworld.js"></script>
-  <script src="./GameObject.js"></script>
-  <script src="./Person.js"></script>
-  <script src="./Pokeball.js"></script>
-  <script src="./Sprite.js"></script>
-  <script src="./RevealingText.js"></script>
-  <script src="./KeyPressListener.js"></script>
-  <script src="./Map.js"></script>
-  <script src="./TextMessage.js"></script>
-  <script src="./Event.js"></script>
-  <script src="./SceneTransition.js"></script>
-  <script src="./KeyboardMenu.js"></script>
-  <script src="./ConfirmMenu.js"></script>
-  <script src="./PlayerState.js"></script>
+  <!-- Objects -->
+  <script src="./objects/GameObject.js"></script>
+  <script src="./objects/Person.js"></script>
+  <script src="./objects/Pokeball.js"></script>
+  <script src="./objects/Sprite.js"></script>
 
-
-  <!-- Battle. -->
+  <!-- Battle -->
   <script src="./battle/Battle.js"></script>
   <script src="./battle/Pokemon.js"></script>
   <script src="./battle/BattleEvent.js"></script>
   <script src="./battle/BattleMenu.js"></script>
   <script src="./battle/TurnCycle.js"></script>
 
+  <!-- Miscellaneous -->
+  <script src="./misc/SceneTransition.js"></script>
+  <script src="./misc/KeyPressListener.js"></script>
+  <script src="./misc/DirectionInput.js"></script>
+
 
   <!-- Make sure this is last. Launches game. -->
-  <script src="./init.js"></script>
+  <script src="./main/init.js"></script>
 </body>
 </html>
