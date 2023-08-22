@@ -613,7 +613,7 @@ let maps = {
             { type: "message", text: "You don't remember when it first appeared, but it's been with you all your life." },
             { type: "message", text: "You used to stare at the endless abyss for hours on end." },
             { who: "hero", type: "stand", direction: "up", time: 2000 },
-            { type: "message", text: "You suddenly have an urge to go to OAK's Lab." },
+            { type: "message", text: "You feel uneasy for some reason." },
             { who: "hero", type: "stand", direction: "down" },
           ]
         }
@@ -802,9 +802,9 @@ let maps = {
         action: [
           {
             events: [
-              { type: "message", text: "Mom: ...Right. All boys leave home someday.", faceHero:"mom" },
+              { type: "message", text: "MOM: ...Right. All boys leave home someday.", faceHero:"mom" },
               { type: "message", text: "It said so on TV." },
-              { type: "message", text: "Oh, yes. PROF. OAK, next door, was looking for you." },
+              { type: "message", text: "Oh, yes. BLUE, next door, was looking for you." },
               { who: "mom", type: "stand", direction: "left" },
             ]
           }
@@ -983,7 +983,7 @@ let maps = {
         action: [
           {
             events: [
-              { type: "message", text: "Daisy: Hi, Red!", faceHero:"rivalSister" },
+              { type: "message", text: "DAISY: Hi, RED!", faceHero:"rivalSister" },
               { type: "message", text: "My brother, BLUE, is out at Grandpa's LAB." },
               { who: "rivalSister", type: "stand", direction: "right" },
             ]
@@ -1070,7 +1070,7 @@ let maps = {
           {
             events: [
               { type: "message", text: "There are many scholary books written by philosophers and mathematicians." },
-              { type: "message", text: "You don't undertand any of it." },
+              { type: "message", text: "You don't understand any of it." },
             ]
           }
         ]
@@ -1082,8 +1082,8 @@ let maps = {
         action: [
           {
             events: [
-              { type: "message", text: "There are many scholary books written by famous philosophers and mathematicians." },
-              { type: "message", text: "You don't undertand any of it." },
+              { type: "message", text: "There are many scholary books written by philosophers and mathematicians." },
+              { type: "message", text: "You don't understand any of it." },
             ]
           }
         ]
@@ -1230,7 +1230,7 @@ let maps = {
               { type: "message", text: "It's a gentle but fierce creature with unwavering loyalty to those it loves." },
               { type: "addPokemon", name: "BULBASAUR", hero: "001" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_BULBASAUR" },
-              { type: "message", text: "Red received BULBASAUR from Professor Oak!" },
+              { type: "message", text: "RED received BULBASAUR from Professor Oak!" },
               { who: "rival", type: "stand", direction: "right" },
               { type: "message", text: "BLUE: Could you have chosen any slower?" },
               { who: "rival", type: "walk", direction: "down" },
@@ -1266,7 +1266,7 @@ let maps = {
               { type: "message", text: "It's a stubborn but strong creature with a powerful sense of justice." },
               { type: "addPokemon", name: "CHARMANDER", hero: "004" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_CHARMANDER" },
-              { type: "message", text: "Red received CHARMANDER from Professor Oak!" },
+              { type: "message", text: "RED received CHARMANDER from Professor Oak!" },
               { who: "rival", type: "stand", direction: "right" },
               { type: "message", text: "BLUE: Could you have chosen any slower?" },
               { who: "rival", type: "walk", direction: "down" },

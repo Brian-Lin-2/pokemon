@@ -3,14 +3,14 @@ let moves = {
     name: "Scratch",
     success: [
       { type: "message", text: "{POKÉMON} uses Scratch!" },
-      { type: "change", damage: 30 }
+      { type: "change", damage: 5 }
     ]
   },
   tackle: {
     name: "Tackle",
     success: [
       { type: "message", text: "{POKÉMON} uses Tackle!" },
-      { type: "change", damage: 30 }
+      { type: "change", damage: 5 }
     ]
   },
   growl: {

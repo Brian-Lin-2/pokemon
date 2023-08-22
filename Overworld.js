@@ -52,6 +52,10 @@ class Overworld {
 
   checkActionInput() {
     // Checks for interactivity with objects. Exits are not included.
+    new KeyPressListener("Enter", () => {
+      this.map.interact({ isExit: false });
+    })
+
     new KeyPressListener("Space", () => {
       this.map.interact({ isExit: false });
     })
@@ -177,7 +181,7 @@ class Overworld {
   }
 
   init() {
-    this.startMap(maps.HeroBedroom);
+    this.startMap(maps.Lab);
 
     // Hero movement.
     this.directionInput = new DirectionInput();

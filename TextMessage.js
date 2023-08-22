@@ -24,6 +24,10 @@ class TextMessage {
     this.actionListener = new KeyPressListener("Space", () => {
       this.done();
     });
+
+    this.actionListener_2 = new KeyPressListener("Enter", () => {
+      this.done();
+    });
   }
 
   done() {
@@ -32,6 +36,7 @@ class TextMessage {
       
       // Unbind the listener to stop it from constantly listening.
       this.actionListener.unbind();
+      this.actionListener_2.unbind();
       this.onComplete();
     }
   }
