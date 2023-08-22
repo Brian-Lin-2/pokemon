@@ -9,7 +9,7 @@ class Overworld {
     this.tutorialCutscene = true;
     this.homeCutscene = true;
     this.rivalHomeCutscene = true;
-    this.labCutscene = false;
+    this.labCutscene = true;
     this.endCutscene = true;
   }
 
@@ -181,7 +181,7 @@ class Overworld {
   }
 
   init() {
-    this.startMap(maps.Lab);
+    this.startMap(maps.HeroBedroom);
 
     // Hero movement.
     this.directionInput = new DirectionInput();
