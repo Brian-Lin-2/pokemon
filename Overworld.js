@@ -7,9 +7,10 @@ class Overworld {
 
     // Cutscenes.
     this.tutorialCutscene = true;
-    this.homeCutscene = false;
-    this.labCutscene = false;
-    this.endCutscene = false;
+    this.homeCutscene = true;
+    this.rivalHomeCutscene = true;
+    this.labCutscene = true;
+    this.endCutscene = true;
   }
 
   startGameLoop() {
@@ -93,26 +94,46 @@ class Overworld {
 
     if (this.homeCutscene && map.lowerSrc === "/images/maps/HeroHomeLower.png") {
       this.map.startCutscene([
-        { who: "mom", type:"stand", direction: "left", time: 1000 },
+        { who: "mom", type: "stand", direction: "left", time: 1000 },
         { type: "message", text: "Mom: Oh!" },
-        { who: "mom", type:"stand", direction: "right", time: 500 },
+        { who: "mom", type: "stand", direction: "right", time: 500 },
         { type: "message", text: "You're finally up!" },
-        { who: "mom", type:"walk", direction: "right" },
-        { who: "mom", type:"walk", direction: "up" },
-        { who: "mom", type:"walk", direction: "up" },
-        { who: "mom", type:"stand", direction: "right" },
+        { who: "mom", type: "walk", direction: "right" },
+        { who: "mom", type: "walk", direction: "up" },
+        { who: "mom", type: "walk", direction: "up" },
+        { who: "mom", type: "stand", direction: "right" },
         { type: "message", text: "You're going to be late." },
-        { type: "message", text: "The professor was looking for you." },
         { type: "message", text: "I can't believe my son is all grown up now." },
         { type: "message", text: "Becoming a POKÉMON trainer just like your father!" },
         { type: "message", text: "Make sure to call me sometimes okay?" },
-        { who: "mom", type:"walk", direction: "left" },
-        { who: "mom", type:"walk", direction: "down" },
-        { who: "mom", type:"walk", direction: "down" },
-        { who: "mom", type:"stand", direction: "left" },
+        { type: "message", text: "Oh right. BLUE was looking for you. He seemed excited." },
+        { type: "message", text: "You should go visit him next door." },
+        { who: "mom", type: "walk", direction: "left" },
+        { who: "mom", type: "walk", direction: "down" },
+        { who: "mom", type: "walk", direction: "down" },
+        { who: "mom", type: "stand", direction: "left" },
       ]);
 
       this.homeCutscene = false;
+    }
+
+    if (this.rivalHomeCutscene && map.lowerSrc == "/images/maps/RivalHomeLower.png") {
+      this.map.startCutscene([
+        { who: "rivalSister", type: "walk", direction: "left" },
+        { who: "rivalSister", type: "walk", direction: "down" },
+        { who: "rivalSister", type: "walk", direction: "down" },
+        { who: "rivalSister", type: "walk", direction: "down"},
+        { type: "message", text: "DAISY: Hi RED!" },
+        { type: "message", text: "You always have such bad timing!" },
+        { type: "message", text: "BLUE just left. He went to OAK's Lab." },
+        { type: "message", text: "If you hurry, you might catch up to him." },
+        { who: "rivalSister", type: "walk", direction: "up" },
+        { who: "rivalSister", type: "walk", direction: "up" },
+        { who: "rivalSister", type: "walk", direction: "up" },
+        { who: "rivalSister", type: "walk", direction: "right"},
+      ]);
+
+      this.rivalHomeCutscene = false;
     }
 
     if (this.labCutscene && map.lowerSrc === "/images/maps/LabLower.png") {
@@ -126,19 +147,19 @@ class Overworld {
         { who: "hero", type: "walk", direction: "up" },
         { who: "hero", type: "walk", direction: "up" },
         { who: "rival", type: "stand", direction: "up" },
-        { type: "message", text: "Blue: Gramps! I'm fed up with waiting!"},
+        { type: "message", text: "BLUE: Gramps! I'm fed up with waiting!"},
         { type: "wait", delay: "1000"},
-        { who: "professor", type: "message", text: "Oak: Blue? Let me think..."},
+        { who: "professor", type: "message", text: "OAK: BLUE? Let me think..."},
         { who: "professor", type: "message", text: "Oh, that's right I told you to come! Just wait!"},
-        { who: "professor", type: "message", text: "Here, Red."},
+        { who: "professor", type: "message", text: "Here, RED."},
         { who: "professor", type: "message", text: "There are three POKÉMON here."},
         { who: "professor", type: "message", text: "Haha!"},
         { who: "professor", type: "message", text: "The POKÉMON are held inside these POKÉBALLS."},
         { who: "professor", type: "message", text: "When I was young, I was a serious POKÉMON TRAINER."},
         { who: "professor", type: "message", text: "But now in my old age, I have only these three left."},
         { who: "professor", type: "message", text: "You can have one. Go on, choose!"},
-        { who: "rival", type: "message", text: "Blue: Hey! Gramps! No fair! What about me?"},
-        { who: "professor", type: "message", text: "Oak: Be patient, Blue. You can have one, too!"},
+        { who: "rival", type: "message", text: "BLUE: Hey! Gramps! No fair! What about me?"},
+        { who: "professor", type: "message", text: "OAK: Be patient, BLUE. You can have one too!"},
       ]);
 
       this.labCutscene = false;

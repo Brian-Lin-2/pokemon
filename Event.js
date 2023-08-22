@@ -141,6 +141,18 @@ class Event {
      resolve();
   }
   
+  remove(resolve) {
+    const object = this.map.gameObjects[this.event.who];
+
+    // Effectively removes them by teleporting them off the map.
+    object.x = utils.grid(-1);
+    object.y = utils.grid(-1);
+    object.sprite.image.src = "";
+    object.sprite.image.shadow = "";
+
+    resolve();
+  }
+  
   playMusic(resolve) {
     // Global variables oldSong and music in Map.js
     if (oldSong) {

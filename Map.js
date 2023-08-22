@@ -37,6 +37,11 @@ class Map {
 
     // Check for game objects at this position.
     return Object.values(this.gameObjects).find(obj => {
+      // Edge case for after rival battle.
+      if (playerState.checkpoint["BATTLE_COMPLETE"] && obj.id == "rival") {
+        return false;
+      }
+
       if (obj.x === x && obj.y === y) {
         return true;
       }
@@ -589,23 +594,13 @@ let maps = {
     cutsceneSpaces: {
       [utils.asGridCoord(12, 0)]: [
         {
-          required: ["CHOSEN_POKEMON_FINISHED"],
           events: [
             { who: "hero", type: "stand", direction: "up", time: 1000 },
-            { type: "message", text: "Ah yes the void." },
-            { type: "message", text: "You don't remember when it first appeared, but it seems to be spreading." },
-            { type: "message", text: "Some mysteries are best left unanswered." },
-            { who: "hero", type: "stand", direction: "down" },
-          ]
-        },
-        {
-          events: [
-            { who: "hero", type: "stand", direction: "up", time: 1000 },
-            { type: "message", text: "Ah yes the void." },
+            { type: "message", text: "Ah yes the VOID." },
             { type: "message", text: "You don't remember when it first appeared, but it seems to be spreading." },
             { type: "message", text: "Some mysteries are best left unanswered." },
             { who: "hero", type: "stand", direction: "up", time: 2000 },
-            { type: "message", text: "You suddenly have an urge to go to OAK's Lab." },
+            { type: "message", text: "You feel uneasy for some reason." },
             { who: "hero", type: "stand", direction: "down" },
           ]
         }
@@ -645,7 +640,7 @@ let maps = {
         action: [
           {
             events: [
-              { type: "message", text: "You remember how you lost your past five League of Legends games." },
+              { type: "message", text: "You remember how you lost your past 5 League of Legends games." },
               { type: "message", text: "You're not in the mood to use the computer right now." }
             ]
           }
@@ -697,7 +692,7 @@ let maps = {
           {
             events: [
               { type: "message", text: "It's the switch your dad got you for your 8th birthday." },
-              { type: "message", text: "He's been getting the milk for the past 2 years now." },
+              { type: "message", text: "He's went out to get milk 2 years ago." },
             ]
           }
         ]
@@ -1069,24 +1064,26 @@ let maps = {
       },
       bookshelf_left: {
         type: "GameObject",
-        x: utils.grid(10),
+        x: utils.grid(11),
         y: utils.grid(1),
         action: [
           {
             events: [
-              { type: "message", text: "There are many scholary books written by famous philosophers and mathematicians." },
+              { type: "message", text: "There are many scholary books written by philosophers and mathematicians." },
+              { type: "message", text: "You don't undertand any of it." },
             ]
           }
         ]
       },
       bookshelf_right: {
         type: "GameObject",
-        x: utils.grid(11),
+        x: utils.grid(12),
         y: utils.grid(1),
         action: [
           {
             events: [
               { type: "message", text: "There are many scholary books written by famous philosophers and mathematicians." },
+              { type: "message", text: "You don't undertand any of it." },
             ]
           }
         ]
@@ -1192,7 +1189,7 @@ let maps = {
           },
           {
             events: [
-              { type: "message", text: "Hurry up and choose!", faceHero: "rival" },             
+              { type: "message", text: "Hurry up and choose!", faceHero: "rival" },        
             ]
           }
         ]
@@ -1234,6 +1231,7 @@ let maps = {
               { type: "addPokemon", name: "BULBASAUR", hero: "001" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_BULBASAUR" },
               { type: "message", text: "Red received BULBASAUR from Professor Oak!" },
+              { who: "rival", type: "stand", direction: "right" },
               { type: "message", text: "BLUE: Could you have chosen any slower?" },
               { who: "rival", type: "walk", direction: "down" },
               { who: "rival", type: "walk", direction: "down" },
@@ -1247,7 +1245,7 @@ let maps = {
               { type: "addPokemon", name: "CHARMANDER", rival: "004" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_CHARMANDER" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_FINISHED" },
-              { type: "addCheckpoint", checkpoint: "RIVAL_1" },
+              { type: "addCheckpoint", checkpoint: "RIVAL_2" },
             ]
           }
         ]
@@ -1269,6 +1267,7 @@ let maps = {
               { type: "addPokemon", name: "CHARMANDER", hero: "004" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_CHARMANDER" },
               { type: "message", text: "Red received CHARMANDER from Professor Oak!" },
+              { who: "rival", type: "stand", direction: "right" },
               { type: "message", text: "BLUE: Could you have chosen any slower?" },
               { who: "rival", type: "walk", direction: "down" },
               { who: "rival", type: "walk", direction: "down" },
@@ -1283,7 +1282,7 @@ let maps = {
               { type: "addPokemon", name: "SQUIRTLE", rival: "007" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_SQUIRTLE" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_FINISHED" },
-              { type: "addCheckpoint", checkpoint: "RIVAL_2" },
+              { type: "addCheckpoint", checkpoint: "RIVAL_3" },
             ]
           }
         ]
@@ -1305,6 +1304,7 @@ let maps = {
               { type: "addPokemon", name: "SQUIRTLE", hero: "007" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_SQUIRTLE" },
               { type: "message", text: "RED received SQUIRTLE from Professor Oak!" },
+              { who: "rival", type: "stand", direction: "right" },
               { type: "message", text: "BLUE: Could you have chosen any slower?" },
               { who: "rival", type: "walk", direction: "down" },
               { who: "rival", type: "walk", direction: "down" },
@@ -1317,7 +1317,7 @@ let maps = {
               { type: "addPokemon", name: "BULBASAUR", rival: "001" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_BULBASAUR" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_FINISHED" },
-              { type: "addCheckpoint", checkpoint: "RIVAL_3" },
+              { type: "addCheckpoint", checkpoint: "RIVAL_1" },
             ]
           }
         ]
@@ -1427,20 +1427,44 @@ let maps = {
       [utils.asGridCoord(12, 12)]: true,
     },
     cutsceneSpaces: {
+      [utils.asGridCoord(5, 9)]: [
+        {
+          required: ["BATTLE_COMPLETE"],
+          events: [
+            { type: "remove", who: "rival" },
+          ] 
+        },
+      ],
+      [utils.asGridCoord(6, 9)]: [
+        {
+          required: ["BATTLE_COMPLETE"],
+          events: [
+            { type: "remove", who: "rival" },
+          ] 
+        },
+      ],
+      [utils.asGridCoord(7, 9)]: [
+        {
+          required: ["BATTLE_COMPLETE"],
+          events: [
+            { type: "remove", who: "rival" },
+          ] 
+        },
+      ],
       [utils.asGridCoord(5, 8)]: [
         {
           required: ["RIVAL_1"],
           events: [
             { type: "message", text: "BLUE: Hold on!" },
+            { who: "rival", type: "stand", direction: "down" },
             { who: "hero", type: "stand", direction: "up" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
-            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "playMusic", name: "rivalBattle" },
+            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "battle" },
             { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
@@ -1451,11 +1475,8 @@ let maps = {
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
+            { type: "remove", who: "rival" },
+            { type: "addCheckpoint", checkpoint: "BATTLE_COMPLETE" },
             { type: "removeCheckpoint", checkpoint: "RIVAL_1" },
           ]
         },
@@ -1463,16 +1484,16 @@ let maps = {
           required: ["RIVAL_2"],
           events: [
             { type: "message", text: "BLUE: Hold on!" },
+            { who: "rival", type: "stand", direction: "down" },
             { who: "hero", type: "stand", direction: "up" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
-            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "playMusic", name: "rivalBattle" },
+            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "battle" },
             { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
@@ -1483,11 +1504,8 @@ let maps = {
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
+            { type: "remove", who: "rival" },
+            { type: "addCheckpoint", checkpoint: "BATTLE_COMPLETE" },
             { type: "removeCheckpoint", checkpoint: "RIVAL_2" },
           ]
         },
@@ -1495,6 +1513,7 @@ let maps = {
           required: ["RIVAL_3"],
           events: [
             { type: "message", text: "BLUE: Hold on!" },
+            { who: "rival", type: "stand", direction: "down" },
             { who: "hero", type: "stand", direction: "up" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "left" },
@@ -1502,10 +1521,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
-            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "playMusic", name: "rivalBattle" },
+            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "battle" },
             { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
@@ -1516,12 +1534,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { type: "removeCheckpoint", checkpoint: "RIVAL_2" },
+            { type: "remove", who: "rival" },
+            { type: "addCheckpoint", checkpoint: "BATTLE_COMPLETE" },
+            { type: "removeCheckpoint", checkpoint: "RIVAL_3" },
           ]
         },
         {
@@ -1533,14 +1548,14 @@ let maps = {
           required: ["RIVAL_1"],
           events: [
             { type: "message", text: "BLUE: Hold on!" },
+            { who: "rival", type: "stand", direction: "down" },
             { who: "hero", type: "stand", direction: "up" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
-            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "playMusic", name: "rivalBattle" },
+            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "battle" },
             { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
@@ -1552,11 +1567,8 @@ let maps = {
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
+            { type: "remove", who: "rival" },
+            { type: "addCheckpoint", checkpoint: "BATTLE_COMPLETE" },
             { type: "removeCheckpoint", checkpoint: "RIVAL_1" },
           ]
         },
@@ -1564,15 +1576,15 @@ let maps = {
           required: ["RIVAL_2"],
           events: [
             { type: "message", text: "BLUE: Hold on!" },
+            { who: "rival", type: "stand", direction: "down" },
             { who: "hero", type: "stand", direction: "up" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
-            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "playMusic", name: "rivalBattle" },
+            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "battle" },
             { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
@@ -1584,11 +1596,8 @@ let maps = {
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
+            { type: "remove", who: "rival" },
+            { type: "addCheckpoint", checkpoint: "BATTLE_COMPLETE" },
             { type: "removeCheckpoint", checkpoint: "RIVAL_2" },
           ]
         },
@@ -1596,16 +1605,16 @@ let maps = {
           required: ["RIVAL_3"],
           events: [
             { type: "message", text: "BLUE: Hold on!" },
+            { who: "rival", type: "stand", direction: "down" },
             { who: "hero", type: "stand", direction: "up" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
-            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "playMusic", name: "rivalBattle" },
+            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "battle" },
             { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
@@ -1617,12 +1626,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { type: "removeCheckpoint", checkpoint: "RIVAL_2" },
+            { type: "remove", who: "rival" },
+            { type: "addCheckpoint", checkpoint: "BATTLE_COMPLETE" },
+            { type: "removeCheckpoint", checkpoint: "RIVAL_3" },
           ]
         },
         {
@@ -1634,14 +1640,13 @@ let maps = {
           required: ["RIVAL_1"],
           events: [
             { type: "message", text: "BLUE: Hold on!" },
+            { who: "rival", type: "stand", direction: "down" },
             { who: "hero", type: "stand", direction: "up" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
-            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "playMusic", name: "rivalBattle" },
+            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "battle" },
             { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
@@ -1652,11 +1657,8 @@ let maps = {
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
+            { type: "remove", who: "rival" },
+            { type: "addCheckpoint", checkpoint: "BATTLE_COMPLETE" },
             { type: "removeCheckpoint", checkpoint: "RIVAL_1" },
           ]
         },
@@ -1664,15 +1666,14 @@ let maps = {
           required: ["RIVAL_2"],
           events: [
             { type: "message", text: "BLUE: Hold on!" },
+            { who: "rival", type: "stand", direction: "down" },
             { who: "hero", type: "stand", direction: "up" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
-            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "playMusic", name: "rivalBattle" },
+            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "battle" },
             { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
@@ -1683,11 +1684,8 @@ let maps = {
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
+            { type: "remove", who: "rival" },
+            { type: "addCheckpoint", checkpoint: "BATTLE_COMPLETE" },
             { type: "removeCheckpoint", checkpoint: "RIVAL_2" },
           ]
         },
@@ -1695,16 +1693,15 @@ let maps = {
           required: ["RIVAL_3"],
           events: [
             { type: "message", text: "BLUE: Hold on!" },
+            { who: "rival", type: "stand", direction: "down" },
             { who: "hero", type: "stand", direction: "up" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
-            { who: "rival", type: "walk", direction: "left" },
             { who: "rival", type: "walk", direction: "down" },
-            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "playMusic", name: "rivalBattle" },
+            { type: "message", text: "Let me show you the difference in our skill!" },
             { type: "battle" },
             { type: "playMusic", name: "lab" },
             { type: "message", text: "BLUE: Looks like your POKÉMON have a long way to go!" },
@@ -1715,12 +1712,9 @@ let maps = {
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
             { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { who: "rival", type: "walk", direction: "down" },
-            { type: "removeCheckpoint", checkpoint: "RIVAL_2" },
+            { type: "remove", who: "rival" },
+            { type: "addCheckpoint", checkpoint: "BATTLE_COMPLETE" },
+            { type: "removeCheckpoint", checkpoint: "RIVAL_3" },
           ]
         },
         {
