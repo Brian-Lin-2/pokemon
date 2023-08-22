@@ -11,14 +11,14 @@ class RevealingText {
     this.isDone = false;
   }
 
-  revealOneCharacter(list, type) {
+  revealOneCharacter(list) {
     const next = list.splice(0,1)[0];
     next.span.classList.add("revealed");
 
     // Fires off the recursion based on the delay we set.
     if (list.length > 0) {
       this.timeout = setTimeout(() => {
-        this.revealOneCharacter(list, type);
+        this.revealOneCharacter(list);
       }, next.delayAfter)
     } 
     else {
@@ -27,7 +27,7 @@ class RevealingText {
     }
   }
 
-  init(type) {
+  init() {
     let characters = [];
     this.text.split("").forEach(character => {
       // Allows us to separate words.
@@ -42,6 +42,6 @@ class RevealingText {
       })
     })
 
-    this.revealOneCharacter(characters, type);
+    this.revealOneCharacter(characters);
   }
 }

@@ -5,7 +5,7 @@ class TextMessage {
     this.element = null;
   }
 
-  createElement(type) {
+  createElement() {
     // Create text box.
     this.element = document.createElement("div");
     this.element.classList.add("textMessage");
@@ -41,9 +41,9 @@ class TextMessage {
     }
   }
 
-  init(container, type) {
-    this.createElement(type);
+  init(container) {
+    this.createElement();
     container.appendChild(this.element);
-    this.revealingText.init(type);
+    this.revealingText.init();
   }
 }

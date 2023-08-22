@@ -9,7 +9,7 @@ class Overworld {
     this.tutorialCutscene = true;
     this.homeCutscene = true;
     this.rivalHomeCutscene = true;
-    this.labCutscene = true;
+    this.labCutscene = false;
     this.endCutscene = true;
   }
 

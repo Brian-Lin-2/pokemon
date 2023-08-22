@@ -1226,8 +1226,10 @@ let maps = {
           },
           {
             events: [
+              { type: "addPicture", pokemon: "bulbasaur" },
               { type: "message", text: "Ah! BULBASAUR is a fine choice." },
               { type: "message", text: "It's a gentle but fierce creature with unwavering loyalty to those it loves." },
+              { type: "removePicture" },
               { type: "addPokemon", name: "BULBASAUR", hero: "001" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_BULBASAUR" },
               { type: "message", text: "RED received BULBASAUR from Professor Oak!" },
@@ -1262,8 +1264,10 @@ let maps = {
           },
           {
             events: [
+              { type: "addPicture", pokemon: "charmander" },
               { type: "message", text: "Ah! CHARMANDER is a fine choice." },
               { type: "message", text: "It's a stubborn but strong creature with a powerful sense of justice." },
+              { type: "removePicture" },
               { type: "addPokemon", name: "CHARMANDER", hero: "004" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_CHARMANDER" },
               { type: "message", text: "RED received CHARMANDER from Professor Oak!" },
@@ -1299,8 +1303,10 @@ let maps = {
           },
           {
             events: [
+              { type: "addPicture", pokemon: "squirtle" },
               { type: "message", text: "Ah! SQUIRTLE is a fine choice." },
               { type: "message", text: "It's a friendly and cheerful creature with a laid-back personality." },
+              { type: "removePicture" },
               { type: "addPokemon", name: "SQUIRTLE", hero: "007" },
               { type: "addCheckpoint", checkpoint: "CHOSEN_POKEMON_SQUIRTLE" },
               { type: "message", text: "RED received SQUIRTLE from Professor Oak!" },

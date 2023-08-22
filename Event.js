@@ -68,7 +68,7 @@ class Event {
     }
 
     const message = new TextMessage({ text: this.event.text, onComplete: () => resolve() });
-    message.init(document.querySelector(".game-container"), "text-message");
+    message.init(document.querySelector(".game-container"));
   }
 
   addPokemon(resolve) {
@@ -168,6 +168,20 @@ class Event {
       }, 1000)
     };
 
+    resolve();
+  }
+
+  addPicture(resolve) {
+    let element = document.createElement("img");
+    element.classList.add("pokemon_picture");
+    element.src = `/images/characters/pokemon/${this.event.pokemon}-front.png`;
+
+    document.querySelector(".game-container").appendChild(element);
+    resolve();
+  }
+
+  removePicture(resolve) {
+    document.querySelector(".game-container").removeChild(document.querySelector(".pokemon_picture"));
     resolve();
   }
 
