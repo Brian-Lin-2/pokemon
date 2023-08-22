@@ -622,7 +622,6 @@ let maps = {
   },
   HeroBedroom: {
     lowerSrc: "/images/maps/HeroBedroomLower.png",
-    // upperSrc: "/images/maps/HeroBedroomUpper.png",
     upperSrc: "",
     configObjects: {
       hero: {
@@ -680,6 +679,30 @@ let maps = {
             events: [
               { type: "message", text: "It's full of comic books and manga." },
               { type: "message", text: "Guess you're not much of a reader." },
+            ]
+          }
+        ]
+      },
+      bed_top: {
+        type: "GameObject",
+        x: utils.grid(1),
+        y: utils.grid(5),
+        action: [
+          {
+            events: [
+              { type: "message", text: "You don't feel sleepy right now." },
+            ]
+          }
+        ]
+      },
+      bed_bottom: {
+        type: "GameObject",
+        x: utils.grid(1),
+        y: utils.grid(6),
+        action: [
+          {
+            events: [
+              { type: "message", text: "You don't feel sleepy right now." },
             ]
           }
         ]
@@ -773,12 +796,8 @@ let maps = {
       [utils.asGridCoord(8, 2)]: true,
       [utils.asGridCoord(8, 3)]: true,
 
-      // Console.
+      // TV.
       [utils.asGridCoord(5, 4)]: true,
-      [utils.asGridCoord(5, 5)]: true,
-
-      // Bed.
-      [utils.asGridCoord(1, 6)]: true,
     },
   },
   HeroHome: {
@@ -963,8 +982,7 @@ let maps = {
   },
   RivalHome: {
     lowerSrc: "/images/maps/RivalHomeLower.png",
-    upperSrc: "",
-    // upperSrc: "/images/maps/RivalHomeUpper.png",
+    upperSrc: "/images/maps/RivalHomeUpper.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1163,8 +1181,7 @@ let maps = {
   },
   Lab: {
     lowerSrc: "/images/maps/LabLower.png",
-    upperSrc: "",
-    // upperSrc: "/images/maps/LabUpper.png",
+    upperSrc: "/images/maps/LabUpper.png",
     configObjects: {
       hero: {
         type: "Person",

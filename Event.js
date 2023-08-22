@@ -158,13 +158,17 @@ class Event {
     if (oldSong) {
       music[oldSong.name].pause();
       music[oldSong.name].currentTime = 0;
-      clearInterval(oldSong.interval);
     }
 
     oldSong = {
       name: this.event.name,
       interval: setInterval(()=>{
-        music[this.event.name].play()
+        const song = music[this.event.name];
+        song.volume = 0.25;
+        song.play().then(
+          () => { clearInterval(oldSong.interval) },
+          () => {}
+        )
       }, 1000)
     };
 
