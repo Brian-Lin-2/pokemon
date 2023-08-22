@@ -181,7 +181,7 @@ class Overworld {
   }
 
   init() {
-    this.startMap(maps.HeroHome);
+    this.startMap(maps.HeroBedroom);
 
     // Hero movement.
     this.directionInput = new DirectionInput();
