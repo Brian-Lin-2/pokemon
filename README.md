@@ -23,7 +23,7 @@ Battles:
 
 Created a website clone of the popular game Pokémon FireRed and LeafGreen. Features animations, wall collisions, cutscenes, events, character movement, battles, music, and many more.
 
-### How It Works.
+## How It Works.
 
 Created a database of overworld maps with game objects (such as sprites). Implemented a game loop which refreshes the screen on every frame tick. This allows our game to run smoothly and update when needed.
 
@@ -43,12 +43,12 @@ Created text messages using a div element positioned on top of the canvas. Trigg
 
 Developed a turned based battle system by creating a battle event. This event will load a battle scene onto the canvas with the specified trainers. HP/EXP bar are filled and depleted based on the Pokémon’s stats. Turn cycles are created by triggering a callback called “onNewEvent” which creates Promises which gives off the illusion of turns. BattleEvent houses all the events called in a battle. BattleMenu allows you to select moves to use to attack, but if the current player is an enemy it chooses a move at random.
 
-#### Resources
+## Resources
 
 - [Building a JavaScript RPG Game](https://www.youtube.com/watch?v=nHaiLWUaWWw&t=10s) - This is a great intro to website game development video. Really motivated me to start creating a game on the web!
 
 - [Pizza Legends](https://www.youtube.com/watch?v=fyi4vfbKEeo&list=PLcjhmZ8oLT0r9dSiIK6RB_PuBWlG1KSq_) - This passion project wouldn't have been possible without Drew Conley and his amazing series where he builds a game called "Pizza Legends". He does an amazing job highlighting the process of game development and how to start creating a game on the web. I learned so much about JavaScript thanks to him.
 
-##### Future Development
+## Future Development
 
 I would like to play around more with Promises and callbacks and really understand how powerful JavaScript can be. In the distant future, I would like to create my own small game using React.
