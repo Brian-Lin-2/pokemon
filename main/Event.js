@@ -165,6 +165,7 @@ class Event {
       interval: setInterval(()=>{
         const song = music[this.event.name];
         song.volume = 0.25;
+        song.loop = true;
         song.play().then(
           () => { clearInterval(oldSong.interval) },
           () => {}

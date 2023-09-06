@@ -29,7 +29,7 @@ Created character behaviors by using a behavior loop identified on map load. Gam
 
 Cutscenes implement the character behaviors codes using an async startCutscene method in Map. It stops all movement when a cutscene is playing and takes in same parameters as behaviors.
 
-Create text messages using a div element positioned on top of the canvas. Triggered through an event. Create a special event listener to only trigger when a held key is lifted. Create object/npc interaction by checking the next pixel in the direction the character is facing in for a npc. Create cutscene spaces by triggering certain events based on the position hero is at. Create map transition using cutscene spaces.
+Created text messages using a div element positioned on top of the canvas. Triggered through an event. Created a special event listener to only trigger when a held key is lifted. Objects/npcs can be interacted with by checking the next pixel in the direction the character is facing in. Implemented cutscene spaces which can trigger certain events based on the position hero is at. Create map transition using cutscene spaces.
 
 #### Resources
 
