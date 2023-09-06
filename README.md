@@ -1,7 +1,5 @@
 # Pokémon Website
 
-<img width="753" alt="image" src="https://github.com/Brian-Lin-2/pokemon/assets/19761406/1426c57a-541d-4b96-bd73-3d85585100bc" alt="">
-
 ## Table of contents
 
 - [Overview](#overview)
@@ -10,6 +8,18 @@
 - [Future Development](#future-development)
 
 ## Overview
+
+Overworld:
+<img width="546" alt="image" src="https://github.com/Brian-Lin-2/pokemon/assets/19761406/64882512-4d44-4d21-8a8c-169c9feca065"><br>
+
+Cutscenes:
+<img width="546" alt="image" src="https://github.com/Brian-Lin-2/pokemon/assets/19761406/25360e83-7a4d-41fb-b434-66751a16cac4"><br>
+
+Interactions:
+<img width="546" alt="image" src="https://github.com/Brian-Lin-2/pokemon/assets/19761406/6cc2e059-968a-4a66-9c4a-a50fa0123d2a"><br>
+
+Battles:
+<img width="546" alt="image" src="https://github.com/Brian-Lin-2/pokemon/assets/19761406/13a3bc7f-7af2-4148-b375-cc413fff78b7"><br>
 
 Created a website clone of the popular game Pokémon FireRed and LeafGreen. Features animations, wall collisions, cutscenes, events, character movement, battles, music, and many more.
 
