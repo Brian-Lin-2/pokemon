@@ -45,13 +45,9 @@ Developed a turned based battle system by creating a battle event. This event wi
 
 #### Resources
 
-[https://www.youtube.com/watch?v=nHaiLWUaWWw&t=10s]
+- [Building a JavaScript RPG Game](https://www.youtube.com/watch?v=nHaiLWUaWWw&t=10s) - This is a great intro to website game development video. Really motivated me to start creating a game on the web!
 
-This is a great intro to website game development video. Really motivated me to start creating a game on the web!
-
-[https://www.youtube.com/watch?v=fyi4vfbKEeo&list=PLcjhmZ8oLT0r9dSiIK6RB_PuBWlG1KSq_]
-
-This passion project wouldn't have been possible without Drew Conley and his amazing series where he builds a game called "Pizza Legends". He does an amazing job highlighting the process of game development and how to start creating a game on the web. I learned so much about JavaScript thanks to him.
+- [Pizza Legends](https://www.youtube.com/watch?v=fyi4vfbKEeo&list=PLcjhmZ8oLT0r9dSiIK6RB_PuBWlG1KSq_) - This passion project wouldn't have been possible without Drew Conley and his amazing series where he builds a game called "Pizza Legends". He does an amazing job highlighting the process of game development and how to start creating a game on the web. I learned so much about JavaScript thanks to him.
 
 ##### Future Development
 
