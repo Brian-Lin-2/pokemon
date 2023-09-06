@@ -72,6 +72,7 @@ class KeyboardMenu {
 
   // Simple array manipulation.
   selection(a, b, c, d) {
+    // Find the button if it exists.
     const nextButton = Array.from(this.element.querySelectorAll("button[data-button]"));
 
     if (this.current === a) {
