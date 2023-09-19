@@ -68,6 +68,21 @@ class KeyboardMenu {
     this.down.unbind();
     this.left.unbind();
     this.right.unbind();
+    this.confirm.unbind();
+  }
+
+  stop() {
+    this.element.classList.add("hidden");
+    this.textBoxText.classList.add("hidden");
+    this.confirm.unbind();
+  }
+
+  start() {
+    this.element.classList.remove("hidden");
+    this.textBoxText.classList.remove("hidden");
+
+    this.confirm = new KeyPressListener("Enter", () => { this.options[this.current].handler() })
+    this.confirm = new KeyPressListener("Space", () => { this.options[this.current].handler() })
   }
 
   // Simple array manipulation.

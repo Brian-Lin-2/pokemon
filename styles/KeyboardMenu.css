@@ -40,3 +40,7 @@
 .battleMessage {
   width: 50%;
 }
+
+.hidden {
+  visibility: hidden;
+}

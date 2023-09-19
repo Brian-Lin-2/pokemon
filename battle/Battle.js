@@ -18,8 +18,8 @@ class Battle {
         ...info[rivalTeam],
         team: "rival",
         trainer: "Blue",
-        hp: 22,
-        maxHp: 22,
+        hp: 33,
+        maxHp: 33,
         xp: 0,
         maxXp: 50,
         level: 5,
@@ -76,5 +76,5 @@ class Battle {
   }
 }
 
-let heroTeam = "";
-let rivalTeam = "";
+let heroTeam = "001";
+let rivalTeam = "004";

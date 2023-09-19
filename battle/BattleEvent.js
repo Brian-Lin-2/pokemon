@@ -63,7 +63,8 @@ class BattleEvent {
       onComplete: choice => {
         // Choice is what move to use, who to use it on.
         resolve(choice);
-      }
+      },
+      battle: this.battle,
     })
 
     battleMenu.init(this.battle.element);
